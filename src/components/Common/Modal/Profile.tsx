@@ -10,7 +10,7 @@ export const ProfileModal = () => {
   // const [disabled, setDisabled] = useWeekCookie(weekClick);
   // console.log(disabled, 'boolean ::');
   return (
-    <div /* className={disabled ? `${className} on` : `${className}`} */ id="pop_notice">
+    <div className="pop_layer_set" id="pop_notice">
       <div className="pop_layer">
         <div className="pop_top">
           <button type="button" className="close" /* onClick={() => setDisabled(false)} */></button>
@@ -45,6 +45,10 @@ export const ProfileModal = () => {
       </div>
       <div className="modal" style={{ display: 'block' }}></div>
       <style jsx>{`
+      .pop_layer_set {
+        visibility: hidden;
+      }
+
       .pop_layer {
         background: #fff;
         border-radius: 30px 30px 0 0;
@@ -52,7 +56,7 @@ export const ProfileModal = () => {
         position: fixed;
         width: 100%;
         max-width: 640px;
-        bottom: 0;
+        bottom: -100%;
         transition: all 600ms cubic-bezier(0.86, 0, 0.07, 1);
         left: 50%;
       }

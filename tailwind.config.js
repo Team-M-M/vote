@@ -1,15 +1,11 @@
-//   theme: {
-//     extend: {
-//       backgroundImage: {
-//         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-//         'gradient-conic':
-//           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-//       },
-//     },
-//   },
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
+  corePlugins: {
+    // corePlugins: {
+    //   preflight: false,
+    // },
+  },
   content: [
     '**/pages/**/*.{js,ts,jsx,tsx,mdx}',
     '**/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -17,7 +13,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      sans: ['SCoreDream', 'system-ui', 'sans-serif'],
+      sans: ['Pretendard', 'system-ui', 'sans-serif'],
     },
     fontWeight: {
       thin: '100',

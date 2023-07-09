@@ -15,7 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body className={inter.className}>{children}</body>
+      <head>
+        <link rel="stylesheet" href="https://webfontworld.github.io/pretendard/Pretendard.css" />
+      </head>
+      <body /* className={inter.className} */>{children}</body>
     </html>
   )
 }
