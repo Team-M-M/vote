@@ -7,7 +7,6 @@ const Page = ({ params }: { params: { adress: string } }) => {
   return (
     <main>
       <div><CheckBox /></div>
-      {/* <div><CheckBox /></div> */}
       <ProfileModal />
     </main>
   )

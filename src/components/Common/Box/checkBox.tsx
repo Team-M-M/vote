@@ -1,14 +1,18 @@
 'use client'
-import { useRef } from "react"
+import { ForwardedRef, InputHTMLAttributes, forwardRef, useRef } from "react"
+
+interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+  error?: boolean;
+}
 
 export const CheckBox = () => {
-  const checkRef = useRef<HTMLInputElement>(null);
+  const CheckRef = useRef<HTMLInputElement>(null)
 
   return (
     <>
       <label htmlFor="id" className="check_box">
         <input
-          ref={checkRef}
+          ref={CheckRef}
           type="checkbox"
           id="id"
           name="name"
