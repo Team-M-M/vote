@@ -3,14 +3,14 @@
 import { useState } from "react";
 
 
-export const ProfileModal = () => {
+export const ProfileModal = ({ open, setOpen }: any) => {
 
   const [weekClick, setWeekClick] = useState(false);
 
   // const [disabled, setDisabled] = useWeekCookie(weekClick);
   // console.log(disabled, 'boolean ::');
   return (
-    <div className="pop_layer_set" id="pop_notice">
+    <div className={open ? "pop_layer_set on" : "pop_layer_set"} id="pop_notice">
       <div className="pop_layer">
         <div className="pop_top">
           <button type="button" className="close" /* onClick={() => setDisabled(false)} */></button>
@@ -43,10 +43,19 @@ export const ProfileModal = () => {
           </div>
         </div>
       </div>
-      <div className="modal" style={{ display: 'block' }}></div>
+      <div className="modal" style={{ display: 'block' }} onClick={() => setOpen(false)}></div>
       <style jsx>{`
       .pop_layer_set {
         visibility: hidden;
+      }
+      .pop_layer_set.on {
+        visibility: visible;
+      }
+      .pop_layer_set.on .pop_layer {
+      right: 50%;
+      transform: translate(-50%, 0);
+      {/* margin: 0 auto; */}
+      bottom: 0;
       }
 
       .pop_layer {
@@ -57,12 +66,14 @@ export const ProfileModal = () => {
         width: 100%;
         max-width: 640px;
         bottom: -100%;
+        right: 50%;
+      transform: translate(-50%, 0);
         transition: all 600ms cubic-bezier(0.86, 0, 0.07, 1);
         left: 50%;
       }
       .modal {
         position: fixed;
-        opacity: 0.4;
+        opacity: 0.2;
         background-color: #000;
         width: 100%;
         height: 100vh;

@@ -33,6 +33,7 @@ module.exports = {
       colors: {
         bible: '#2AC1BC',
         img: '#FFC8A2',
+        main: '#3182f6'
       },
     },
   },

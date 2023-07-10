@@ -1,12 +1,19 @@
 'use client'
 
 import { CheckBox } from "@components/Common"
+import { ProfileModal } from "@components/Common/Modal/Profile"
+import { useState } from "react"
 
-const Page = () => {
+const ProfileContainer = () => {
+  const [open, setOpen] = useState(false)
 
   return (
-    <CheckBox />
+    <>
+      <div onClick={() => setOpen(pre => !pre)}>클릭</div>
+      <ProfileModal open={open} setOpen={setOpen} />
+
+    </>
   )
 }
 
-export default Page
+export default ProfileContainer
