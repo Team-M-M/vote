@@ -11,7 +11,6 @@ const ProfileContainer = () => {
     <>
       <div onClick={() => setOpen(pre => !pre)}>클릭</div>
       <ProfileModal open={open} setOpen={setOpen} />
-
     </>
   )
 }

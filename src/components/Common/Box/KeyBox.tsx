@@ -6,10 +6,10 @@ import { ButtonHTMLAttributes } from "react";
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary';
   size?: 'medium' | 'large';
-  txt: string
+
 }
 
-export function KeyButton({ variant = 'primary', size = 'medium', txt, ...props }: Props) {
+export function KeyButton({ variant = 'primary', size = 'medium', ...props }: Props) {
   return (
     <button
       style={{
@@ -24,9 +24,8 @@ export function KeyButton({ variant = 'primary', size = 'medium', txt, ...props 
         ...SIZE_VARIANTS[size],
       }}
       {...props}
-    >
-      {txt}
-    </button>
+    />
+
   );
 }
 

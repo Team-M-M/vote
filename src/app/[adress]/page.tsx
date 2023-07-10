@@ -1,16 +1,11 @@
-import { CheckBox } from "@components/Common"
-import { ProfileModal } from "@components/Common/Modal/Profile"
-import ProfileContainer from "@components/Container"
+import VotePage from "@components/Container/VotePage"
 
 const Page = ({ params }: { params: { adress: string } }) => {
   console.log(params, 'params :::')
 
   return (
     <main>
-      <div>
-        <CheckBox />
-      </div>
-      <ProfileContainer />
+      <VotePage />
     </main>
   )
 }
