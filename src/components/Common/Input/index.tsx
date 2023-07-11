@@ -56,8 +56,12 @@ export function Input({ label, children, bottomText, ...props }: InputProps) {
 interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   error?: boolean;
 }
-Input.TextField = forwardRef(({ id, phoneRef }: any /* { ref?: ForwardedRef<HTMLInputElement> } */) => {
+Input.TextField = forwardRef(({ id, phoneRef }: any/* , ref?: ForwardedRef<HTMLInputElement> */) => {
   const [focus, setFocus] = useState({ backgroundColor: colors.white, boxShadow: `inset 0 0 0 1px ${colors.greyOpacity200}` });
+  console.log(
+    phoneRef.current?.value.replace(/[^0-9]/g, '')
+      .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, ""), 'ref')
+
 
   return (
     <input
@@ -77,6 +81,7 @@ Input.TextField = forwardRef(({ id, phoneRef }: any /* { ref?: ForwardedRef<HTML
         transition: `background .2s ease,color .1s ease, box-shadow .2s ease`,
         ...focus
       }}
+      // value={}
       ref={phoneRef}
     // {...props}
     />

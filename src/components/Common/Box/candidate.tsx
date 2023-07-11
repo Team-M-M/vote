@@ -1,5 +1,4 @@
 'use client'
-import ProfileContainer from "@components/Container"
 import { CheckBox } from "./checkBox"
 import { useState } from "react"
 import { ProfileModal } from "../Modal/Profile"

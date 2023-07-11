@@ -1,12 +1,12 @@
-import VotePage from "@components/Container/VotePage"
+import { AdressPage } from "@components/Container/AdressPage"
 
-const Page = ({ params }: { params: { adress: string } }) => {
-  console.log(params, 'params :::')
+
+const Page = () => {
 
   return (
-    <main>
-      <VotePage />
-    </main>
+    <>
+      <AdressPage />
+    </>
   )
 }
 
