@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 
-export const ProfileModal = ({ open, setOpen }: any) => {
+export const ProfileModal = ({ open, setOpen, data }: any) => {
   return (
     <div className={open ? 'pop_layer_set on' : 'pop_layer_set'} id="pop_notice">
       <div className="pop_layer">
@@ -20,17 +20,17 @@ export const ProfileModal = ({ open, setOpen }: any) => {
         </div>
         <div className="flex items-center justify-start p-3 text-gray-600">
           <div className="h-24 w-24 px-3 box-content">
-            <Image src={'/images/POLEE.jpg'} width={100} height={100} alt="후보 이미지" />
+            {/* <Image src={data.profile} width={100} height={100} alt="후보 이미지" /> */}
           </div>
           <div>
             <p className="pb-1">
-              이름 <strong>노기정</strong>
+              이름 <strong>{data.name}</strong>
             </p>
             <p className="pb-1">
               성별 <strong>남자</strong>
             </p>
             <p className="pb-1">
-              나이 <strong>46</strong>
+              나이 <strong>{data.age}</strong>
             </p>
           </div>
         </div>

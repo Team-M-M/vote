@@ -85,8 +85,8 @@ Input.TextField = forwardRef(({ id, phoneRef }: any /* , ref?: ForwardedRef<HTML
 
   return (
     <input
-      onFocus={e => setFocus({ backgroundColor: colors.grey50, boxShadow: `inset 0 0 0 2px ${colors.blue500}` })}
-      onBlur={e => setFocus({ backgroundColor: colors.white, boxShadow: `inset 0 0 0 1px ${colors.greyOpacity200}` })}
+      onFocus={e => setFocus({ backgroundColor: colors.grey100, boxShadow: `inset 0 0 0 2px ${colors.blue500}` })}
+      onBlur={e => setFocus({ backgroundColor: colors.grey50, boxShadow: `inset 0 0 0 1px ${colors.greyOpacity200}` })}
       placeholder={id ? '010-1234-5678' : '000000'}
       className="focus:shadow-black"
       style={{
@@ -103,7 +103,7 @@ Input.TextField = forwardRef(({ id, phoneRef }: any /* , ref?: ForwardedRef<HTML
       }}
       // value={}
       ref={phoneRef}
-      // {...props}
+    // {...props}
     />
   );
 });
