@@ -9,15 +9,18 @@ const AccountPage = () => {
   return (
     <div className="h-screen flex justify-center items-center flex-col  px-10">
       <p className="text-2xl font-bold py-4">{!check ? '휴대전화 번호를 입력해주세요.' : '인증번호를 입력해주세요.'}</p>
-      {/* <form className="flex justify-between items-center flex-col w-full"> */}
-      <Input label="휴대전화 전화 입력">
-        <Input.TextField />
-      </Input>
-      {check && (
-        <Input label="인증번호 입력">
+      <div className="h-[20px]"></div>
+      <form action="" onSubmit={() => { }} className='w-full'>
+        <Input label="휴대전화 전화 입력">
           <Input.TextField />
         </Input>
-      )}
+        <div className="h-[10px]"></div>
+        {check && (
+          <Input label="인증번호 입력">
+            <Input.TextField />
+          </Input>
+        )}
+      </form>
       <div className="h-[24px]"></div>
       <button
         id='main_btn'
@@ -27,7 +30,6 @@ const AccountPage = () => {
         확인
       </button>
       {/* <KeyButton size="large" {...{ style: { ...{ width: '100%' } } }}>완료</KeyButton> */}
-      {/* </form> */}
     </div>
   );
 };
