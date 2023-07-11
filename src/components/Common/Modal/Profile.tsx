@@ -40,44 +40,7 @@ export const ProfileModal = ({ open, setOpen }: any) => {
         <div className='h-[20px]'></div>
       </div>
       <div className="modal" style={{ display: 'block' }} onClick={() => setOpen(false)}>di</div>
-      <style jsx>{`
-      .pop_layer_set {
-        visibility: hidden;
-      }
-      .pop_layer_set.on {
-        visibility: visible;
-      }
-      .pop_layer_set.on .pop_layer {
-      right: 50%;
-      transform: translate(-50%, 0);
-      bottom: 0;
-      }
 
-      .pop_layer {
-        background: #fff;
-        border-radius: 30px 30px 0 0;
-        z-index: 400;
-        position: fixed;
-        width: 100%;
-        max-width: 700px;
-        bottom: -100%;
-        right: 50%;
-      transform: translate(-50%, 0);
-        transition: all 600ms cubic-bezier(0.86, 0, 0.07, 1);
-        left: 50%;
-      }
-      .modal {
-        position: fixed;
-        opacity: 0.2;
-        background-color: #000;
-        width: 100%;
-        height: 100vh;
-        left: 0;
-        top: 0;
-        z-index: 301;
-        display: none;
-      }
-        `}</style>
     </div>
   );
 
