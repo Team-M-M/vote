@@ -14,6 +14,6 @@ const nextConfig = {
   cleanDistDir: true,
   pageExtensions: ['jsx', 'tsx', 'mdx', 'js', 'ts'],
   productionBrowserSourceMaps: true,
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

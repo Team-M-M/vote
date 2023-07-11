@@ -1,12 +1,11 @@
-'use client'
+'use client';
 
-import colors from "@constants/colors";
-import { ButtonHTMLAttributes } from "react";
+import colors from '@constants/colors';
+import { ButtonHTMLAttributes } from 'react';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary';
   size?: 'medium' | 'large';
-
 }
 
 export function KeyButton({ variant = 'primary', size = 'medium', ...props }: Props) {
@@ -25,7 +24,6 @@ export function KeyButton({ variant = 'primary', size = 'medium', ...props }: Pr
       }}
       {...props}
     />
-
   );
 }
 

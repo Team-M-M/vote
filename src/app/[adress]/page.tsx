@@ -1,13 +1,11 @@
-import { AdressPage } from "@components/Container/AdressPage"
-
+import { AdressPage } from '@components/Container/AdressPage';
 
 const Page = () => {
-
   return (
     <>
       <AdressPage />
     </>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

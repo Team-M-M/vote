@@ -1,11 +1,6 @@
-import { BackHeader } from "@components/Common/Header/backHead"
+import { BackHeader } from '@components/Common/Header/backHead';
 
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
       <body /* className={inter.className} */>
@@ -13,5 +8,5 @@ export default function RootLayout({
         {children}
       </body>
     </html>
-  )
+  );
 }
