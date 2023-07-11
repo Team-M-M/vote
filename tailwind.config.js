@@ -33,7 +33,7 @@ module.exports = {
       colors: {
         bible: '#2AC1BC',
         img: '#FFC8A2',
-        main: '#3182f6'
+        main: '#3182f6',
       },
     },
   },
@@ -43,6 +43,4 @@ module.exports = {
     // require('@tailwindcss/aspect-ratio'),
     // require('@tailwindcss/line-clamp')
   ],
-
 };
-
