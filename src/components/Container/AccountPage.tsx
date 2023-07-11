@@ -20,6 +20,7 @@ const AccountPage = () => {
       )}
       <div className="h-[24px]"></div>
       <button
+        id='main_btn'
         className="bg-main w-full rounded-lg text-white font-medium px-4 py-3"
         onClick={() => setCheck(pre => !pre)}
       >
