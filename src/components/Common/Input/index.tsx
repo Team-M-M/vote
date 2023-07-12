@@ -10,6 +10,7 @@ import {
   ReactNode,
   cloneElement,
   forwardRef,
+  useEffect,
   useRef,
   useState,
 } from 'react';
@@ -70,24 +71,30 @@ export function Input({ label, children, bottomText, ...props }: InputProps) {
 interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   error?: boolean;
 }
-Input.TextField = forwardRef(({ id, phoneRef }: any /* , ref?: ForwardedRef<HTMLInputElement> */) => {
-  const [focus, setFocus] = useState({
-    backgroundColor: colors.grey100
-  });
-  console.log(
-    phoneRef.current?.value
-      .replace(/[^0-9]/g, '')
-      .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, '$1-$2-$3')
-      .replace(/(\-{1,2})$/g, ''),
-    'ref'
-  );
+Input.TextField = forwardRef(({ id, phoneRef, ...props }: any /* , ref?: ForwardedRef<HTMLInputElement> */) => {
+  // const [focus, setFocus] = useState({
+  //   backgroundColor: colors.grey100
+  // });
+  const [phone, setPhone] = useState('')
+
+  useEffect(() => {
+    if (props.trigger) {
+      phone.length === 13 && props.trigger(true)
+      phone.length !== 13 && props.trigger(false)
+    }
+  }, [phone])
 
   return (
     <input
-      onFocus={e => setFocus({ backgroundColor: colors.grey200 })}
-      onBlur={e => setFocus({ backgroundColor: colors.grey100 })}
-      placeholder={id ? '010-1234-5678' : '000000'}
-      className="focus:shadow-black"
+      // onFocus={e => setFocus({ backgroundColor: colors.grey200 })}
+      // onBlur={e => setFocus({ backgroundColor: colors.grey100 })}
+      placeholder={props.placeholder ?? ''}
+      maxLength={props.maxLength ?? 8}
+      className="accessInput"
+      value={phone}
+      onChange={(e) => setPhone(e.target.value.replace(/[^0-9]/g, '')
+        .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, '$1-$2-$3')
+        .replace(/(\-{1,2})$/g, ''))}
       style={{
         width: '100%',
         padding: '0 18px',
@@ -98,14 +105,10 @@ Input.TextField = forwardRef(({ id, phoneRef }: any /* , ref?: ForwardedRef<HTML
         border: 'none',
         borderRadius: '8px',
         transition: `background .2s ease,color .1s ease, box-shadow .2s ease`,
-        ...focus,
       }}
-      // value={}
-      ref={phoneRef}
+    // value={}
+    // ref={phoneRef}
     // {...props}
     />
   );
 });
-
-// , boxShadow: `inset 0 0 0 2px ${colors.blue500}`
-// , boxShadow: `inset 0 0 0 1px ${colors.greyOpacity200}`

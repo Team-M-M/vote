@@ -12,6 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko">
       <head>
+        <meta charSet="UTF-8" />
         <link rel="stylesheet" href="https://webfontworld.github.io/pretendard/Pretendard.css" />
       </head>
       <body /* className={inter.className} */>{children}</body>

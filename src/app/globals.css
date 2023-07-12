@@ -144,3 +144,66 @@ body {
 #main_btn:active {
   background-color: #2272eb;
 }
+
+.toast-message {
+  font-size: 16px;
+  color: #fff;
+  font-weight: 600;
+  padding: 15px 10px;
+  border-radius: 4px;
+}
+
+.side-bar {
+  padding: 10px;
+  border-radius: 4px;
+}
+
+@keyframes SlideInOut {
+  0% {
+    transform: translateY(0px);
+    opacity: 0;
+  }
+
+  20% {
+    transform: translateY(20px);
+    opacity: 1;
+  }
+
+  80% {
+    transform: translateY(20px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 0;
+  }
+}
+
+.toast-message-container {
+  opacity: 0;
+  max-width: 250px;
+  background: #2272eb;
+  box-shadow: 0px 0px 15px #999999;
+  margin: 0px auto;
+  border-radius: 4px;
+  display: flex;
+  animation: SlideInOut 3000ms ease-out;
+}
+
+.toast-container {
+  position: fixed;
+  width: 100%;
+  top: 100px;
+  left: 0px;
+}
+
+/* input */
+
+.accessInput {
+  background-color: #f2f4f6;
+}
+
+.accessInput:focus {
+  background-color: #e5e8eb;
+}
