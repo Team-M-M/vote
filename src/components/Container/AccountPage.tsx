@@ -1,13 +1,16 @@
 'use client';
 
 import { Input } from '@components/Common/Input';
+import { http } from 'lib/http';
 import { useState } from 'react';
 
 const AccountPage = () => {
   const [check, setCheck] = useState(false);
 
+  // const data = http.post('/office/user', { phone: "010-4628-3563" })
+
   return (
-    <div className="h-screen flex justify-center items-center flex-col  px-10">
+    <section className="h-screen flex justify-center items-center flex-col  px-10">
       <p className="text-2xl font-bold py-4">{!check ? '휴대전화 번호를 입력해주세요.' : '인증번호를 입력해주세요.'}</p>
       <div className="h-[20px]"></div>
       <form action="" onSubmit={() => { }} className='w-full'>
@@ -30,7 +33,7 @@ const AccountPage = () => {
         확인
       </button>
       {/* <KeyButton size="large" {...{ style: { ...{ width: '100%' } } }}>완료</KeyButton> */}
-    </div>
+    </section>
   );
 };
 
