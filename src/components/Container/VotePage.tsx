@@ -1,7 +1,7 @@
 import { CandidateBox } from '@components/Common/Box/candidate';
 
 interface Props {
-  data: { kiho: string; name: string; age: number; profile: string, link: string; id: number; }[]
+  data: { kiho: string; name: string; age: number; profile: string; link: string; id: number }[];
 }
 
 const VotePage = ({ data }: Props) => {

@@ -1,4 +1,4 @@
-import { API_URL } from "@constants/apiUrl";
+import { API_URL } from '@constants/apiUrl';
 
 //! V1 -> data.data / V2 -> data
 

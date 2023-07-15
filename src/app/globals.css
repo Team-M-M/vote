@@ -151,6 +151,7 @@ body {
   font-weight: 600;
   padding: 15px 10px;
   border-radius: 4px;
+  text-align: center;
 }
 
 .side-bar {
@@ -183,11 +184,12 @@ body {
 .toast-message-container {
   opacity: 0;
   max-width: 250px;
-  background: #2272eb;
+  background: #3182f6;
   box-shadow: 0px 0px 15px #999999;
   margin: 0px auto;
-  border-radius: 4px;
-  display: flex;
+  border-radius: 10px;
+  /* display: flex;
+  justify-content: center; */
   animation: SlideInOut 3000ms ease-out;
 }
 
