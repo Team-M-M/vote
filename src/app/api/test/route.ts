@@ -1,10 +1,10 @@
-import { NextApiRequest } from "next";
+
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 
-export function POST(req: NextApiRequest) {
-  const cookie = cookies()
+export function POST(req: Request) {
+  const cookie: any = cookies()
   console.log(req.body, 'data :::')
 
   if (req.method === 'POST') {
