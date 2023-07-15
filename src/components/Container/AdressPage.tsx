@@ -6,7 +6,10 @@ export function AdressPage() {
   const router = useRouter();
 
   return (
-    <div className="h-screen flex justify-center items-center flex-col  px-10" style={{ background: `url(/images/group-300.png) no-repeat center 160px` }}>
+    <div
+      className="h-screen flex justify-center items-center flex-col  px-10"
+      style={{ background: `url(/images/group-300.png) no-repeat center 160px` }}
+    >
       <div className="h-[90px]"></div>
       <h1 className="text-main text-center text-2xl font-bold">하남 미사 푸르지오시티 A동</h1>
       <div className="h-[20px]"></div>

@@ -34,9 +34,11 @@
   },
   "packageManager": "yarn@1.22.19",
   "dependencies": {
+    "@loadable/component": "^5.15.3",
     "autoprefixer": "10.4.14",
     "axios": "^1.4.0",
     "chart.js": "^4.3.0",
+    "jotai": "^2.2.2",
     "next": "13.4.7",
     "postcss": "8.4.24",
     "react": "18.2.0",
