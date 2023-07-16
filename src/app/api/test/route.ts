@@ -2,12 +2,6 @@
 // import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
-export const config = {
-  api: {
-    bodyParser: true,
-  },
-};
-
 // ! cookie로 로그인 data 전달을 위한 api입니다.
 export async function POST(req: Request) {
   const body = await req.json()
