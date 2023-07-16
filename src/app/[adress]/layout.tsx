@@ -1,8 +1,13 @@
 import { BackHeader } from '@components/Common/Header/backHead';
+import { cookies, headers } from 'next/headers';
+import { redirect } from 'next/navigation';
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
+  const cookie = cookies()
+  cookie.get('user') ?? redirect('account')
+
   return (
-    <main /* className={inter.className} */>
+    <main>
       <BackHeader />
       {children}
     </main>
