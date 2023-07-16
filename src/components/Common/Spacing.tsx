@@ -1,3 +1,4 @@
+'use client'
 import { HTMLAttributes, memo } from 'react';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {

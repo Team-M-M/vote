@@ -1,19 +1,29 @@
 
-import { cookies } from "next/headers";
+// import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
+export const config = {
+  api: {
+    bodyParser: true,
+  },
+};
 
-export function POST(req: Request) {
-  const cookie: any = cookies()
-  console.log(req.body, 'data :::')
+// ! cookie로 로그인 data 전달을 위한 api입니다.
+export async function POST(req: Request) {
+  const body = await req.json()
 
   if (req.method === 'POST') {
+    const { name, id, detail, dongho }: any = body
+    const response = NextResponse.json({ code: 201, message: 'success' });
 
-    cookie.set({
+    response.cookies.set({
       name: 'user',
-      value: req.body
+      value: JSON.stringify({ name, id, detail, dongho }),
     })
-    const response = NextResponse.redirect("http://localhost:3000/1", { status: 302 });
+
+
     return response;
   }
+
+  return NextResponse.json({ code: 400, message: 'fail' });
 }

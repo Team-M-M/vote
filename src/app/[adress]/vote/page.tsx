@@ -4,10 +4,9 @@ import { getDataV1 } from 'lib/fetchApi';
 
 const Page = async ({ params }: { params: { adress: string } }) => {
   const { adress } = params;
-  console.log(params, 'params :::');
+
 
   const data = await getDataV1(API_URL.CANDIDATE + '/' + adress);
-  console.log(data, 'data :::');
 
   return (
     <main>

@@ -49,11 +49,11 @@ const AccountPage = ({ cookie }: any) => {
           className={`${check ? 'bg-main' : 'bg-gray-400'} w-full rounded-lg text-white font-medium px-4 py-3`}
           onClick={async () => {
             if (accessRef.current?.value === data.secret) {
-              console.log(JSON.stringify(data))
-              await fetch('/api/test', {
+              const res = await fetch('/api/test', {
                 method: 'POST',
                 body: JSON.stringify(data)
               })
+              res && router.push('/1')
             }
           }}
         >
