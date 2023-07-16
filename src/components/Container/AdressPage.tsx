@@ -8,10 +8,12 @@ export function AdressPage({ data }: any) {
 
   return (
     <div
-      className="h-screen flex justify-center items-center flex-col  px-10"
-      style={{ background: `url(/images/group-300.png) no-repeat center 160px` }}
+      className="h-full flex justify-center items-center flex-col  px-10"
+    // style={{ background: `url(/images/group-300.png) no-repeat center 160px` }}
     >
-      <Spacing size={90} />
+      <Spacing size={100} />
+      <img src={'/images/group-300.png'} className='h-full' />
+      <Spacing size={20} />
       <h1 className="text-main text-center text-2xl font-bold">{data.detail}</h1>
       <Spacing size={20} />
       <div className="text-2xl">

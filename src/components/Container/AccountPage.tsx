@@ -28,7 +28,8 @@ const AccountPage = ({ cookie }: any) => {
 
   return (
     <>
-      <section className="h-4/5 flex justify-center items-center flex-col  px-10">
+      <Spacing size={60} />
+      <section className="h-5/6 flex justify-center items-center flex-col  px-10">
         <p className="text-2xl font-bold py-4">
           {!check ? '휴대전화 번호를 입력해주세요.' : '인증번호를 입력해주세요.'}
         </p>
@@ -75,14 +76,6 @@ const AccountPage = ({ cookie }: any) => {
           transitionPercentage={30}
           color={'#e53935'}
           message={'번호를 확인해주세요.'}
-        />
-      )}
-      {data && data.code !== 1000 && (
-        <ToastContainer
-          duration={5000}
-          transitionPercentage={30}
-          color={'#e53935'}
-          message={data.message}
         />
       )}
     </>
