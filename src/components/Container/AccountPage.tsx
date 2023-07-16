@@ -17,13 +17,13 @@ const AccountPage = ({ cookie }: any) => {
   const [check, setCheck] = useState(false);
   const [scheck, ssetCheck] = useState(false);
   const [data, setData] = useState<any>()
+  const [postData, setPostData] = useState()
   const router = useRouter()
-
 
   const accessRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    check && http.post('/office/user', { phone: "010-4628-3563" }).then((res: any) => { setData(res.data) })
+    check && http.post('/office/user', { phone: postData }).then((res: any) => { setData(res.data) })
   }, [check])
 
   return (
@@ -34,7 +34,7 @@ const AccountPage = ({ cookie }: any) => {
         </p>
         <Spacing size={20} />
         <Input label="휴대전화 전화 입력">
-          <Input.PhoneField {...{ trigger: setCheck, error: ssetCheck, placeholder: '010-1234-5678', maxLength: 13 }} />
+          <Input.PhoneField {...{ trigger: setCheck, setData: setPostData, error: ssetCheck, placeholder: '010-1234-5678', maxLength: 13 }} />
         </Input>
         <Spacing size={10} />
         {check && (
@@ -75,6 +75,14 @@ const AccountPage = ({ cookie }: any) => {
           transitionPercentage={30}
           color={'#e53935'}
           message={'번호를 확인해주세요.'}
+        />
+      )}
+      {data && data.code !== 1000 && (
+        <ToastContainer
+          duration={5000}
+          transitionPercentage={30}
+          color={'#e53935'}
+          message={data.message}
         />
       )}
     </>
