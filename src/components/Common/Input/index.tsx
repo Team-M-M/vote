@@ -79,6 +79,7 @@ Input.PhoneField = ({ id, ...props }: any) => {
 
   useEffect(() => {
     if (phone.length === 13 && props.trigger && props.error) {
+      regPhone.test(phone) && props.setData(phone);
       regPhone.test(phone) && props.trigger(true);
       !regPhone.test(phone) && props.error(true);
     }
