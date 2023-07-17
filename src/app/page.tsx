@@ -1,18 +1,18 @@
+import { Spacing } from '@components/Common/Spacing';
+import MainContainer from '@components/Container/MainPage';
 import { headers } from 'next/dist/client/components/headers';
 import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 export default function Home() {
   // const headersList = headers()
   // headersList.get('')
 
   const cookieStore = cookies();
-  const member = cookieStore.get('member');
-
-  console.log(member?.value);
+  const user = cookieStore.get('user');
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div>전자투표 시스템</div>
-    </main>
+    <MainContainer user={!!user?.value} />
   );
 }
+
