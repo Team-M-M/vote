@@ -98,6 +98,7 @@ Input.PhoneField = ({ id, ...props }: any) => {
       onChange={e =>
         setPhone(changePhone(e.target.value))
       }
+      {...props.register}
       style={{
         width: '100%',
         padding: '0 18px',

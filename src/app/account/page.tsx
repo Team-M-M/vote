@@ -7,7 +7,7 @@ const Page = () => {
   const cookie = cookies()
 
   return (
-    <main /* className="h-screen" */>
+    <main >
       <BackHeader />
       <AccountPage cookie={cookie} />
       {/* <KeyPad /> */}
