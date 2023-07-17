@@ -22,6 +22,7 @@ const MainContainer = ({ user }: { user: boolean }) => {
         <Spacing size={190} />
         <button
           className={'bg-gray-50 w-11/12 rounded-lg text-main font-bold text-2xl px-4 py-3'}
+          style={{ boxShadow: 'inset 2px 2px 5px 1px #999999' }}
           onClick={() => user ? router.push('/1') : router.push('/account')}
         >
           투표하러 가기
