@@ -8,7 +8,7 @@ interface Props {
 const VotePage = ({ data }: Props) => {
   return (
     <div className="h-full flex justify-center items-center flex-col  px-10">
-      <Spacing size={90} />
+      <Spacing size={30} />
       <p className="text-4xl font-bold py-4">관리인 투표</p>
       <Spacing size={20} />
       {data.map((i, d) => (
