@@ -58,7 +58,7 @@ const AccountPage = () => {
                   method: 'POST',
                   body: JSON.stringify(data)
                 })
-                res && router.push('/1')
+                res && router.push('/my-page')
               }
             }}
           >
