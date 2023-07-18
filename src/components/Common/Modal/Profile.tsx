@@ -18,16 +18,16 @@ export const ProfileModal = ({ open, setOpen, data }: any) => {
             <button className="text-main font-semibold">자세히 보기</button>
           </div>
         </div>
-        <div className="flex items-center justify-start p-3 text-gray-600">
+        <div className="flex items-center justify-start py-4 px-10 text-gray-600">
           <div className="h-24 w-24 px-3 box-content">
-            {/* <Image src={data.profile} width={100} height={100} alt="후보 이미지" /> */}
+            <Image src={'/images/POLEE.jpg'} width={100} height={100} alt="후보 이미지" />
           </div>
           <div>
             <p className="pb-1">
               이름 <strong>{data.name}</strong>
             </p>
             <p className="pb-1">
-              성별 <strong>남자</strong>
+              성별 <strong>{data.sex ? '여자' : '남자'}</strong>
             </p>
             <p className="pb-1">
               나이 <strong>{data.age}</strong>
