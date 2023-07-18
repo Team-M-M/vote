@@ -3,7 +3,7 @@ import { BackHeader } from '@components/Common/Header/backHead';
 
 const Page = () => {
   return (
-    <div className="h-screen justify-start items-stretch flex-col  px-10">
+    <div className="h-full bg-gray-100 justify-start items-stretch flex-col px-10">
       <div className="h-[80px]"></div>
       <p className="text-4xl font-bold py-4 text-center">투표 현황</p>
       <ChartBox />

@@ -37,7 +37,7 @@ export function AdressPage({ data }: any) {
         <button
           id="main_btn"
           className="bg-main w-full rounded-lg text-white text-base font-semibold px-4 py-3"
-          onClick={() => router.push(`${location.pathname}/situation`)}
+          onClick={() => router.push(`/vote/situation`)}
         >
           투표결과 보기
         </button>
