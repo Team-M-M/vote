@@ -6,8 +6,8 @@ import { useState } from "react"
 
 const MainContainer = ({ user }: { user: boolean }) => {
 
-  const router = useRouter()
-  const [hover, setHover] = useState(false)
+  const router = useRouter();
+  const [hover, setHover] = useState(false);
 
   return (
     <main className='bg-main h-screen'>

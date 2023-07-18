@@ -12,6 +12,8 @@
     "build": "yarn && next build",
     "start": "yarn && next start",
     "lint": "next lint",
+    "lint:es": "eslint --ext .ts,.tsx .",
+    "lint:fix": "eslint --fix --ext .ts,.tsx .",
     "format": "prettier --check --ignore-path .gitignore .",
     "format:fix": "prettier --write --ignore-path .gitignore .",
     "clear-all": "rm -rf .next node_modules",
