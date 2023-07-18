@@ -4,10 +4,10 @@ import { redirect } from 'next/navigation';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const cookie = cookies()
-  cookie.get('user') ?? redirect('account')
+  cookie.get('user') ?? redirect('/auth')
 
   return (
-    <main>
+    <main className='h-full bg-gray-100'>
       <BackHeader />
       {children}
     </main>
