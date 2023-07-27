@@ -15,7 +15,9 @@ export const ProfileModal = ({ open, setOpen, data }: any) => {
             <p className="text-gray-600 font-bold text-2xl">후보자</p>
           </div>
           <div className="flex justify-end px-5">
-            <button className="text-main font-semibold">자세히 보기</button>
+            <button className="text-main font-semibold" onClick={() => window.open(data.link)}>
+              자세히 보기
+            </button>
           </div>
         </div>
         <div className="flex items-center justify-start py-4 px-10 text-gray-600">
@@ -36,20 +38,20 @@ export const ProfileModal = ({ open, setOpen, data }: any) => {
         </div>
         {/* <div className="w-80 px-2 h-1 bg-main" /> */}
         <div className="p-3 text-gray-600">
-          <p className="p-2 text-center">
-            현재 <span>서울대학교 총장</span>
+          <p className="p-2">
+            <span>{data.history1}</span>
           </p>
-          <p className="p-2 text-center">
-            과거 <span>고려대학교 총장</span>
+          <p className="p-2">
+            <span>{data.history2}</span>
           </p>
-          <p className="p-2 text-center">
-            과거 <span>연세대학교 총장</span>
+          <p className="p-2">
+            <span>{data.history3}</span>
           </p>
-          <p className="p-2 text-center">
-            과거 <span>서강대학교 총장</span>
+          <p className="p-2">
+            <span>{data.history4}</span>
           </p>
-          <p className="p-2 text-center">
-            과거 <span>한양대학교 총장</span>
+          <p className="p-2">
+            <span>{data.history5}</span>
           </p>
         </div>
         <div className="h-[20px]"></div>
