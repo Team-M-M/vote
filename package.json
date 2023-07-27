@@ -5,7 +5,7 @@
   "author": {
     "name": "Park chang woo",
     "email": "water9707@gmail.com",
-    "url": "https://bible25front.gyunju.co.kr/"
+    "url": "https://vote-ten.vercel.app/"
   },
   "scripts": {
     "dev": "yarn && next dev",

@@ -9,6 +9,11 @@ export const metadata = {
   keywords: 'react,next,vote,투표,시스템,투표관리,자동화,솔루션',
   themeColor: '#F3F4F6',
   manifest: '/manifest.json',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  },
   icons: [
     {
       rel: 'icon',

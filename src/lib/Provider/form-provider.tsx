@@ -8,10 +8,10 @@ type Props = {
   onSubmit?: VoidFunction;
 };
 
-export default function FormProvider({ children, onSubmit, methods }: Props) {
+export default function FormProvider({ children, onSubmit, methods, ...other }: Props) {
   return (
     <Form {...methods}>
-      <form onSubmit={onSubmit}>{children}</form>
+      <form {...other} onSubmit={onSubmit}>{children}</form>
     </Form>
   );
 }
