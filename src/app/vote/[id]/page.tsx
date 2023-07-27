@@ -4,8 +4,6 @@ import { getDataV1 } from 'lib/fetchApi';
 
 const Page = async ({ params }: { params: { id: string } }) => {
   const { id } = params;
-
-
   const data = await getDataV1(API_URL.CANDIDATE + '/' + id);
 
   return (
