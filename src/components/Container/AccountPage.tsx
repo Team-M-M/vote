@@ -26,7 +26,7 @@ const AccountPage = () => {
   const accessRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    check && http.post('/office/user', { phone: postData }).then((res: any) => { setData(res.data) })
+    check && http.post('/office/vote_projectnew', { phone: postData }).then((res: any) => { setData(res.data) })
   }, [check])
 
   return (
