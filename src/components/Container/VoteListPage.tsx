@@ -24,8 +24,8 @@ export const VoteListContainer = ({ data, user }: Props) => {
       <ToastMessage />
       <Spacing size={20} />
       <section className="bg-main w-11/12 px-3 py-6 text-xl rounded-xl font-semibold text-white">
-        <p>{user.name}님</p>
-        <p>투표에 참여해주세요.</p>
+        <p>{user.name}님!</p>
+        <p>제 3차 관리인/관리위원 투표에 참여해주세요.</p>
       </section>
       {data.map(i => (
         <>
