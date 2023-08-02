@@ -7,12 +7,15 @@ export async function POST(req: Request) {
   const body = await req.json();
 
   if (req.method === 'POST') {
-    const { name, id, detail, dongho }: any = body;
+    const { name, id, address, dongho, phone }: any = body;
     const response = NextResponse.json({ code: 201, message: 'success' });
 
     response.cookies.set({
       name: 'user',
-      value: JSON.stringify({ name, id, detail, dongho }),
+      value: JSON.stringify({ name, id, address, dongho, phone }),
+      httpOnly: true,
+      expires: new Date().setDate(new Date().getDate() + 1),
+      secure: true
     });
 
     return response;

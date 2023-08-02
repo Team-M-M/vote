@@ -3,11 +3,11 @@ import { cookies } from 'next/headers';
 
 const Page = () => {
   const cookie = cookies();
-  const { name, id, detail } = JSON.parse(cookie.get('user')?.value!);
+  const { name, id, address } = JSON.parse(cookie.get('user')?.value!);
 
   return (
     <>
-      <AdressPage data={{ name, id, detail }} />
+      <AdressPage data={{ name, id, address }} />
     </>
   );
 };

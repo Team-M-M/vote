@@ -1,4 +1,7 @@
+import { cookies } from 'next/headers';
 import './globals.css';
+import { redirect } from 'next/navigation';
+import { RedirectProvider } from 'lib/Provider/redirect';
 // import { Inter, Noto_Sans_KR } from 'next/font/google';
 
 // const inter = Noto_Sans_KR({ subsets: ['latin'], weight: ['100', '400', '700', '900'] });
@@ -29,7 +32,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta charSet="UTF-8" />
         <link rel="stylesheet" href="https://webfontworld.github.io/pretendard/Pretendard.css" />
       </head>
-      <body /* className={inter.className} */ className='h-full'>{children}</body>
+      <body /* className={inter.className} */ className='h-full'>
+        {children}
+      </body>
     </html>
   );
 }
