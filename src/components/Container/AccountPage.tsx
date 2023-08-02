@@ -68,7 +68,7 @@ const AccountPage = () => {
               if (accessRef.current?.value === data.secret) {
                 const res = await fetch('/api/test', {
                   method: 'POST',
-                  body: JSON.stringify(data),
+                  body: JSON.stringify({ name: data.name, id: data.id, address: data.address, dongho: data.dongho, phone: postData }),
                 });
                 res && router.push('/my-page');
               }

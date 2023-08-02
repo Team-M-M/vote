@@ -14,7 +14,7 @@ export function AdressPage({ data }: any) {
       <Spacing size={100} />
       <img src={'/images/group-300.png'} className='h-full' />
       <Spacing size={20} />
-      <h1 className="text-main text-center text-2xl font-bold">{data.detail}</h1>
+      <h1 className="text-main text-center text-2xl font-bold">{data.address}</h1>
       <Spacing size={20} />
       <div className="text-2xl">
         <h2 className="font-semibold text-gray-500">
