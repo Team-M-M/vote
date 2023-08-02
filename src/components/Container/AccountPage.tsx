@@ -3,6 +3,7 @@
 import { Input } from '@components/Common/Input';
 import { ToastContainer } from '@components/Common/Modal/Toast';
 import { Spacing } from '@components/Common/Spacing';
+import { API_URL } from '@constants/apiUrl';
 import { http } from 'lib/http';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
@@ -19,15 +20,18 @@ const AccountPage = () => {
 
   const [check, setCheck] = useState(false);
   const [scheck, ssetCheck] = useState(false);
-  const [data, setData] = useState<any>()
-  const [postData, setPostData] = useState()
-  const router = useRouter()
+  const [data, setData] = useState<any>();
+  const [postData, setPostData] = useState();
+  const router = useRouter();
 
-  const accessRef = useRef<HTMLInputElement>(null)
+  const accessRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    check && http.post('/office/vote_projectnew', { phone: postData }).then((res: any) => { setData(res.data) })
-  }, [check])
+    check &&
+      http.post(API_URL.USER_VOTE, { phone: postData }).then((res: any) => {
+        setData(res.data);
+      });
+  }, [check]);
 
   return (
     <>
@@ -39,7 +43,15 @@ const AccountPage = () => {
           </p>
           <Spacing size={20} />
           <Input label="휴대전화 전화 입력">
-            <Input.PhoneField {...{ trigger: setCheck, setData: setPostData, error: ssetCheck, placeholder: '010-1234-5678', maxLength: 13 }} />
+            <Input.PhoneField
+              {...{
+                trigger: setCheck,
+                setData: setPostData,
+                error: ssetCheck,
+                placeholder: '010-1234-5678',
+                maxLength: 13,
+              }}
+            />
           </Input>
           <Spacing size={10} />
           {check && (
@@ -50,15 +62,15 @@ const AccountPage = () => {
           <Spacing size={24} />
           <button
             disabled={!check}
-            id={check ? "main_btn" : "btn"}
+            id={check ? 'main_btn' : 'btn'}
             className={`${check ? 'bg-main' : 'bg-gray-400'} w-full rounded-lg text-white font-medium px-4 py-3`}
             onClick={async () => {
               if (accessRef.current?.value === data.secret) {
                 const res = await fetch('/api/test', {
                   method: 'POST',
-                  body: JSON.stringify(data)
-                })
-                res && router.push('/my-page')
+                  body: JSON.stringify(data),
+                });
+                res && router.push('/my-page');
               }
             }}
           >
@@ -86,6 +98,5 @@ const AccountPage = () => {
     </>
   );
 };
-
 
 export default AccountPage;
