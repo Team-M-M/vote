@@ -66,11 +66,12 @@ const AccountPage = () => {
             className={`${check ? 'bg-main' : 'bg-gray-400'} w-full rounded-lg text-white font-medium px-4 py-3`}
             onClick={async () => {
               if (accessRef.current?.value === data.secret) {
-                const res = await fetch('/api/test', {
+                await fetch('/api/test', {
                   method: 'POST',
                   body: JSON.stringify({ name: data.name, id: data.id, address: data.address, dongho: data.dongho, phone: postData }),
-                });
-                res && router.push('/my-page');
+                }).then(res => {
+                  res.status === 200 && router.push('/my-page')
+                })
               }
             }}
           >

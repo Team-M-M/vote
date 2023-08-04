@@ -57,7 +57,6 @@ export const ProfileModal = ({ open, setOpen, data }: any) => {
         <div className="h-[20px]"></div>
       </div>
       <div className="modal" style={{ display: 'block' }} onClick={() => setOpen(false)}>
-        di
       </div>
     </div>
   );

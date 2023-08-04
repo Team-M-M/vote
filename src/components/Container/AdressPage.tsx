@@ -1,6 +1,7 @@
 'use client';
 
 import { Spacing } from '@components/Common/Spacing';
+import { SignModal } from '@components/Modal/SignMadal';
 import { useRouter } from 'next/navigation';
 
 export function AdressPage({ data }: any) {
@@ -9,7 +10,6 @@ export function AdressPage({ data }: any) {
   return (
     <div
       className="h-full flex justify-center items-center flex-col  px-10"
-    // style={{ background: `url(/images/group-300.png) no-repeat center 160px` }}
     >
       <Spacing size={100} />
       <img src={'/images/group-300.png'} className='h-full' />
