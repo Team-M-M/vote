@@ -7,8 +7,8 @@ import { RedirectProvider } from 'lib/Provider/redirect';
 // const inter = Noto_Sans_KR({ subsets: ['latin'], weight: ['100', '400', '700', '900'] });
 
 export const metadata = {
-  title: '투표관리 시스템',
-  description: '자동화 투표관리 시스템 vote',
+  title: '투표24',
+  description: '전자투표를 활용한 투표 솔루션',
   keywords: 'react,next,vote,투표,시스템,투표관리,자동화,솔루션',
   themeColor: '#F3F4F6',
   manifest: '/manifest.json',
@@ -21,20 +21,18 @@ export const metadata = {
     {
       rel: 'icon',
       url: '/favicon.ico',
-    },]
+    },
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-
   return (
-    <html lang="ko" className='h-full'>
+    <html lang="ko" className="h-full">
       <head>
         <meta charSet="UTF-8" />
         <link rel="stylesheet" href="https://webfontworld.github.io/pretendard/Pretendard.css" />
       </head>
-      <body /* className={inter.className} */ className='h-full'>
-        {children}
-      </body>
+      <body /* className={inter.className} */ className="h-full">{children}</body>
     </html>
   );
 }
