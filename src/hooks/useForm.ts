@@ -1,4 +1,4 @@
-import { UseFormHandleSubmit, UseFormRegister, UseFormSetValue, useForm } from "react-hook-form"
+import { UseFormHandleSubmit, UseFormRegister, UseFormSetValue, useForm } from 'react-hook-form';
 
 type ReturnForm = [
   UseFormRegister<SubmitType>,
@@ -6,8 +6,8 @@ type ReturnForm = [
   any,
   UseFormSetValue<SubmitType>,
   any,
-  () => void
-]
+  () => void,
+];
 
 export const useHookForm = (): ReturnForm => {
   const {
@@ -21,7 +21,7 @@ export const useHookForm = (): ReturnForm => {
   } = useForm<SubmitType>({ mode: 'onChange' });
 
   return [register, handleSubmit, errors, setValue, control, reset];
-}
+};
 
 interface AccessSubmit {
   phone: string;
@@ -32,4 +32,4 @@ interface VoteSubmit {
   check: boolean;
 }
 
-type SubmitType = AccessSubmit | VoteSubmit
+type SubmitType = AccessSubmit | VoteSubmit;

@@ -9,7 +9,7 @@ const storage = {
   },
 
   remove: (key: string) => {
-    localStorage.removeItem(key)
-  }
-}
+    localStorage.removeItem(key);
+  },
+};
 export default storage;

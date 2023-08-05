@@ -1,15 +1,7 @@
 'use client';
 
 import colors from '@constants/colors';
-import {
-  Children,
-  HTMLAttributes,
-  InputHTMLAttributes,
-  ReactElement,
-  cloneElement,
-  useEffect,
-  useState,
-} from 'react';
+import { Children, HTMLAttributes, InputHTMLAttributes, ReactElement, cloneElement, useEffect, useState } from 'react';
 
 interface InputProps extends HTMLAttributes<HTMLDivElement> {
   label?: string;
@@ -63,17 +55,16 @@ export function Input({ label, children, bottomText, ...props }: InputProps) {
   );
 }
 
-const changePhone = (phone: string) => (
-  phone.replace(/[^0-9]/g, '')
+const changePhone = (phone: string) =>
+  phone
+    .replace(/[^0-9]/g, '')
     .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, '$1-$2-$3')
-    .replace(/(\-{1,2})$/g, '')
-)
+    .replace(/(\-{1,2})$/g, '');
 
 interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   error?: boolean;
 }
 Input.PhoneField = ({ id, ...props }: any) => {
-
   const regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
   const [phone, setPhone] = useState('');
 
@@ -95,9 +86,7 @@ Input.PhoneField = ({ id, ...props }: any) => {
       maxLength={props.maxLength ?? 8}
       className="accessInput"
       value={phone}
-      onChange={e =>
-        setPhone(changePhone(e.target.value))
-      }
+      onChange={e => setPhone(changePhone(e.target.value))}
       {...props.register}
       style={{
         width: '100%',
@@ -115,7 +104,6 @@ Input.PhoneField = ({ id, ...props }: any) => {
 };
 
 Input.AccessFiled = ({ id, ...props }: any) => {
-
   return (
     <input
       placeholder={props.placeholder ?? ''}
@@ -135,4 +123,4 @@ Input.AccessFiled = ({ id, ...props }: any) => {
       ref={props.accessRef}
     />
   );
-}
+};

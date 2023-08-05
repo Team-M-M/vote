@@ -1,1 +1,1 @@
-export { SignModal } from './SignMadal'
+export { SignModal } from './SignMadal';
