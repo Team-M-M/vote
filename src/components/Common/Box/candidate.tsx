@@ -8,7 +8,7 @@ export const CandidateBox = ({ data }: { data?: any }) => {
 
   return (
     <div className="py-3 flex items-center justify-between w-full px-4">
-      <CheckBox />
+      <CheckBox type={'checkbox'} name={data.name} />
       <div>
         <p className="text-black font-semibold text-2xl">
           {data.kiho} {data.name}

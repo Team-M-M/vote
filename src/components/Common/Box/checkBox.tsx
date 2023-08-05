@@ -1,20 +1,22 @@
 'use client';
 import { InputHTMLAttributes, useRef } from 'react';
+import { useFormContext } from 'react-hook-form';
 
 interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   error?: boolean;
 }
 
-export const CheckBox = () => {
+export const CheckBox = ({ type, name }: any) => {
+  const { register, handleSubmit } = useFormContext();
+
   return (
     <>
-      <label className="check_box">
+      <label className='check_box' htmlFor={name}>
         <input
-          // ref={CheckRef}
-          type="radio"
-          id="id"
-          name="name"
-          // onChange={() => console.log(checkRef.current?.checked, 'checked :::')}
+          {...register('checked')}
+          value={`${name}`}
+          type={type}
+          id={name}
         />
         <span className="icon"></span>
       </label>

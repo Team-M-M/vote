@@ -4,10 +4,11 @@ import { Spacing } from '@components/Common/Spacing';
 import { SignModal } from '@components/Modal';
 import FormProvider from 'lib/Provider/form-provider';
 import { http } from 'lib/http';
-import { fetchToast } from 'lib/toast-message';
-import { useEffect, useState } from 'react';
+import { fetchToast, showToast } from 'lib/toast-message';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
+import { yupResolver } from '@hookform/resolvers/yup'
+import _ from 'lodash'
 
 // ! form provider & post data
 interface Props {
@@ -25,36 +26,38 @@ interface Props {
     history4: string;
     history5: string;
   }[];
+  userData: {
+    name: string,
+    userId: number,
+    phone: string,
+    id: string
+  }
 }
 // ! 후보자 선택 없 -> 버튼 비활성화 
 
-const VotePage = ({ data, title }: Props) => {
+const VotePage = ({ data, title, userData }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
 
-  const methods = useForm()
+  const methods = useForm(/* { resolver: yupResolver(validation) } */{
+    // defaultValues: {
+    //   checked: data[0].name
+    // },
+    mode: "onChange",
+  })
 
   const onSubmit = methods.handleSubmit(async (data) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      console.info('DATA', data);
+      if (!_.isEmpty(data.checked)) {
+        setOpen(pre => !pre)
+      } else {
+        throw 'no data'
+      }
+      // console.log(_.omitBy(data, value => value === false), 'check :::')
     } catch (error) {
       console.error(error);
+      showToast({ type: 'error', message: '후보자를 선택해주세요', className: 'w-64' });
     }
-  });
-
-  const tostMessage = () => toast('🦄 Wow so easy!', {
-    position: "top-center",
-    autoClose: 3000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    // theme: "",
-    type: 'info',
-    className: 'w-64',
-    style: { marginBottom: '10px', borderRadius: '10px' }
-  });
+  }, () => console.log('err :::'));
 
   // fetchToast(http.get(`https://pokeapi.co/api/v2/pokemon/?limit=1008&offset=0`))
   // tostMessage();
@@ -62,26 +65,27 @@ const VotePage = ({ data, title }: Props) => {
 
   return (
     <>
-      <div className="h-full bg-gray-100 flex justify-center items-center flex-col px-10">
-        <Spacing size={30} />
-        <p className="text-4xl font-bold py-4">{title} 투표</p>
-        <Spacing size={20} />
-        <FormProvider methods={methods} onSubmit={onSubmit}>
-          {data.map((i, d) => (
-            <CandidateBox data={i} key={d * 10} />
-          ))}
-          <Spacing size={40} />
-          <button
-            className="bg-main mb-10 w-full rounded-lg text-white font-medium px-4 py-3"
-            onClick={() => {
-              setOpen(pre => !pre)
-            }}
-          >
-            투표하기
-          </button>
-        </FormProvider>
-      </div>
-      <SignModal open={open} setOpen={setOpen} />
+      <FormProvider methods={methods}>
+        <div className="h-full bg-gray-100 flex justify-center items-center flex-col px-10">
+          <Spacing size={30} />
+          <p className="text-4xl font-bold py-4">{title} 투표</p>
+          <Spacing size={20} />
+
+          <form onSubmit={onSubmit} className='w-full'>
+            {data.map((i, d) => (
+              <CandidateBox data={i} key={d * 10} />
+            ))}
+            <Spacing size={40} />
+            <button
+              type='submit'
+              className="bg-main mb-10 w-full rounded-lg text-white font-medium px-4 py-3"
+            >
+              투표하기
+            </button>
+          </form>
+        </div>
+        <SignModal open={open} setOpen={setOpen} userData={userData} />
+      </FormProvider>
     </>
   );
 };
