@@ -7,18 +7,18 @@ export async function POST(req: Request) {
   const body = await req.json();
 
   if (req.method === 'POST') {
-    console.log('진입 했음 :::')
+    console.log('진입 했음 :::');
     const { name, id, address, dongho, phone }: any = body;
     const response = NextResponse.json({ code: 201, message: 'success' });
 
-    console.log(name, id, address, dongho, phone)
+    console.log(name, id, address, dongho, phone);
 
     response.cookies.set({
       name: 'user',
       value: JSON.stringify({ name, id, address, dongho, phone }),
       httpOnly: true,
       expires: new Date().setDate(new Date().getDate() + 1),
-      secure: true
+      secure: true,
     });
     return response;
   }

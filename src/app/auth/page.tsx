@@ -3,9 +3,8 @@ import { ToastContainer } from '@components/Common/Modal/Toast';
 import AccountPage from '@components/Container/AccountPage';
 
 const Page = () => {
-
   return (
-    <main >
+    <main>
       <BackHeader />
       <AccountPage />
       {/* <KeyPad /> */}

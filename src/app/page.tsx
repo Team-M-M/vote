@@ -11,8 +11,5 @@ export default function Home() {
   const cookieStore = cookies();
   const user = cookieStore.get('user');
 
-  return (
-    <MainContainer user={!!user?.value} />
-  );
+  return <MainContainer user={!!user?.value} />;
 }
-

@@ -2,8 +2,13 @@ import { Spacing } from '@components/Common/Spacing';
 import { ReactNode, useRef, useState } from 'react';
 import SignatureCanvas from 'react-signature-canvas';
 
-
-export function SignModal({ open, setOpen }: { open: boolean, setOpen: React.Dispatch<React.SetStateAction<boolean>> }) {
+export function SignModal({
+  open,
+  setOpen,
+}: {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const canvasRef = useRef<any>(null);
   const [isSigned, setIsSigned] = useState<boolean>(false);
 
@@ -32,30 +37,29 @@ export function SignModal({ open, setOpen }: { open: boolean, setOpen: React.Dis
     <>
       <ModalWrapper setOpen={setOpen} open={open}>
         <CanvasWrapper>
-          {!isSigned && <CanvasPlaceholder placeholder='여기에 서명을 해주세요.' />}
+          {!isSigned && <CanvasPlaceholder placeholder="여기에 서명을 해주세요." />}
           <SignatureCanvas
             ref={canvasRef}
             canvasProps={{ className: 'w-full h-[250px] rounded-2xl' }}
             backgroundColor="rgb(230, 230, 230)"
             clearOnResize={false}
-            onBegin={(e) => {
-              console.log(e, '머임 :::')
+            onBegin={e => {
+              console.log(e, '머임 :::');
               setIsSigned(true);
             }}
           />
         </CanvasWrapper>
         <Spacing size={40} />
-        <div className='flex w-full'>
-          <Button text='서명 초기화' {...{ style: { marginRight: '4px' } }} onClick={clear} />
-          <Button text='저장' onClick={save} />
+        <div className="flex w-full">
+          <Button text="서명 초기화" {...{ style: { marginRight: '4px' } }} onClick={clear} />
+          <Button text="저장" onClick={save} />
         </div>
       </ModalWrapper>
     </>
-  )
+  );
 }
 
 const Button = ({ text, ...props }: any) => {
-
   return (
     <button
       id="main_btn"
@@ -64,38 +68,47 @@ const Button = ({ text, ...props }: any) => {
     >
       {text}
     </button>
-  )
-}
+  );
+};
 
-
-const ModalWrapper = ({ open, setOpen, children }: { open: boolean, setOpen: React.Dispatch<React.SetStateAction<boolean>>, children: ReactNode }) => {
-
+const ModalWrapper = ({
+  open,
+  setOpen,
+  children,
+}: {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  children: ReactNode;
+}) => {
   return (
     <div className={open ? 'pop_layer_set on' : 'pop_layer_set'} id="pop_notice">
       <div className="pop_layer px-4 h-3/5">
         <div className="flex justify-center p-3 ">
-          <button type="button" className="h-1.5 w-60 bg-gray-300 rounded-lg" onClick={() => setOpen(pre => !pre)}></button>
+          <button
+            type="button"
+            className="h-1.5 w-60 bg-gray-300 rounded-lg"
+            onClick={() => setOpen(pre => !pre)}
+          ></button>
         </div>
         {children}
       </div>
       <div className="modal" style={{ display: 'block' }} onClick={() => setOpen(pre => !pre)} />
     </div>
-  )
-}
-
+  );
+};
 
 const CanvasWrapper = ({ children, ...props }: { children: ReactNode }) => {
-
   return (
-    <div className='relative w-full mt-14' {...props}>
+    <div className="relative w-full mt-14" {...props}>
       {children}
     </div>
-  )
-}
+  );
+};
 
 const CanvasPlaceholder = ({ placeholder }: { placeholder: string }) => {
-
   return (
-    <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-main text-xl font-semibold w-full text-center '>{placeholder}</div>
-  )
-}
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-main text-xl font-semibold w-full text-center ">
+      {placeholder}
+    </div>
+  );
+};

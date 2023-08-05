@@ -4,11 +4,7 @@
     "outDir": ".next",
     "baseUrl": "src",
     "target": "esnext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -28,39 +24,16 @@
       }
     ],
     "paths": {
-      "@components/*": [
-        "./components/*"
-      ],
-      "@apis/*": [
-        "./apis/*"
-      ],
-      "@utils/*": [
-        "./utils/*"
-      ],
-      "@app/*": [
-        "./app/*"
-      ],
-      "@config": [
-        "../config.ts"
-      ],
-      "@constants/*": [
-        "./constants/*"
-      ],
-      "@types/*": [
-        "./@types/*"
-      ],
-      "@hooks/*": [
-        "./hooks/*"
-      ]
+      "@components/*": ["./components/*"],
+      "@apis/*": ["./apis/*"],
+      "@utils/*": ["./utils/*"],
+      "@app/*": ["./app/*"],
+      "@config": ["../config.ts"],
+      "@constants/*": ["./constants/*"],
+      "@types/*": ["./@types/*"],
+      "@hooks/*": ["./hooks/*"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }

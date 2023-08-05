@@ -8,10 +8,14 @@ export const BackHeader = () => {
 
   return (
     <div>
-      <nav className="fixed h-16 w-full top-0 bg-white" style={{ zIndex: 999, boxSizing: 'border-box' }}>
+      <nav className="fixed h-16 w-full top-0 bg-white" style={{ zIndex: 500, boxSizing: 'border-box' }}>
         <div className="flex justify-between items-center py-5 px-3 border-b-[1px] border-[#ECECEC] h-full">
           <div className="flex flex-auto items-center">
-            <button type="button" className="inline-flex items-center  text-sm text-black" onClick={() => router.back()}>
+            <button
+              type="button"
+              className="inline-flex items-center  text-sm text-black"
+              onClick={() => router.back()}
+            >
               <svg
                 className="w-7 h-7"
                 fill="none"
