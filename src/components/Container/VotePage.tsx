@@ -3,6 +3,8 @@ import { CandidateBox } from '@components/Common/Box/candidate';
 import { Spacing } from '@components/Common/Spacing';
 import { SignModal } from '@components/Modal';
 import FormProvider from 'lib/Provider/form-provider';
+import { http } from 'lib/http';
+import { fetchToast } from 'lib/toast-message';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -42,15 +44,20 @@ const VotePage = ({ data, title }: Props) => {
 
   const tostMessage = () => toast('🦄 Wow so easy!', {
     position: "top-center",
-    autoClose: 5000,
+    autoClose: 3000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
-    theme: "light",
-    className: 'w-64 flex justify-center items-center'
+    // theme: "",
+    type: 'info',
+    className: 'w-64',
+    style: { marginBottom: '10px', borderRadius: '10px' }
   });
+
+  // fetchToast(http.get(`https://pokeapi.co/api/v2/pokemon/?limit=1008&offset=0`))
+  // tostMessage();
 
 
   return (
@@ -68,7 +75,6 @@ const VotePage = ({ data, title }: Props) => {
             className="bg-main mb-10 w-full rounded-lg text-white font-medium px-4 py-3"
             onClick={() => {
               setOpen(pre => !pre)
-              tostMessage()
             }}
           >
             투표하기
