@@ -14,18 +14,19 @@ type Vote = {
 };
 
 interface Props {
+  title: any;
   data: Vote[];
   user: any;
 }
 
-export const VoteListContainer = ({ data, user }: Props) => {
+export const VoteListContainer = ({ title, data, user }: Props) => {
   return (
     <main className="justify-start items-center flex-col flex">
       <ToastMessage />
       <Spacing size={20} />
       <section className="bg-main w-11/12 px-3 py-6 text-xl rounded-xl font-semibold text-white">
         <p>{user.name}님!</p>
-        <p>제 3차 관리인/관리위원 투표에 참여해주세요.</p>
+        <p>{title}</p>
       </section>
       {data.map(i => (
         <>
