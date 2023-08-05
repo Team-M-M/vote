@@ -22,7 +22,7 @@ export const ProfileModal = ({ open, setOpen, data }: any) => {
         </div>
         <div className="flex items-center justify-start py-4 px-10 text-gray-600">
           <div className="h-24 w-24 px-3 box-content">
-            <Image src={data.profile} width={100} height={100} alt="후보 이미지" />
+            <Image src={data.profile} width={100} height={100} alt="후보 이미지" unoptimized={true} />
           </div>
           <div>
             <p className="pb-1">
