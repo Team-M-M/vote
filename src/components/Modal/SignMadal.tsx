@@ -1,28 +1,55 @@
 import { Spacing } from '@components/Common/Spacing';
+import { API_URL } from '@constants/apiUrl';
+import { http } from 'lib/http';
+import { fetchToast, showToast } from 'lib/toast-message';
 import { ReactNode, useRef, useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 import SignatureCanvas from 'react-signature-canvas';
 
 export function SignModal({
   open,
   setOpen,
+  userData
 }: {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  userData: {
+    name: string,
+    userId: number,
+    phone: string,
+    id: string
+  }
 }) {
   const canvasRef = useRef<any>(null);
   const [isSigned, setIsSigned] = useState<boolean>(false);
+  const { getValues, reset, watch } = useFormContext()
 
   const clear = () => {
     canvasRef.current.clear();
     setIsSigned(false);
   };
 
-  const save = () => {
-    const image = canvasRef.current.getTrimmedCanvas().toDataURL('image/png');
-    const link = document.createElement('a');
-    link.href = image;
-    link.download = 'sign_image.png';
-    link.click();
+  const save = (name: string) => {
+    if (!isSigned) return showToast({ type: 'error', message: '서명을 기입해주세요.', className: 'w-64' });
+    else {
+      const formData = new FormData();
+      formData.append('file', canvasRef.current.getTrimmedCanvas().toDataURL('image/png'));
+      formData.append('id', userData.userId.toString());
+      formData.append('filePath', 'upload');
+      formData.append('fileName', userData.name + userData.id);
+      formData.append('imageType', 'png');
+      formData.append('vote_id', userData.id);
+      formData.append('phone', userData.phone);
+      formData.append('name', getValues('checked').toString());
+      console.log(formData, 'data ??')
+
+      fetchToast(http.post(API_URL.VOTE_IMG, formData))
+    }
+    // const image = canvasRef.current.getTrimmedCanvas().toDataURL('image/png');
+    // const link = document.createElement('a');
+    // link.href = image;
+    // link.download = 'sign_image.png';
+    // link.click();
   };
 
   const convertDataUrlToFile = (name: string) => {

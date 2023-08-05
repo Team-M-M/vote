@@ -11,9 +11,9 @@ type Props = {
 export default function FormProvider({ children, onSubmit, methods, ...other }: Props) {
   return (
     <Form {...methods}>
-      <form {...other} onSubmit={onSubmit} className='w-full'>
-        {children}
-      </form>
+
+      {children}
+
     </Form>
   );
 }
