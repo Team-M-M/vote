@@ -2,7 +2,7 @@
 
 const nextConfig = {
   images: {
-    domains: ['localhost', '*'],
+    domains: ['bible25-data.s3.ap-northeast-2.amazonaws.com', '*'],
   },
   reactStrictMode: false,
   // webpackDevMiddleware: null,

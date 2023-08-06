@@ -1,6 +1,7 @@
 'use client';
 
 import { Spacing } from '@components/Common/Spacing';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -16,7 +17,7 @@ const MainContainer = ({ user }: { user: boolean }) => {
         <Spacing size={10} />
         <div className="w-full flex justify-center items-center">
           <span className="text-white font-bold text-8xl pr-1">V</span>
-          <img src="/images/logo.png" alt="" className="h-20 pr-1" />
+          <Image src={"/images/logo.png"} alt='logo' width={80} height={80} className='pr-1' />
           <span className="text-white font-bold text-8xl pr-1">T</span>
           <span className="text-white font-bold text-8xl">E</span>
         </div>
@@ -24,9 +25,8 @@ const MainContainer = ({ user }: { user: boolean }) => {
         <button
           onMouseOver={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
-          className={`border-[2px] w-11/12 rounded-xl ${
-            hover ? 'text-yellow-300 border-yellow-300 scale-90' : 'border-white text-white'
-          } font-semibold text-2xl px-4 py-3 scale-100`}
+          className={`border-[2px] w-11/12 rounded-xl ${hover ? 'text-yellow-300 border-yellow-300 scale-90' : 'border-white text-white'
+            } font-semibold text-2xl px-4 py-3 scale-100`}
           //  style={{ boxShadow: 'inset 2px 2px 5px 1px #999999' }}
           onClick={() => (user ? router.push('/my-page') : router.push('/auth'))}
         >

@@ -20,25 +20,26 @@ export const ProfileModal = ({ open, setOpen, data }: any) => {
             </button>
           </div>
         </div>
-        <div className="flex items-center justify-start py-4 px-10 text-gray-600">
-          <div className="h-24 w-24 px-3 box-content">
-            <Image src={data.profile} width={100} height={100} alt="후보 이미지" unoptimized={true} />
+        <div className="flex justify-start py-4 mx-5 px-5 border-b-gray-300 border-b-[2px] text-gray-600">
+          {/* <div className="h-24 w-24 px-3 box-content"> */}
+          <div className='aspect-auto h-44 w-28 relative rounded-xl border-[3px] border-gray-400 overflow-hidden box-border'>
+            <Image fill src={data.profile} className='object-cover' alt="후보 이미지" /* unoptimized={true} */ />
           </div>
-          <div>
-            <p className="pb-1">
+          <div className='flex-1'>
+            <p className="pb-3 pl-3 pt-2">
               이름 <strong>{data.name}</strong>
             </p>
-            <p className="pb-1">
+            <p className="pb-3 pl-3">
               성별 <strong>{data.sex ? '여자' : '남자'}</strong>
             </p>
-            <p className="pb-1">
+            <p className="pb-3 pl-3">
               나이 <strong>{data.age}</strong>
             </p>
           </div>
         </div>
         {/* <div className="w-80 px-2 h-1 bg-main" /> */}
         <div className="p-3 text-gray-600">
-          <p className="p-2">
+          <p className="py-2 px-1 mx-1 border-b-gray-300 border-b-[1px]">
             <span>{data.history1}</span>
           </p>
           <p className="p-2">

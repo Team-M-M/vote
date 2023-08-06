@@ -50,7 +50,7 @@ const VoteList = ({ data }: { data: Vote }) => {
         prefetch
       >
         <section>
-          <p>{data.title}</p>
+          <p>{data.title} 투표</p>
           <p>{data.active ? `투표에 참여해주세요.` : `투표에 참여하셨습니다.`}</p>
           <Spacing size={10} />
           <div className="text-base font-medium text-gray-500">
