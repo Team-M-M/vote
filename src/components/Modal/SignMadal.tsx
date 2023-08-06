@@ -51,7 +51,7 @@ export function SignModal({
       formData.append('name', getValues('checked').toString());
       console.log(formData, 'data ??')
 
-      fetchToast(http.post(API_URL.VOTE_IMG, formData))
+      fetchToast(() => http.post(API_URL.VOTE_IMG, formData))
     }
     // const image = canvasRef.current.getTrimmedCanvas().toDataURL('image/png');
     // const link = document.createElement('a');
