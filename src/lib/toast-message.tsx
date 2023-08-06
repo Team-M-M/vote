@@ -54,8 +54,8 @@ export function showToast({ type, message, className }: ToastProps) {
 export function fetchToast(fetch: any) {
 
   return toast.promise(fetch, {
-    pending: '잠시만 기다려주세요...',
-    success: '완료하였습니다.',
+    pending: '잠시만 기다려주세요!',
+    success: '투표를 완료했어요!',
     error: '실패하였습니다.',
   })
 }

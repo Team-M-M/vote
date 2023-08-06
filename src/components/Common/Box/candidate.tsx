@@ -13,7 +13,7 @@ export const CandidateBox = ({ data }: { data?: any }) => {
         <p className="text-black font-semibold text-2xl">
           {data.kiho} {data.name}
         </p>
-        <p className="text-main text-lg" onClick={() => setOpen(pre => !pre)}>
+        <p className="text-main text-lg font-medium" onClick={() => setOpen(pre => !pre)}>
           프로필 보기
         </p>
       </div>

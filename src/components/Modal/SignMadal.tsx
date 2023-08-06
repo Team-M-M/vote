@@ -2,7 +2,7 @@ import { Spacing } from '@components/Common/Spacing';
 import { API_URL } from '@constants/apiUrl';
 import { http } from 'lib/http';
 import { fetchToast, showToast } from 'lib/toast-message';
-import { ReactNode, useRef, useState } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import SignatureCanvas from 'react-signature-canvas';
 
@@ -29,11 +29,19 @@ export function SignModal({
     setIsSigned(false);
   };
 
+  const convertDataUrlToFile = (name: string) => {
+    const dataURL = canvasRef.current.toDataURL('image/png');
+    const decodedURL = dataURL.replace(/^data:image\/\w+;base64,/, '');
+    const buf = Buffer.from(decodedURL, 'base64');
+    const blob = new Blob([buf], { type: 'image/png' });
+    return new File([blob], `${name}.png`, { type: 'image/png' });
+  };
+
   const save = (name: string) => {
     if (!isSigned) return showToast({ type: 'error', message: '서명을 기입해주세요.', className: 'w-64' });
     else {
       const formData = new FormData();
-      formData.append('file', canvasRef.current.getTrimmedCanvas().toDataURL('image/png'));
+      formData.append('file', convertDataUrlToFile(userData.name + userData.id));
       formData.append('id', userData.userId.toString());
       formData.append('filePath', 'upload');
       formData.append('fileName', userData.name + userData.id);
@@ -52,13 +60,10 @@ export function SignModal({
     // link.click();
   };
 
-  const convertDataUrlToFile = (name: string) => {
-    const dataURL = canvasRef.current.toDataURL('image/png');
-    const decodedURL = dataURL.replace(/^data:image\/\w+;base64,/, '');
-    const buf = Buffer.from(decodedURL, 'base64');
-    const blob = new Blob([buf], { type: 'image/png' });
-    return new File([blob], `${name}.png`, { type: 'image/png' });
-  };
+
+  useEffect(() => {
+    !open && clear();
+  }, [open])
 
   return (
     <>
