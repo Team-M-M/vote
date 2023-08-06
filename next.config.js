@@ -2,10 +2,11 @@
 
 const nextConfig = {
   images: {
+    // loader: 'akamai',
     domains: ['bible25-data.s3.ap-northeast-2.amazonaws.com', '*'],
   },
   reactStrictMode: false,
-  // webpackDevMiddleware: null,
+  cleanDistDir: true,
   swcMinify: true,
   experimental: {
     appDir: true,

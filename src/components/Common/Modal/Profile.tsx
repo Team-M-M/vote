@@ -12,7 +12,7 @@ export const ProfileModal = ({ open, setOpen, data }: any) => {
         <div className="h-[20px]"></div>
         <div className="pop_con">
           <div className="flex justify-center">
-            <p className="text-gray-600 font-bold text-2xl">후보자</p>
+            <p className="text-gray-600 font-bold text-2xl">{data.kiho} {data.name}</p>
           </div>
           <div className="flex justify-end px-5">
             <button className="text-main font-semibold" onClick={() => window.open(data.link)}>
@@ -20,9 +20,9 @@ export const ProfileModal = ({ open, setOpen, data }: any) => {
             </button>
           </div>
         </div>
-        <div className="flex justify-start py-4 mx-5 px-5 border-b-gray-300 border-b-[2px] text-gray-600">
+        <div className="flex justify-start py-4 mx-5 px-5 border-b-gray-300 border-b-[1px] text-gray-500">
           {/* <div className="h-24 w-24 px-3 box-content"> */}
-          <div className='aspect-auto h-44 w-28 relative rounded-xl border-[3px] border-gray-400 overflow-hidden box-border'>
+          <div className='aspect-auto h-40 w-28 relative rounded-xl border-[3px] border-gray-400 overflow-hidden box-border'>
             <Image fill src={data.profile} className='object-cover' alt="후보 이미지" /* unoptimized={true} */ />
           </div>
           <div className='flex-1'>
@@ -39,7 +39,7 @@ export const ProfileModal = ({ open, setOpen, data }: any) => {
         </div>
         {/* <div className="w-80 px-2 h-1 bg-main" /> */}
         <div className="p-3 text-gray-600">
-          <p className="py-2 px-1 mx-1 border-b-gray-300 border-b-[1px]">
+          <p className="p-2 font-medium">
             <span>{data.history1}</span>
           </p>
           <p className="p-2">
