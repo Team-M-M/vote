@@ -52,16 +52,11 @@ const VotePage = ({ data, title, userData }: Props) => {
       } else {
         throw 'no data'
       }
-      // console.log(_.omitBy(data, value => value === false), 'check :::')
     } catch (error) {
       console.error(error);
-      showToast({ type: 'error', message: '후보자를 선택해주세요', className: 'w-64' });
+      showToast({ type: 'error', message: '후보자를 선택해주세요!', className: 'w-56 font-semibold' });
     }
   }, () => console.log('err :::'));
-
-  // fetchToast(http.get(`https://pokeapi.co/api/v2/pokemon/?limit=1008&offset=0`))
-  // tostMessage();
-
 
   return (
     <>
