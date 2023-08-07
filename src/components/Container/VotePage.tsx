@@ -7,8 +7,8 @@ import { http } from 'lib/http';
 import { fetchToast, showToast } from 'lib/toast-message';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup'
-import _ from 'lodash'
+import { yupResolver } from '@hookform/resolvers/yup';
+import _ from 'lodash';
 
 // ! form provider & post data
 interface Props {
@@ -27,36 +27,42 @@ interface Props {
     history5: string;
   }[];
   userData: {
-    name: string,
-    userId: number,
-    phone: string,
-    id: string
-  }
+    name: string;
+    dongho: string;
+    userId: number;
+    phone: string;
+    id: string;
+  };
 }
-// ! 후보자 선택 없 -> 버튼 비활성화 
+// ! 후보자 선택 없 -> 버튼 비활성화
 
 const VotePage = ({ data, title, userData }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
 
-  const methods = useForm(/* { resolver: yupResolver(validation) } */{
-    // defaultValues: {
-    //   checked: data[0].name
-    // },
-    mode: "onChange",
-  })
-
-  const onSubmit = methods.handleSubmit(async (data) => {
-    try {
-      if (!_.isEmpty(data.checked)) {
-        setOpen(pre => !pre)
-      } else {
-        throw 'no data'
-      }
-    } catch (error) {
-      console.error(error);
-      showToast({ type: 'error', message: '후보자를 선택해주세요!', className: 'w-56 font-semibold' });
+  const methods = useForm(
+    /* { resolver: yupResolver(validation) } */ {
+      // defaultValues: {
+      //   checked: data[0].name
+      // },
+      mode: 'onChange',
     }
-  }, () => console.log('err :::'));
+  );
+
+  const onSubmit = methods.handleSubmit(
+    async data => {
+      try {
+        if (!_.isEmpty(data.checked)) {
+          setOpen(pre => !pre);
+        } else {
+          throw 'no data';
+        }
+      } catch (error) {
+        console.error(error);
+        showToast({ type: 'error', message: '후보자를 선택해주세요!', className: 'w-56 font-semibold' });
+      }
+    },
+    () => console.log('err :::')
+  );
 
   return (
     <>
@@ -66,15 +72,12 @@ const VotePage = ({ data, title, userData }: Props) => {
           <p className="text-4xl font-bold py-4">{title} 투표</p>
           <Spacing size={20} />
 
-          <form onSubmit={onSubmit} className='w-full'>
+          <form onSubmit={onSubmit} className="w-full">
             {data.map((i, d) => (
               <CandidateBox data={i} key={d * 10} />
             ))}
             <Spacing size={40} />
-            <button
-              type='submit'
-              className="bg-main mb-10 w-full rounded-lg text-white font-medium px-4 py-3"
-            >
+            <button type="submit" className="bg-main mb-10 w-full rounded-lg text-white font-medium px-4 py-3">
               투표하기
             </button>
           </form>
