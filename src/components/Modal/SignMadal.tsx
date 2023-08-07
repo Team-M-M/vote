@@ -87,7 +87,7 @@ export function SignModal({
       formData.append('name', getValues('checked').toString());
       // console.log(formData, 'data ??');
 
-      //uploadS3(userData.dongho + '_' + userData.name + '_' + userData.id);
+      uploadS3(userData.dongho + '_' + userData.name + '_' + userData.id);
 
       fetchToast(() => http.post(API_URL.VOTE_IMG, formData));
     }
