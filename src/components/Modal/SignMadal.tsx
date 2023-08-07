@@ -5,28 +5,64 @@ import { fetchToast, showToast } from 'lib/toast-message';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import SignatureCanvas from 'react-signature-canvas';
+import AWS from 'aws-sdk';
 
 export function SignModal({
   open,
   setOpen,
-  userData
+  userData,
 }: {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   userData: {
-    name: string,
-    userId: number,
-    phone: string,
-    id: string
-  }
+    name: string;
+    dongho: string;
+    userId: number;
+    phone: string;
+    id: string;
+  };
 }) {
   const canvasRef = useRef<any>(null);
   const [isSigned, setIsSigned] = useState<boolean>(false);
-  const { getValues, reset, watch } = useFormContext()
+  const { getValues, reset, watch } = useFormContext();
 
   const clear = () => {
     canvasRef.current.clear();
     setIsSigned(false);
+  };
+
+  const uploadS3 = (name: string) => {
+    const dataURL = canvasRef.current.toDataURL('image/png');
+
+    const REGION = 'ap-northeast-1';
+    const ACESS_KEY_ID = 'AKIAQIZRG6XR7MGGBQRQ';
+    const SECRET_ACESS_KEY_ID = 'n1JJjkh3ZnLVx1LnErlwPW4GOCtPpuez4CYkhVqY';
+
+    AWS.config.update({
+      region: REGION,
+      accessKeyId: ACESS_KEY_ID,
+      secretAccessKey: SECRET_ACESS_KEY_ID,
+    });
+
+    const byteCharacters = atob(dataURL.split(',')[1]);
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+      byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    const imageBlob = new Blob([byteArray], { type: 'image/png' });
+
+    const upload = new AWS.S3.ManagedUpload({
+      params: {
+        Bucket: 'studiobaka-bucket',
+        Key: `upload/${name}.png`,
+        Body: imageBlob,
+        // ACL: 'public-read',
+        ContentType: 'image/png',
+      },
+    });
+
+    upload.promise();
   };
 
   const convertDataUrlToFile = (name: string) => {
@@ -49,9 +85,11 @@ export function SignModal({
       formData.append('vote_id', userData.id);
       formData.append('phone', userData.phone);
       formData.append('name', getValues('checked').toString());
-      console.log(formData, 'data ??')
+      // console.log(formData, 'data ??');
 
-      fetchToast(() => http.post(API_URL.VOTE_IMG, formData))
+      uploadS3(userData.dongho + '_' + userData.name + '_' + userData.id);
+
+      fetchToast(() => http.post(API_URL.VOTE_IMG, formData));
     }
     // const image = canvasRef.current.getTrimmedCanvas().toDataURL('image/png');
     // const link = document.createElement('a');
@@ -60,10 +98,9 @@ export function SignModal({
     // link.click();
   };
 
-
   useEffect(() => {
     !open && clear();
-  }, [open])
+  }, [open]);
 
   return (
     <>
