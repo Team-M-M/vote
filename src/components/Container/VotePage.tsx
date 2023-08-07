@@ -3,16 +3,15 @@ import { CandidateBox } from '@components/Common/Box/candidate';
 import { Spacing } from '@components/Common/Spacing';
 import { SignModal } from '@components/Modal';
 import FormProvider from 'lib/Provider/form-provider';
-import { http } from 'lib/http';
-import { fetchToast, showToast } from 'lib/toast-message';
+import { showToast } from 'lib/toast-message';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 import _ from 'lodash';
 
 // ! form provider & post data
 interface Props {
   title: string;
+  majority: string;
   data: {
     kiho: string;
     name: string;
@@ -36,7 +35,7 @@ interface Props {
 }
 // ! 후보자 선택 없 -> 버튼 비활성화
 
-const VotePage = ({ data, title, userData }: Props) => {
+const VotePage = ({ data, title, userData, majority }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
 
   const methods = useForm(
@@ -49,9 +48,10 @@ const VotePage = ({ data, title, userData }: Props) => {
   );
 
   const onSubmit = methods.handleSubmit(
-    async data => {
+    async (data) => {
       try {
         if (!_.isEmpty(data.checked)) {
+          console.log(data)
           setOpen(pre => !pre);
         } else {
           throw 'no data';
@@ -74,7 +74,7 @@ const VotePage = ({ data, title, userData }: Props) => {
 
           <form onSubmit={onSubmit} className="w-full">
             {data.map((i, d) => (
-              <CandidateBox data={i} key={d * 10} />
+              <CandidateBox type={majority === '1' ? 'radio' : 'checkbox'} data={i} key={d * 10} />
             ))}
             <Spacing size={40} />
             <button type="submit" className="bg-main mb-10 w-full rounded-lg text-white font-medium px-4 py-3">

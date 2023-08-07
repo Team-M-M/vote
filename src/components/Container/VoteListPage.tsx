@@ -43,7 +43,7 @@ const VoteList = ({ data }: { data: Vote }) => {
     <>
       <Spacing size={30} />
       <Link
-        href={data.active ? `/vote/${data.id}?title=${data.title}` : ''}
+        href={data.active ? `/vote/${data.id}?title=${data.title}&majority=${data.style}` : ''}
         className={
           data.active
             ? 'block w-11/12 px-4 py-6 bg-white text-xl rounded-xl font-semibold text-gray-600 shadow-md'

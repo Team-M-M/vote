@@ -3,12 +3,12 @@ import { CheckBox } from './checkBox';
 import { useState } from 'react';
 import { ProfileModal } from '../Modal/Profile';
 
-export const CandidateBox = ({ data }: { data?: any }) => {
+export const CandidateBox = ({ data, type }: { data?: any, type: string }) => {
   const [open, setOpen] = useState(false);
 
   return (
     <div className="py-3 flex items-center justify-between w-full px-4">
-      <CheckBox type={'checkbox'} name={data.name} />
+      <CheckBox type={type} name={data.name} />
       <div>
         <p className="text-black font-semibold text-2xl">
           {data.kiho} {data.name}
