@@ -121,7 +121,7 @@ export function SignModal({
         <Spacing size={40} />
         <div className="flex w-full">
           <Button text="서명 초기화" {...{ style: { marginRight: '4px' } }} onClick={clear} />
-          <Button text="저장" onClick={save} />
+          <Button text="서명" onClick={save} />
         </div>
       </ModalWrapper>
     </>

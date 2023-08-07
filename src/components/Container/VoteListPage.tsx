@@ -10,6 +10,7 @@ type Vote = {
   partner: string;
   start_at: string;
   end_at: string;
+  style: number;
   active: boolean;
 };
 
@@ -36,6 +37,7 @@ export const VoteListContainer = ({ title, data, user }: Props) => {
   );
 };
 
+//style = 1 단명 투표 / style = 2 여러명 투표
 const VoteList = ({ data }: { data: Vote }) => {
   return (
     <>
