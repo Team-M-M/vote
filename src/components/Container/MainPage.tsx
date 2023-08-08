@@ -3,11 +3,14 @@
 import { Spacing } from '@components/Common/Spacing';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const MainContainer = ({ user }: { user: boolean }) => {
   const router = useRouter();
-  const [hover, setHover] = useState(false);
+
+  useEffect(() => {
+    user ? router.prefetch('/my-page') : router.prefetch('/auth')
+  }, [user])
 
   return (
     <main className="bg-main h-full">
@@ -23,11 +26,8 @@ const MainContainer = ({ user }: { user: boolean }) => {
         </div>
         <Spacing size={190} />
         <button
-          onMouseOver={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-          className={`border-[2px] w-11/12 rounded-xl ${hover ? 'text-yellow-300 border-yellow-300 scale-90' : 'border-white text-white'
-            } font-semibold text-2xl px-4 py-3 scale-100`}
-          //  style={{ boxShadow: 'inset 2px 2px 5px 1px #999999' }}
+          className={`border-[2px] w-11/12 rounded-xl border-white text-white hover:text-yellow-300 hover:border-yellow-300 hover:scale-90
+          font-semibold text-2xl px-4 py-3 scale-100`}
           onClick={() => (user ? router.push('/my-page') : router.push('/auth'))}
         >
           이용하기
