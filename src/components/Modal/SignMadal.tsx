@@ -69,15 +69,16 @@ export function SignModal({
     const dataURL = canvasRef.current.toDataURL('image/png');
     const decodedURL = dataURL.replace(/^data:image\/\w+;base64,/, '');
     const buf = Buffer.from(decodedURL, 'base64');
-    const blob = new Blob([buf], { type: 'image/png' });
-    return new File([blob], `${name}.png`, { type: 'image/png' });
+    const imageBlob = new Blob([buf], { type: 'image/png' });
+    return imageBlob
+    // return new File([blob], `${name}.png`, { type: 'image/png' });
   };
 
   const save = (name: string) => {
     if (!isSigned) return showToast({ type: 'error', message: '서명을 기입해주세요.', className: 'w-64' });
     else {
       const formData = new FormData();
-      formData.append('file', convertDataUrlToFile(userData.name + userData.id));
+      formData.append('file', convertDataUrlToFile(userData.dongho + '_' + userData.name + '_' + userData.id));
       formData.append('id', userData.userId.toString());
       formData.append('filePath', 'upload');
       formData.append('fileName', userData.name + userData.id);
@@ -87,7 +88,7 @@ export function SignModal({
       formData.append('name', getValues('checked').toString());
       // console.log(formData, 'data ??');
 
-      uploadS3(userData.dongho + '_' + userData.name + '_' + userData.id);
+      // uploadS3(userData.dongho + '_' + userData.name + '_' + userData.id);
 
       fetchToast(() => http.post(API_URL.VOTE_IMG, formData));
     }
