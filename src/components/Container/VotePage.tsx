@@ -4,7 +4,7 @@ import { Spacing } from '@components/Common/Spacing';
 import { SignModal } from '@components/Modal';
 import FormProvider from 'lib/Provider/form-provider';
 import { showToast } from 'lib/toast-message';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import _ from 'lodash';
 
