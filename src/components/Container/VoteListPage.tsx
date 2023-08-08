@@ -46,14 +46,14 @@ const VoteList = ({ data }: { data: Vote }) => {
         href={data.active ? `/vote/${data.id}?title=${data.title}&majority=${data.style}` : ''}
         className={
           data.active
-            ? 'block w-11/12 px-4 py-6 bg-white text-xl rounded-xl font-semibold text-gray-600 shadow-md'
-            : 'block w-11/12 px-4 py-6 bg-zinc-300 text-xl rounded-xl font-semibold text-gray-600 shadow-md'
+            ? Style.visible.class
+            : Style.invisible.class
         }
         prefetch
       >
         <section>
           <p>{data.title} 투표</p>
-          <p>{data.active ? `투표에 참여해주세요.` : `투표에 참여하셨습니다.`}</p>
+          <p>{data.active ? Style.visible.title : Style.invisible.class}</p>
           <Spacing size={10} />
           <div className="text-base font-medium text-gray-500">
             <p>
@@ -65,3 +65,14 @@ const VoteList = ({ data }: { data: Vote }) => {
     </>
   );
 };
+
+const Style = {
+  visible: {
+    class: 'block w-11/12 px-4 py-6 bg-white text-xl rounded-xl font-semibold text-gray-600 shadow-md',
+    title: '투표에 참여해주세요.'
+  },
+  invisible: {
+    class: 'block w-11/12 px-4 py-6 bg-zinc-300 text-xl rounded-xl font-semibold text-gray-600 shadow-md',
+    title: '투표에 참여하셨습니다.'
+  }
+}
