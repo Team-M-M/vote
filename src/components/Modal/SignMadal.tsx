@@ -72,7 +72,6 @@ export function SignModal({
     const decodedURL = dataURL.replace(/^data:image\/\w+;base64,/, '');
     const buf = Buffer.from(decodedURL, 'base64');
     const imageBlob = new Blob([buf], { type: 'image/png' });
-    // return imageBlob
     return (new File([imageBlob], `${name}.png`, { type: 'image/png' }))
   };
 
@@ -90,7 +89,7 @@ export function SignModal({
       formData.append('phone', userData.phone);
       formData.append('name', getValues('checked').toString());
 
-      fetchToast(() => http.post(API_URL.VOTE_IMG, formData, { 'Content-Type': 'multipart/form-data', }));
+      fetchToast(() => http.post(API_URL.VOTE_IMG, formData, { 'Content-Type': 'multipart/form-data; charset=UTF-8', "Access-Control-Allow-Origin": "*", }));
     }
     // const image = canvasRef.current.getTrimmedCanvas().toDataURL('image/png');
     // const link = document.createElement('a');
