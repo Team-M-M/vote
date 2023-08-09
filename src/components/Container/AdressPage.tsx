@@ -1,11 +1,16 @@
 'use client';
 
 import { Spacing } from '@components/Common/Spacing';
-import { SignModal } from '@components/Modal/SignMadal';
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 export function AdressPage({ data }: any) {
   const router = useRouter();
+
+  useEffect(() => {
+    router.prefetch(`/vote`);
+    router.prefetch(`/vote/situation`);
+  }, [])
 
   return (
     <div className="h-full flex justify-center items-center flex-col  px-10">

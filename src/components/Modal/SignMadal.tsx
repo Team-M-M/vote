@@ -23,7 +23,9 @@ export function SignModal({
   };
 }) {
   const canvasRef = useRef<any>(null);
+  const fileRef = useRef<HTMLInputElement>(null)
   const [isSigned, setIsSigned] = useState<boolean>(false);
+  const [fileInfo, setFileInfo] = useState<any>()
   const { getValues, reset, watch } = useFormContext();
 
   const clear = () => {
@@ -70,13 +72,14 @@ export function SignModal({
     const decodedURL = dataURL.replace(/^data:image\/\w+;base64,/, '');
     const buf = Buffer.from(decodedURL, 'base64');
     const imageBlob = new Blob([buf], { type: 'image/png' });
-    return imageBlob
-    // return new File([blob], `${name}.png`, { type: 'image/png' });
+    // return imageBlob
+    return (new File([imageBlob], `${name}.png`, { type: 'image/png' }))
   };
 
   const save = (name: string) => {
     if (!isSigned) return showToast({ type: 'error', message: '서명을 기입해주세요.', className: 'w-64' });
     else {
+      // console.log(fileInfo, 'input::', convertDataUrlToFile('file'), 'blob:::', canvasRef.current.toDataURL('image/png'), 'canvas:::')
       const formData = new FormData();
       formData.append('file', convertDataUrlToFile(userData.dongho + '_' + userData.name + '_' + userData.id));
       formData.append('id', userData.userId.toString());
@@ -86,11 +89,8 @@ export function SignModal({
       formData.append('vote_id', userData.id);
       formData.append('phone', userData.phone);
       formData.append('name', getValues('checked').toString());
-      // console.log(formData, 'data ??');
 
-      // uploadS3(userData.dongho + '_' + userData.name + '_' + userData.id);
-
-      fetchToast(() => http.post(API_URL.VOTE_IMG, formData));
+      fetchToast(() => http.post(API_URL.VOTE_IMG, formData, { 'Content-Type': 'multipart/form-data', }));
     }
     // const image = canvasRef.current.getTrimmedCanvas().toDataURL('image/png');
     // const link = document.createElement('a');
@@ -121,6 +121,7 @@ export function SignModal({
         </CanvasWrapper>
         <Spacing size={40} />
         <div className="flex w-full">
+          <input type='file' ref={fileRef} onChange={(e) => setFileInfo(e?.target?.files)} />
           <Button text="서명 초기화" {...{ style: { marginRight: '4px' } }} onClick={clear} />
           <Button text="서명" onClick={save} />
         </div>
