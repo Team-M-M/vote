@@ -7,11 +7,7 @@ import { ReactNode, useEffect, useRef, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import SignatureCanvas from 'react-signature-canvas';
 
-export function SignModal({
-  open,
-  setOpen,
-  userData,
-}: {
+interface SignModal {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   userData: {
@@ -21,7 +17,13 @@ export function SignModal({
     phone: string;
     id: string;
   };
-}) {
+}
+
+export function SignModal({
+  open,
+  setOpen,
+  userData,
+}: SignModal) {
   const canvasRef = useRef<any>(null);
   const [isSigned, setIsSigned] = useState<boolean>(false);
   const { getValues, reset, watch } = useFormContext();
