@@ -2,6 +2,7 @@ import { Spacing } from '@components/Common/Spacing';
 import { API_URL } from '@constants/apiUrl';
 import { http } from 'lib/http';
 import { fetchToast, showToast } from 'lib/toast-message';
+import { useRouter } from 'next/navigation';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import SignatureCanvas from 'react-signature-canvas';
@@ -24,6 +25,7 @@ export function SignModal({
   const canvasRef = useRef<any>(null);
   const [isSigned, setIsSigned] = useState<boolean>(false);
   const { getValues, reset, watch } = useFormContext();
+  const router = useRouter()
 
   const clear = () => {
     canvasRef.current.clear();
@@ -53,6 +55,7 @@ export function SignModal({
       fetchToast(() => http.post(API_URL.VOTE_IMG, formData, { 'Content-Type': 'multipart/form-data; charset=UTF-8', "Access-Control-Allow-Origin": "*", }));
       reset();
       clear();
+      setTimeout(() => { router.push('/vote') }, 2000)
     }
   };
 
