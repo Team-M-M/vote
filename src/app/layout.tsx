@@ -1,5 +1,4 @@
 import './globals.css';
-import { redirect } from 'next/navigation';
 import SnackbarProvider from 'lib/Provider/snackbar-provider';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -30,9 +29,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="stylesheet" href="https://webfontworld.github.io/pretendard/Pretendard.css" />
       </head>
       <body className="h-full">
-        <SnackbarProvider>
-          {children}
-        </SnackbarProvider>
+        <SnackbarProvider />
+        {children}
+        {/* </SnackbarProvider> */}
       </body>
     </html>
   );
