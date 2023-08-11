@@ -6,10 +6,10 @@ interface SnackbarProvider {
   children: React.ReactNode;
 }
 
-export default function SnackbarProvider({ children }: SnackbarProvider) {
+export default function SnackbarProvider(/* { children }: SnackbarProvider */) {
   return (
     <>
-      {children}
+      {/* {children} */}
       <ToastContainer
         position="top-center"
         style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: '20px' }}

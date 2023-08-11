@@ -2,17 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-} */
 
 @media (prefers-color-scheme: white) {
   :root {
     --foreground-rgb: 0, 0, 0;
     --background-start-rgb: 255, 255, 255;
     --background-end-rgb: 255, 255, 255;
+  }
+}
+
+/* 자주 쓰는 스타일 지정 저장 */
+@layer components {
+  .btn {
+    @apply h-10 px-6 font-semibold rounded-md bg-black text-white;
   }
 }
 
