@@ -13,7 +13,10 @@ export const AgreeBox = ({ value, name }: any) => {
     <>
       <label className='check_box' htmlFor={name + value}>
         <input
-          {...register(name)}
+          {...register(name, {
+            required: '찬성 반대를 선택해주세요.',
+            validate: (value) => value === value
+          })}
           value={value}
           type='radio'
           id={name + value}

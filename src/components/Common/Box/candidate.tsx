@@ -3,7 +3,6 @@ import { CheckBox } from './checkBox';
 import { useState } from 'react';
 import { ProfileModal } from '../Modal/Profile';
 import { AgreeBox } from './agreeBox';
-import { Spacing } from '../Spacing';
 
 export const CandidateBox = ({ data, type }: { data?: any, type: string }) => {
   const [open, setOpen] = useState(false);

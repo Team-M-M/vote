@@ -62,7 +62,7 @@ const VotePage = ({ data, title, userData, majority }: Props) => {
         showToast({ type: 'error', message: '후보자를 선택해주세요!', className: 'w-56 font-semibold' });
       }
     },
-    () => console.log('err :::')
+    () => showToast({ type: 'error', message: '후보자를 선택해주세요!', className: 'w-56 font-semibold' })
   );
 
   return (
