@@ -20,6 +20,7 @@ const toastOptions: ToastOptions = {
 };
 
 export function showToast({ type, message, className }: ToastProps) {
+  className ??= ''
 
   switch (type) {
     case 'success':
