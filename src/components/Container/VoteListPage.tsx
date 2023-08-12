@@ -21,6 +21,7 @@ interface Props {
 }
 
 export const VoteListContainer = ({ title, data, user }: Props) => {
+
   return (
     <main className="justify-start items-center flex-col flex">
       <Spacing size={20} />

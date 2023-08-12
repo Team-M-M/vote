@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { ProfileModal } from '../Modal/Profile';
 import { AgreeBox } from './agreeBox';
 
-export const CandidateBox = ({ data, type }: { data?: any, type: string }) => {
+export const CandidateBox = ({ data, type }: { data: any, type: string }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -23,11 +23,11 @@ export const CandidateBox = ({ data, type }: { data?: any, type: string }) => {
   );
 };
 
-export const AgreeCandidateBox = ({ data, type }: { data?: any, type: string }) => {
+export const AgreeCandidateBox = ({ data }: { data: any }) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="py-3 flex items-center justify-between w-full px-4">
+    <div className="py-3 flex items-center justify-between w-full px-4 bg-white rounded-lg shadow-md">
       <AgreeBox value={'true'} name={data.name} />
       {/* <Spacing size={10} direction='horizontal' /> */}
       <AgreeBox value={'false'} name={data.name} />

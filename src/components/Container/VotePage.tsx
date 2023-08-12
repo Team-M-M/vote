@@ -39,27 +39,25 @@ const VotePage = ({ data, title, userData, majority }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
 
   const methods = useForm(
-    /* { resolver: yupResolver(validation) } */ {
-      // defaultValues: {
-      //   checked: data[0].name
-      // },
-      mode: 'onChange',
-    }
+    { mode: 'onChange', }
   );
 
   const onSubmit = methods.handleSubmit(
+
     async (data) => {
-      console.log(data)
+      const arrayData = Object.values(data);
       try {
-        if (!_.isEmpty(data)) {
-          console.log(data)
+        if (arrayData.length === 1) {
+          setOpen(pre => !pre);
+        }
+        else if (arrayData.some(i => i === 'true') && arrayData.filter(i => i === 'true').length < 6) {
           setOpen(pre => !pre);
         } else {
           throw 'no data';
         }
       } catch (error) {
         console.error(error);
-        showToast({ type: 'error', message: '후보자를 선택해주세요!', className: 'w-56 font-semibold' });
+        showToast({ type: 'error', message: '찬성표는 1개 이상 5개 이하로 선택해주세요!', className: 'w-56 font-semibold' });
       }
     },
     () => showToast({ type: 'error', message: '후보자를 선택해주세요!', className: 'w-56 font-semibold' })
@@ -75,7 +73,10 @@ const VotePage = ({ data, title, userData, majority }: Props) => {
 
           <form onSubmit={onSubmit} className="w-full">
             {data.map((i, d) => (
-              <AgreeCandidateBox type={majority === '1' ? 'radio' : 'checkbox'} data={i} key={d * 10} />
+              <section key={i.name}>
+                <AgreeCandidateBox data={i} key={d * 10} />
+                <Spacing size={10} />
+              </section>
             ))}
             <Spacing size={40} />
             <button type="submit" className="bg-main mb-10 w-full rounded-lg text-white font-medium px-4 py-3">

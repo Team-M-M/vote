@@ -10,15 +10,15 @@ type Props = {
 };
 
 //! HOC -> useForm 의 한번 선언 고려중 
-const FormLoadble = (Component: ElementType) => (props: any) => {
-  const methods = useForm()
+// const FormLoadble = (Component: ElementType) => (props: any) => {
+//   const methods = useForm()
 
-  return (
-    <Form {...methods}>
-      <Component {...props} />
-    </Form>
-  )
-}
+//   return (
+//     <Form {...methods}>
+//       <Component {...props} />
+//     </Form>
+//   )
+// }
 
 export default function FormProvider({ children, onSubmit, methods, ...other }: Props) {
   return (
