@@ -1,5 +1,5 @@
 'use client';
-import { CandidateBox } from '@components/Common/Box/candidate';
+import { AgreeCandidateBox, CandidateBox } from '@components/Common/Box/candidate';
 import { Spacing } from '@components/Common/Spacing';
 import { SignModal } from '@components/Modal';
 import FormProvider from 'lib/Provider/form-provider';
@@ -49,8 +49,9 @@ const VotePage = ({ data, title, userData, majority }: Props) => {
 
   const onSubmit = methods.handleSubmit(
     async (data) => {
+      console.log(data)
       try {
-        if (!_.isEmpty(data.checked)) {
+        if (!_.isEmpty(data)) {
           console.log(data)
           setOpen(pre => !pre);
         } else {
@@ -74,7 +75,7 @@ const VotePage = ({ data, title, userData, majority }: Props) => {
 
           <form onSubmit={onSubmit} className="w-full">
             {data.map((i, d) => (
-              <CandidateBox type={majority === '1' ? 'radio' : 'checkbox'} data={i} key={d * 10} />
+              <AgreeCandidateBox type={majority === '1' ? 'radio' : 'checkbox'} data={i} key={d * 10} />
             ))}
             <Spacing size={40} />
             <button type="submit" className="bg-main mb-10 w-full rounded-lg text-white font-medium px-4 py-3">
