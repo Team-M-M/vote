@@ -43,6 +43,8 @@ export function SignModal({
   };
 
   const save = async (name: string) => {
+    const candidateObj = getValues();
+
     if (!isSigned) return showToast({ type: 'error', message: '서명을 기입해주세요.', className: 'w-64' });
     else {
       const formData = new FormData();
@@ -52,12 +54,12 @@ export function SignModal({
       formData.append('fileName', userData.dongho + '_' + userData.name + '_' + userData.id + '.png');
       formData.append('vote_id', userData.id);
       formData.append('phone', userData.phone);
-      formData.append('name', getValues('checked').toString());
+      formData.append('name', Object.values(candidateObj).toString());
 
       fetchToast(() => http.post(API_URL.VOTE_IMG, formData, { 'Content-Type': 'multipart/form-data; charset=UTF-8', "Access-Control-Allow-Origin": "*", }));
       reset();
       clear();
-      setTimeout(() => { router.push('/vote') }, 2000)
+      setTimeout(() => { router.push('/vote') }, 1000)
     }
   };
 
