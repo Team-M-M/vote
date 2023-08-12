@@ -13,5 +13,5 @@ export const API_URL = {
   VOTE_MULTI_DO: '/office/votemulti',
   //! 현재 선거별로 투표율 표기
   VOTE_CUR_RATE: '/office/voteresult',
-  VOTE_IMG: '/office/voteimage'
+  VOTE_IMG: '/office/voteimagearray'
 };
