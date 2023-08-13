@@ -3,7 +3,13 @@ import { API_URL } from '@constants/apiUrl';
 import { getDataV1 } from 'lib/fetchApi';
 import { cookies } from 'next/headers';
 
-const Page = async ({ params, searchParams }: { params: { id: string }; searchParams: { title: string, majority: string } }) => {
+const Page = async ({
+  params,
+  searchParams,
+}: {
+  params: { id: string };
+  searchParams: { title: string; majority: string };
+}) => {
   const { id } = params;
   const { title, majority } = searchParams;
 

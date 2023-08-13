@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @media (prefers-color-scheme: white) {
   :root {
     --foreground-rgb: 0, 0, 0;
@@ -119,7 +118,7 @@ body {
   transform: rotate(-135deg);
 }
 
-.check_box input:checked+.icon {
+.check_box input:checked + .icon {
   background-image: url(/images/ico_box.svg);
   background-repeat: no-repeat;
   background-position: center;
@@ -127,12 +126,12 @@ body {
   border: none;
 }
 
-.check_box input:checked+.icon::before {
+.check_box input:checked + .icon::before {
   height: 6px;
   transition: all 0.2s ease;
 }
 
-.check_box input:checked+.icon::after {
+.check_box input:checked + .icon::after {
   height: 16px;
   transition: all 0.3s ease 0.2s;
 }

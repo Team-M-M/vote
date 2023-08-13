@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 export default function useLocalStorage<T>(
   key: string,
@@ -24,8 +24,7 @@ export default function useLocalStorage<T>(
   const setValue = (value: T | ((val: T) => T)) => {
     try {
       // Allow value to be a function so we have same API as useState
-      const valueToStore =
-        value instanceof Function ? value(storedValue) : value;
+      const valueToStore = value instanceof Function ? value(storedValue) : value;
       // Save state
       setStoredValue(valueToStore);
       // Save to local storage
@@ -42,8 +41,7 @@ export default function useLocalStorage<T>(
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return [storedValue, setValue, removeValue];
 }
-

@@ -11,13 +11,8 @@ export const CheckBox = ({ type, name }: any) => {
 
   return (
     <>
-      <label className='check_box' htmlFor={name}>
-        <input
-          {...register('checked')}
-          value={`${name}`}
-          type={type}
-          id={name}
-        />
+      <label className="check_box" htmlFor={name}>
+        <input {...register('checked')} value={`${name}`} type={type} id={name} />
         <span className="icon"></span>
       </label>
     </>
