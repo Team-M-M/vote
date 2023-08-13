@@ -42,7 +42,7 @@ export function AdressPage({ data }: any) {
           className="bg-main w-full rounded-lg text-white text-base font-semibold px-4 py-3"
           onClick={() => router.push(`/vote/situation`)}
         >
-          투표결과 보기
+          투표안내 보기
         </button>
       </div>
     </div>

@@ -11,7 +11,7 @@ export const AgreeBox = ({ value, name }: any) => {
 
   return (
     <>
-      <label className='check_box' htmlFor={name + value}>
+      <label className='check_box mx-3' htmlFor={name + value}>
         <input
           {...register(name, {
             required: '찬성 반대를 선택해주세요.',
