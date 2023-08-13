@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import { ToastContainer } from "react-toastify";
+import { ToastContainer } from 'react-toastify';
 
 interface SnackbarProvider {
   children: React.ReactNode;
@@ -12,7 +12,13 @@ export default function SnackbarProvider(/* { children }: SnackbarProvider */) {
       {/* {children} */}
       <ToastContainer
         position="top-center"
-        style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: '20px' }}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: '20px',
+        }}
       />
     </>
   );

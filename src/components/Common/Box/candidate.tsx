@@ -5,7 +5,7 @@ import { ProfileModal } from '../Modal/Profile';
 import { AgreeBox } from './agreeBox';
 import Image from 'next/image';
 
-export const CandidateBox = ({ data, type }: { data: any, type: string }) => {
+export const CandidateBox = ({ data, type }: { data: any; type: string }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -29,10 +29,10 @@ export const AgreeCandidateBox = ({ data }: { data: any }) => {
 
   return (
     <div className="py-3 w-full flex items-center justify-between px-4 bg-white rounded-lg shadow-md">
-      <figure className='ml-1 mr-5'>
-        <Image src={'/images/logo.png'} alt='logo' width={30} height={30} />
+      <figure className="ml-1 mr-5">
+        <Image src={'/images/logo.png'} alt="logo" width={30} height={30} />
       </figure>
-      <div className='flex-1'>
+      <div className="flex-1">
         <p className="text-black font-semibold text-xl">
           {data.kiho} {data.name}
         </p>
@@ -45,4 +45,4 @@ export const AgreeCandidateBox = ({ data }: { data: any }) => {
       <ProfileModal open={open} setOpen={setOpen} data={data} />
     </div>
   );
-}
+};

@@ -19,15 +19,11 @@ interface SignModal {
   };
 }
 
-export function SignModal({
-  open,
-  setOpen,
-  userData,
-}: SignModal) {
+export function SignModal({ open, setOpen, userData }: SignModal) {
   const canvasRef = useRef<any>(null);
   const [isSigned, setIsSigned] = useState<boolean>(false);
   const { getValues, reset, watch } = useFormContext();
-  const router = useRouter()
+  const router = useRouter();
 
   const clear = () => {
     canvasRef.current.clear();
@@ -39,7 +35,7 @@ export function SignModal({
     const decodedURL = dataURL.replace(/^data:image\/\w+;base64,/, '');
     const buf = Buffer.from(decodedURL, 'base64');
     const imageBlob = new Blob([buf], { type: 'image/png' });
-    return (new File([imageBlob], encodeURI(name + '.png'), { type: 'image/png' }))
+    return new File([imageBlob], encodeURI(name + '.png'), { type: 'image/png' });
   };
 
   const save = async (name: string) => {
@@ -56,10 +52,17 @@ export function SignModal({
       formData.append('phone', userData.phone);
       formData.append('name', Object.values(candidateObj).toString());
 
-      fetchToast(() => http.post(API_URL.VOTE_IMG, formData, { 'Content-Type': 'multipart/form-data; charset=UTF-8', "Access-Control-Allow-Origin": "*", }));
+      fetchToast(() =>
+        http.post(API_URL.VOTE_IMG, formData, {
+          'Content-Type': 'multipart/form-data; charset=UTF-8',
+          'Access-Control-Allow-Origin': '*',
+        })
+      );
       reset();
       clear();
-      setTimeout(() => { router.push('/vote') }, 1000)
+      setTimeout(() => {
+        router.push('/vote');
+      }, 1000);
     }
   };
 

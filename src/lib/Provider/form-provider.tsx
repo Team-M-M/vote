@@ -9,7 +9,7 @@ type Props = {
   onSubmit?: VoidFunction;
 };
 
-//! HOC -> useForm 의 한번 선언 고려중 
+//! HOC -> useForm 의 한번 선언 고려중
 // const FormLoadble = (Component: ElementType) => (props: any) => {
 //   const methods = useForm()
 
@@ -21,9 +21,5 @@ type Props = {
 // }
 
 export default function FormProvider({ children, onSubmit, methods, ...other }: Props) {
-  return (
-    <Form {...methods}>
-      {children}
-    </Form>
-  );
+  return <Form {...methods}>{children}</Form>;
 }
