@@ -11,7 +11,13 @@ const nextConfig = {
   swcMinify: true,
   experimental: {
     appDir: true,
-    // serverActions: true,
+  },
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
+    return config;
   },
   // webpack: config => {
   //   return {
