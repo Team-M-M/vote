@@ -36,6 +36,7 @@ export const VoteList = ({ data }: { data: Vote }) => {
             <p>
               투표기간 : {data.start_at} ~ {data.end_at}
             </p>
+            <p>투표방법 : {data.content}</p>
           </div>
         </section>
       </Link>
