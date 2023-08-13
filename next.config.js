@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 
+// const prod = process.env.NODE_ENV === 'production'
 const nextConfig = {
   images: {
     // loader: 'akamai',
@@ -12,6 +13,12 @@ const nextConfig = {
     appDir: true,
     // serverActions: true,
   },
+  // webpack: config => {
+  //   return {
+  //     ...config,
+  //     devtool: prod ? 'hidden-source-map' : 'inline-source-map',
+  //   }
+  // },
   eslint: {
     ignoreDuringBuilds: true,
   },

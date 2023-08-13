@@ -60,7 +60,7 @@ const VotePage = ({ data, title, userData, majority }: Props) => {
         showToast({ type: 'error', message: '찬성표는 1개 이상 5개 이하로 선택해주세요!', className: 'w-56 font-semibold' });
       }
     },
-    () => showToast({ type: 'error', message: '후보자를 모두 선택해주세요!', className: 'w-58 font-semibold' })
+    () => showToast({ type: 'error', message: '모두 선택해주세요', className: 'w-58 font-semibold' })
   );
 
   return (
@@ -68,13 +68,20 @@ const VotePage = ({ data, title, userData, majority }: Props) => {
       <FormProvider methods={methods}>
         <div className="h-full bg-gray-100 flex justify-center items-center flex-col px-7">
           <Spacing size={30} />
-          <p className="text-4xl font-bold py-4">{title} 투표</p>
+          <div className="py-3 w-full px-4 text-white bg-main rounded-lg shadow-md">
+            <p className="text-3xl font-bold py-4">{title} 투표</p>
+            <section className='w-full flex items-center justify-between'>
+              <p className='flex-1'>후보자</p>
+              <p className='mx-2'>찬성</p>
+              <p className='mx-2'>반대</p>
+            </section>
+          </div>
           <Spacing size={20} />
 
           <form onSubmit={onSubmit} className="w-full">
-            {data.map((i, d) => (
+            {data.map((i) => (
               <section key={i.name}>
-                <AgreeCandidateBox data={i} key={d * 10} />
+                <AgreeCandidateBox data={i} />
                 <Spacing size={10} />
               </section>
             ))}
