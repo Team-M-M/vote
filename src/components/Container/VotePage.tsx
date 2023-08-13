@@ -66,7 +66,7 @@ const VotePage = ({ data, title, userData, majority }: Props) => {
   return (
     <>
       <FormProvider methods={methods}>
-        <div className="h-full bg-gray-100 flex justify-center items-center flex-col px-10">
+        <div className="h-full bg-gray-100 flex justify-center items-center flex-col px-7">
           <Spacing size={30} />
           <p className="text-4xl font-bold py-4">{title} 투표</p>
           <Spacing size={20} />
