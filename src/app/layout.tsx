@@ -17,8 +17,7 @@ export const metadata = {
     {
       rel: 'icon',
       url: '/favicon.ico',
-    },
-  ],
+    },],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
