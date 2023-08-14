@@ -1,6 +1,6 @@
 import VotePage from '@components/Container/VotePage';
 import { API_URL } from '@constants/apiUrl';
-import { getDataV1 } from 'lib/fetchApi';
+import { getDataV1, getDataV2 } from 'lib/fetchApi';
 import { cookies } from 'next/headers';
 
 const Page = async ({
@@ -17,11 +17,17 @@ const Page = async ({
 
   const { name, id: userId, phone, dongho } = JSON.parse(cookies().get('user')?.value!);
 
-  const data = await getDataV1(API_URL.CANDIDATE + '/' + id, { method: 'GET', cache: 'no-cache' });
+  const data = await getDataV2(API_URL.CANDIDATE + '/' + id, { method: 'GET', cache: 'no-cache' });
 
   return (
     <main>
-      <VotePage data={data} title={title} majority={majority} userData={{ name, userId, phone, id, dongho }} />
+      <VotePage
+        data={data.data}
+        desc={data.desc}
+        title={title}
+        majority={majority}
+        userData={{ name, userId, phone, id, dongho }}
+      />
     </main>
   );
 };

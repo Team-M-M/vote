@@ -25,6 +25,10 @@ interface Props {
     history4: string;
     history5: string;
   }[];
+  desc: {
+    sequence: number;
+    description: string;
+  }[];
   userData: {
     name: string;
     dongho: string;
@@ -35,9 +39,8 @@ interface Props {
 }
 // ! 후보자 선택 없 -> 버튼 비활성화
 
-const VotePage = ({ data, title, userData, majority }: Props) => {
+const VotePage = ({ data, desc, title, userData, majority }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
-
   const methods = useForm({ mode: 'onChange' });
 
   const onSubmit = methods.handleSubmit(
@@ -69,16 +72,20 @@ const VotePage = ({ data, title, userData, majority }: Props) => {
         <div className="h-full bg-gray-100 flex justify-center items-center flex-col px-7">
           <Spacing size={30} />
           <div className="py-3 w-full px-4 text-white bg-main rounded-lg shadow-md">
-            <p className="text-3xl font-bold py-4">{title} 투표</p>
-            {/* ! 모달로 띄울생각 */}
-            <p className="text-sm">💡 투표는 후보자 전부를 선택해주세요</p>
-            <p className="text-sm">💡 찬성표는 무조건 1개 이상 5개 이하로 해주세요</p>
-            <p className="text-sm">💡 이미 완료한 투표는 수정할 수 없으므로 신중하게 해주세요</p>
-            <section className="w-full flex items-center justify-between pt-2">
-              <p className="flex-1">후보자</p>
-              <p className="mx-2">찬성</p>
-              <p className="mx-2">반대</p>
-            </section>
+            <>
+              <p className="text-3xl font-bold py-4">{title} 투표</p>
+              {/* ! 모달로 띄울생각 */}
+
+              {desc.map((item, i) => {
+                return <p className="text-sm">💡 {item.description}</p>;
+              })}
+
+              <section className="w-full flex items-center justify-between pt-2">
+                <p className="flex-1">후보자</p>
+                <p className="mx-2">찬성</p>
+                <p className="mx-2">반대</p>
+              </section>
+            </>
           </div>
           <Spacing size={20} />
 
