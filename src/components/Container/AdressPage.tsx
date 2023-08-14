@@ -40,7 +40,7 @@ export function AdressPage({ data }: any) {
         <button
           id="main_btn"
           className="bg-main w-full rounded-lg text-white text-base font-semibold px-4 py-3"
-          onClick={() => router.push(`/vote/situation`)}
+          onClick={() => router.push(`https://www.vote24.co.kr/page/00-service-intro/03-misa.html`)}
         >
           투표안내 보기
         </button>
