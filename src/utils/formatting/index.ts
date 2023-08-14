@@ -38,3 +38,10 @@ export const location = (lat: string, lon: string) => {
 
   return `?lat=${lat}&lon=${lon}`;
 };
+
+// 휴대 전화 번호 - 추가
+export const changePhone = (phone: string) =>
+  phone
+    .replace(/[^0-9]/g, '')
+    .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, '$1-$2-$3')
+    .replace(/(\-{1,2})$/g, '');

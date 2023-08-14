@@ -1,7 +1,9 @@
 'use client';
 
 import colors from '@constants/colors';
+import { changePhone } from '@utils/formatting';
 import { Children, HTMLAttributes, InputHTMLAttributes, ReactElement, cloneElement, useEffect, useState } from 'react';
+import { useFormContext, useWatch } from 'react-hook-form';
 
 interface InputProps extends HTMLAttributes<HTMLDivElement> {
   label?: string;
@@ -11,34 +13,22 @@ interface InputProps extends HTMLAttributes<HTMLDivElement> {
 
 export function Input({ label, children, bottomText, ...props }: InputProps) {
   const child = Children.only(children);
-  // const generatedId = useId('input');
-  // const id = child.props.id ?? generatedId;
-  const id = label?.includes('휴대전화');
   const isError: boolean = child.props.error ?? false;
 
   return (
     <div style={{ width: '100%' }} {...props}>
       <label
         // htmlFor={id}
-        style={{
-          display: 'inline-block',
-          padding: '5px 0',
-          fontSize: '15px',
-          fontWeight: '500',
-          lineHeight: 1.6,
-          color: colors.grey600,
-        }}
+        className='inline-block py-[5px] text-base font-medium text-gray-600'
       >
         {label}
       </label>
       {cloneElement(
         child,
-        { id, ...child.props } /*  {
-        ref: '하이'
-      } */
+        { ...child.props }
       )}
-      {/* <TextField /> */}
-      {bottomText != null ? (
+
+      {/* {bottomText != null ? (
         <p
           style={{
             color: isError ? colors.red600 : colors.grey600,
@@ -50,55 +40,43 @@ export function Input({ label, children, bottomText, ...props }: InputProps) {
         >
           {bottomText}
         </p>
-      ) : null}
+      ) : null} */}
     </div>
   );
 }
 
-const changePhone = (phone: string) =>
-  phone
-    .replace(/[^0-9]/g, '')
-    .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, '$1-$2-$3')
-    .replace(/(\-{1,2})$/g, '');
-
 interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   error?: boolean;
 }
-Input.PhoneField = ({ id, ...props }: any) => {
+Input.PhoneField = ({ ...props }: any) => {
   const regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
-  const [phone, setPhone] = useState('');
+  const { control, setValue } = useFormContext();
 
+  const phoneValue = useWatch({
+    control,
+    name: 'phone'
+  }) ?? ''
+
+  // 수정
   useEffect(() => {
-    if (phone.length === 13 && props.trigger && props.error) {
-      regPhone.test(phone) && props.setData(phone);
-      regPhone.test(phone) && props.trigger(true);
-      !regPhone.test(phone) && props.error(true);
+    if (phoneValue.length === 13 && props.trigger && props.error) {
+      regPhone.test(phoneValue) && props.setData(phoneValue);
+      regPhone.test(phoneValue) && props.trigger(true);
+      !regPhone.test(phoneValue) && props.error(true);
     }
-    if (phone.length !== 13 && props.trigger && props.error) {
+    if (phoneValue.length !== 13 && props.trigger && props.error) {
       props.trigger(false);
       props.error(false);
     }
-  }, [phone]);
+  }, [phoneValue]);
 
   return (
     <input
       placeholder={props.placeholder ?? ''}
       maxLength={props.maxLength ?? 8}
       className="accessInput"
-      value={phone}
-      onChange={e => setPhone(changePhone(e.target.value))}
-      {...props.register}
-      style={{
-        width: '100%',
-        padding: '0 18px',
-        fontSize: '15px',
-        lineHeight: '48px',
-        margin: 0,
-        outline: 'none',
-        border: 'none',
-        borderRadius: '8px',
-        transition: `background .2s ease,color .1s ease, box-shadow .2s ease`,
-      }}
+      value={phoneValue}
+      onChange={(e) => setValue("phone", changePhone(e.target.value))}
     />
   );
 };
@@ -106,20 +84,10 @@ Input.PhoneField = ({ id, ...props }: any) => {
 Input.AccessFiled = ({ id, ...props }: any) => {
   return (
     <input
+      type='number'
       placeholder={props.placeholder ?? ''}
       maxLength={props.maxLength ?? 8}
       className="accessInput"
-      style={{
-        width: '100%',
-        padding: '0 18px',
-        fontSize: '15px',
-        lineHeight: '48px',
-        margin: 0,
-        outline: 'none',
-        border: 'none',
-        borderRadius: '8px',
-        transition: `background .2s ease,color .1s ease, box-shadow .2s ease`,
-      }}
       ref={props.accessRef}
     />
   );
