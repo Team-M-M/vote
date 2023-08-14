@@ -1,8 +1,7 @@
 'use client';
 
-import colors from '@constants/colors';
 import { changePhone } from '@utils/formatting';
-import { Children, HTMLAttributes, InputHTMLAttributes, ReactElement, cloneElement, useEffect, useState } from 'react';
+import { Children, HTMLAttributes, InputHTMLAttributes, ReactElement, cloneElement, useEffect } from 'react';
 import { useFormContext, useWatch } from 'react-hook-form';
 
 interface InputProps extends HTMLAttributes<HTMLDivElement> {
@@ -49,6 +48,7 @@ interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'si
   error?: boolean;
 }
 Input.PhoneField = ({ ...props }: any) => {
+  const { setData, trigger, error } = props
   const regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
   const { control, setValue } = useFormContext();
 
@@ -57,16 +57,15 @@ Input.PhoneField = ({ ...props }: any) => {
     name: 'phone'
   }) ?? ''
 
-  // 수정
   useEffect(() => {
-    if (phoneValue.length === 13 && props.trigger && props.error) {
-      regPhone.test(phoneValue) && props.setData(phoneValue);
-      regPhone.test(phoneValue) && props.trigger(true);
-      !regPhone.test(phoneValue) && props.error(true);
+    if (phoneValue.length === 13 && regPhone.test(phoneValue)) {
+      setData(phoneValue);
+      trigger(true);
+      !regPhone.test(phoneValue) && error(true);
     }
-    if (phoneValue.length !== 13 && props.trigger && props.error) {
-      props.trigger(false);
-      props.error(false);
+    else {
+      trigger(false);
+      error(false);
     }
   }, [phoneValue]);
 
@@ -81,14 +80,18 @@ Input.PhoneField = ({ ...props }: any) => {
   );
 };
 
-Input.AccessFiled = ({ id, ...props }: any) => {
+Input.AccessFiled = ({ secret, ...props }: any) => {
+  const { register } = useFormContext();
+
   return (
     <input
       type='number'
-      placeholder={props.placeholder ?? ''}
-      maxLength={props.maxLength ?? 8}
       className="accessInput"
-      ref={props.accessRef}
+      {...register('accessKey', {
+        required: '인증번호를 입력해주세요',
+        validate: value => value === secret
+      })}
+      {...props}
     />
   );
 };

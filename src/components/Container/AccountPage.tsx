@@ -25,8 +25,6 @@ const AccountPage = () => {
   const [postData, setPostData] = useState();
   const router = useRouter();
 
-  const accessRef = useRef<HTMLInputElement>(null);
-
   useEffect(() => {
     check &&
       http.post(API_URL.USER_VOTE, { phone: postData }).then((res: any) => {
@@ -43,48 +41,50 @@ const AccountPage = () => {
             {!check ? '휴대전화 번호를 입력해주세요.' : '인증번호를 입력해주세요.'}
           </p>
           <Spacing size={20} />
-          <Input label="휴대전화 전화 입력">
-            <Input.PhoneField
-              // useWatch={method.}
-              {...{
-                trigger: setCheck,
-                setData: setPostData,
-                error: ssetCheck,
-                placeholder: '010-1234-5678',
-                maxLength: 13,
-              }}
-            />
-          </Input>
-          <Spacing size={10} />
-          {check && (
-            <Input label="인증번호 입력">
-              <Input.AccessFiled {...{ placeholder: '000000', maxLength: 6, accessRef: accessRef }} />
+          <form onSubmit={method.handleSubmit(() => { })}>
+            <Input label="휴대전화 전화 입력">
+              <Input.PhoneField
+                // useWatch={method.}
+                {...{
+                  trigger: setCheck,
+                  setData: setPostData,
+                  error: ssetCheck,
+                  placeholder: '010-1234-5678',
+                  maxLength: 13,
+                }}
+              />
             </Input>
-          )}
-          <Spacing size={24} />
-          <button
-            disabled={!check}
-            id={check ? 'main_btn' : 'btn'}
-            className={`${check ? 'bg-main' : 'bg-gray-400'} w-full rounded-lg text-white font-medium px-4 py-3`}
-            onClick={async () => {
-              if (accessRef.current?.value === data.secret) {
-                await fetch('/api/test', {
-                  method: 'POST',
-                  body: JSON.stringify({
-                    name: data.name,
-                    id: data.id,
-                    address: data.address,
-                    dongho: data.dongho,
-                    phone: postData,
-                  }),
-                }).then(res => {
-                  res.status === 200 && router.push('/my-page');
-                });
-              }
-            }}
-          >
-            확인
-          </button>
+            <Spacing size={10} />
+            {check && (
+              <Input label="인증번호 입력">
+                <Input.AccessFiled secret={data?.secret} {...{ placeholder: '000000', maxLength: 6 }} />
+              </Input>
+            )}
+            <Spacing size={24} />
+            <button
+              disabled={!check}
+              id={check ? 'main_btn' : 'btn'}
+              className={`${check ? 'bg-main' : 'bg-gray-400'} w-full rounded-lg text-white font-medium px-4 py-3`}
+              onClick={async () => {
+                if (await method.trigger('accessKey')) {
+                  await fetch('/api/test', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                      name: data.name,
+                      id: data.id,
+                      address: data.address,
+                      dongho: data.dongho,
+                      phone: postData,
+                    }),
+                  }).then(res => {
+                    res.status === 200 && router.push('/my-page');
+                  });
+                }
+              }}
+            >
+              확인
+            </button>
+          </form>
           {/* <KeyButton size="large" {...{ style: { ...{ width: '100%' } } }}>완료</KeyButton> */}
         </section>
         {check && (
