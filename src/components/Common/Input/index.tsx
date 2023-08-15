@@ -47,8 +47,7 @@ export function Input({ label, children, bottomText, ...props }: InputProps) {
 interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   error?: boolean;
 }
-Input.PhoneField = ({ ...props }: any) => {
-  const { setData, trigger, error } = props
+Input.PhoneField = ({ setdata, trigger, error, ...props }: any) => {
   const regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
   const { control, setValue } = useFormContext();
 
@@ -59,7 +58,7 @@ Input.PhoneField = ({ ...props }: any) => {
 
   useEffect(() => {
     if (phoneValue.length === 13 && regPhone.test(phoneValue)) {
-      setData(phoneValue);
+      setdata(phoneValue);
       trigger(true);
       !regPhone.test(phoneValue) && error(true);
     }
@@ -71,11 +70,10 @@ Input.PhoneField = ({ ...props }: any) => {
 
   return (
     <input
-      placeholder={props.placeholder ?? ''}
-      maxLength={props.maxLength ?? 8}
       className="accessInput"
       value={phoneValue}
       onChange={(e) => setValue("phone", changePhone(e.target.value))}
+      {...props}
     />
   );
 };
