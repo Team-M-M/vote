@@ -75,13 +75,38 @@ export function showToast({ type, message, className }: ToastProps) {
   }
 }
 
-export function fetchToast(fetch: any) {
+export async function fetchToast(fetch: any, successMessage?: string, errorMessage?: string) {
   const id = toast.loading('잠시만 기다려주세요!');
-  //do something else
-  fetch()
+  let data;
+  await fetch()
     .then((res: any) => {
+      data = res;
+      if (data.code === -1000) return toast.update(id, {
+        render: data.message,
+        type: 'error',
+        isLoading: false,
+        ...toastOptions,
+        style: { backgroundColor: '#e53935', marginBottom: '10px', borderRadius: '10px', color: '#fff' },
+        icon: (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="#fff"
+            color="#e53935"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-8 h-8"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
+            />
+          </svg>
+        ),
+      });
       toast.update(id, {
-        render: '투표를 완료했어요!',
+        render: successMessage ?? '투표를 완료했어요!',
         type: 'success',
         isLoading: false,
         ...toastOptions,
@@ -107,7 +132,7 @@ export function fetchToast(fetch: any) {
     })
     .catch((err: any) => {
       toast.update(id, {
-        render: '투표에 실패했어요!',
+        render: errorMessage ?? '투표에 실패했어요!',
         type: 'error',
         isLoading: false,
         ...toastOptions,
@@ -131,9 +156,6 @@ export function fetchToast(fetch: any) {
         ),
       });
     });
-  // return toast.promise(fetch, {
-  //   pending: '잠시만 기다려주세요!',
-  //   success: '투표를 완료했어요!',
-  //   error: '실패하였습니다.',
-  // })
+
+  return data
 }
