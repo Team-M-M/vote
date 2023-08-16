@@ -3,7 +3,7 @@
 import { API_URL } from '@constants/apiUrl';
 import { changePhone } from '@utils/formatting';
 import { http } from 'lib/http';
-import { fetchToast } from 'lib/toast-message';
+import { fetchToast, showToast } from 'lib/toast-message';
 import { Children, HTMLAttributes, InputHTMLAttributes, ReactElement, cloneElement, useEffect } from 'react';
 import { useFormContext, useWatch } from 'react-hook-form';
 
@@ -60,19 +60,23 @@ Input.PhoneField = ({ setdata, trigger, error, ...props }: any) => {
   }) ?? ''
 
   useEffect(() => {
-    if (regPhone.test(phoneValue)) {
+    if (!regPhone.test(phoneValue)) {
+      error(true);
+      trigger(false);
+      error(false);
 
+      phoneValue.length === 13 && showToast({
+        type: 'error',
+        message: '번호를 확인해주세요',
+        className: 'w-56 font-semibold',
+      })
+    }
+    else {
       fetchToast(() => http.post(API_URL.USER_VOTE, { phone: phoneValue }), '인증번호가 전송되었어요', '')
         .then((res: any) => {
           setdata(res);
         });
-
       trigger(true);
-    }
-    else {
-      error(true);
-      trigger(false);
-      error(false);
     }
   }, [phoneValue]);
 
