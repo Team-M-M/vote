@@ -2,18 +2,18 @@
 import { HTMLAttributes, memo } from 'react';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
-  children?: never;
-  direction?: 'horizontal' | 'vertical';
   size: number;
+  direction?: 'horizontal' | 'vertical';
 }
 
-export const Spacing = memo(function ({ size, direction = 'vertical', ...props }: Props) {
+export const Spacing = memo(({ size, direction = 'vertical', ...props }: Props) => {
+
   return (
     <div
       style={{
         flex: 'none',
-        width: direction === 'horizontal' ? `${size}px` : undefined,
-        height: direction === 'vertical' ? `${size}px` : undefined,
+        width: direction === 'horizontal' ? `${size}px` : '',
+        height: direction === 'vertical' ? `${size}px` : '',
       }}
       {...props}
     />

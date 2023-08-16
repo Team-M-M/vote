@@ -21,7 +21,6 @@ const AccountPage = () => {
   const method = useForm({ mode: 'onChange' });
 
   const [check, setCheck] = useState(false);
-  const [scheck, ssetCheck] = useState(false);
   const [data, setData] = useState<any>();
   const router = useRouter();
 
@@ -62,7 +61,6 @@ const AccountPage = () => {
               <Input.PhoneField
                 trigger={setCheck}
                 setdata={setData}
-                error={ssetCheck}
                 {...{
                   placeholder: '010-1234-5678',
                   maxLength: 13,
