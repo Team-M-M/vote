@@ -50,7 +50,7 @@ export function Input({ label, children, bottomText, ...props }: InputProps) {
 interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   error?: boolean;
 }
-Input.PhoneField = ({ setdata, trigger, error, ...props }: any) => {
+Input.PhoneField = ({ setdata, trigger, ...props }: any) => {
   const regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
   const { control, setValue } = useFormContext();
 
@@ -61,9 +61,7 @@ Input.PhoneField = ({ setdata, trigger, error, ...props }: any) => {
 
   useEffect(() => {
     if (!regPhone.test(phoneValue)) {
-      error(true);
       trigger(false);
-      error(false);
 
       phoneValue.length === 13 && showToast({
         type: 'error',
