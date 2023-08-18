@@ -1,3 +1,10 @@
-# https://www.robotstxt.org/robotstxt.html
+# *
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /auth
+
+# Host
+Host: https://vote-ten.vercel.app/
+
+# Sitemaps
+Sitemap: https://vote-ten.vercel.app/sitemap.xml
