@@ -18,7 +18,8 @@
     "format:fix": "prettier --write --ignore-path .gitignore .",
     "clear-all": "rm -rf .next node_modules",
     "re-start": "rm -rf .next node_modules && yarn install && yarn start",
-    "re-build": "rm -rf .next node_modules && yarn install && yarn build"
+    "re-build": "rm -rf .next node_modules && yarn install && yarn build",
+    "postbuild": "next-sitemap"
   },
   "eslintConfig": {
     "extends": [
@@ -70,6 +71,7 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
+    "next-sitemap": "^4.2.2",
     "postcss": "^8.4.27",
     "prettier": "^3.0.0",
     "tailwind-scrollbar": "^3.0.4",
