@@ -77,12 +77,12 @@ export function showToast({ type, message, className }: ToastProps) {
 
 export async function fetchToast(fetch: any, successMessage?: string, errorMessage?: string) {
   const id = toast.loading('잠시만 기다려주세요!');
-  let data;
-  await fetch()
+
+  return await fetch()
     .then((res: any) => {
-      data = res;
-      if (data.code === -1000) return toast.update(id, {
-        render: data.message,
+
+      if (res.code === -1000) return toast.update(id, {
+        render: res.message,
         type: 'error',
         isLoading: false,
         ...toastOptions,
@@ -129,6 +129,8 @@ export async function fetchToast(fetch: any, successMessage?: string, errorMessa
         ),
         style: { marginBottom: '10px', borderRadius: '10px', backgroundColor: '#3182f6', color: '#fff' },
       });
+      // ! 출력
+      return res;
     })
     .catch((err: any) => {
       toast.update(id, {
@@ -155,7 +157,9 @@ export async function fetchToast(fetch: any, successMessage?: string, errorMessa
           </svg>
         ),
       });
+      //! 출력
+      return err
     });
 
-  return data
+  // return data
 }
