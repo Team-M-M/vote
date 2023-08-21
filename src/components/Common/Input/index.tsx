@@ -82,8 +82,6 @@ const PhoneField = ({
       );
       trigger(true);
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phoneValue]);
 
   return (
@@ -98,7 +96,6 @@ const PhoneField = ({
           message: '',
         },
       })}
-      // onChange={(e) => setValue("phone", changePhone(e.target.value))}
       {...props}
     />
   );
