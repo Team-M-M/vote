@@ -20,11 +20,11 @@ module.exports = {
     'eslint-config-prettier',
     'plugin:react/recommended',
   ],
-  plugins: ['@typescript-eslint', 'import', 'prettier', 'react', 'react-hooks', '@emotion'],
+  plugins: ['@typescript-eslint', 'import', 'prettier', 'react', 'react-hooks'],
   settings: { react: { version: 'detect' } },
 
   rules: {
-    'prettier/prettier': 'error',
+    // 'prettier/prettier': 'error',
     'no-implicit-coercion': 'error',
 
     'no-undef': 'off',
