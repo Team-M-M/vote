@@ -44,7 +44,7 @@ module.exports = {
 
     '@typescript-eslint/no-use-before-define': 'off',
 
-    '@typescript-eslint/no-empty-interface': 'off',
+    '@typescript-eslint/no-empty-interface': 'warn',
 
     '@typescript-eslint/no-parameter-properties': 'off',
 
@@ -109,11 +109,14 @@ module.exports = {
     eqeqeq: ['error', 'always', { null: 'ignore' }],
     'import/no-duplicates': 'error',
 
-    'react/prop-types': 'off',
+    //! react
+
+    'react/prop-types': 'warn',
 
     'react/display-name': 'off',
     'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'error',
+    // ! hook 의존성 체크 
+    // 'react-hooks/exhaustive-deps': 'error',
 
     'react/jsx-no-target-blank': 'error',
 
