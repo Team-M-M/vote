@@ -41,11 +41,11 @@ module.exports = {
 
     '@typescript-eslint/explicit-function-return-type': 'off',
 
-    '@typescript-eslint/no-use-before-define': 'error',
+    '@typescript-eslint/no-use-before-define': 'off',
 
-    '@typescript-eslint/no-empty-interface': 'error',
+    '@typescript-eslint/no-empty-interface': 'warn',
 
-    '@typescript-eslint/no-parameter-properties': 'error',
+    '@typescript-eslint/no-parameter-properties': 'off',
 
     'no-restricted-imports': [
       'error',
