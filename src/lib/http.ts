@@ -1,5 +1,5 @@
 import { API_URL } from '@constants/apiUrl';
-import Axios, { AxiosRequestHeaders } from 'axios';
+import Axios from 'axios';
 
 const axios = Axios.create({
   baseURL: API_URL.CLIENT,

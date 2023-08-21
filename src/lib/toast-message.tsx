@@ -80,31 +80,32 @@ export async function fetchToast(fetch: any, successMessage?: string, errorMessa
 
   return await fetch()
     .then((res: any) => {
-
-      if (res.code === -1000) return toast.update(id, {
-        render: res.message,
-        type: 'error',
-        isLoading: false,
-        ...toastOptions,
-        style: { backgroundColor: '#e53935', marginBottom: '10px', borderRadius: '10px', color: '#fff' },
-        icon: (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="#fff"
-            color="#e53935"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-8 h-8"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
-            />
-          </svg>
-        ),
-      });
+      if (res.code === -1000) {
+        return toast.update(id, {
+          render: res.message,
+          type: 'error',
+          isLoading: false,
+          ...toastOptions,
+          style: { backgroundColor: '#e53935', marginBottom: '10px', borderRadius: '10px', color: '#fff' },
+          icon: (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="#fff"
+              color="#e53935"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-8 h-8"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
+              />
+            </svg>
+          ),
+        });
+      }
       toast.update(id, {
         render: successMessage ?? '투표를 완료했어요!',
         type: 'success',
@@ -158,7 +159,7 @@ export async function fetchToast(fetch: any, successMessage?: string, errorMessa
         ),
       });
       //! 출력
-      return err
+      return err;
     });
 
   // return data

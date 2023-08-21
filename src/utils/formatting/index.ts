@@ -17,7 +17,7 @@ export const formatDate = () => {
 };
 
 // 검색 결과 하이라이트용
-export const highlightedText = (text: String, query: string) => {
+export const highlightedText = (text: string, query: string) => {
   if (query !== '' && text.includes(query)) {
     const parts = text.split(new RegExp(`(${query})`, 'gi'));
     return parts;
@@ -34,7 +34,9 @@ export const sliceText = (text: string, maxLeng: number) => {
 
 // 지역 정보 api 전달용
 export const location = (lat: string, lon: string) => {
-  if (!lat && !lon) return `?lat=${0}&lon=${0}`;
+  if (!lat && !lon) {
+    return `?lat=${0}&lon=${0}`;
+  }
 
   return `?lat=${lat}&lon=${lon}`;
 };
@@ -46,7 +48,7 @@ export const changePhone = (phone: string) =>
     .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, '$1-$2-$3')
     .replace(/(\-{1,2})$/g, '');
 
-// 딜레이 시간 후 실행 
+// 딜레이 시간 후 실행
 export async function delay(ms: number) {
   return new Promise(resolve => {
     setTimeout(resolve, ms);
