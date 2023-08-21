@@ -41,11 +41,11 @@ module.exports = {
 
     '@typescript-eslint/explicit-function-return-type': 'off',
 
-    '@typescript-eslint/no-use-before-define': 'off',
+    '@typescript-eslint/no-use-before-define': 'error',
 
-    '@typescript-eslint/no-empty-interface': 'warn',
+    '@typescript-eslint/no-empty-interface': 'error',
 
-    '@typescript-eslint/no-parameter-properties': 'off',
+    '@typescript-eslint/no-parameter-properties': 'error',
 
     'no-restricted-imports': [
       'error',
@@ -76,6 +76,7 @@ module.exports = {
       { format: ['camelCase', 'PascalCase'], selector: 'function' },
       { format: ['PascalCase'], selector: 'interface' },
       { format: ['PascalCase'], selector: 'typeAlias' },
+      { format: ["PascalCase"], selector: "typeLike", }
     ],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
