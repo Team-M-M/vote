@@ -76,6 +76,7 @@ module.exports = {
       { format: ['camelCase', 'PascalCase'], selector: 'function' },
       { format: ['PascalCase'], selector: 'interface' },
       { format: ['PascalCase'], selector: 'typeAlias' },
+      { format: ["PascalCase"], selector: "typeLike", }
     ],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],

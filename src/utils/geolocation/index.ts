@@ -1,10 +1,4 @@
 export const geolocation = () => {
-  if (window && window.navigator && window.navigator.geolocation) {
-    window.navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-  } else {
-    console.log('Geolocation is not supported by this browser.');
-  }
-
   function successCallback(position: any) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
@@ -14,5 +8,11 @@ export const geolocation = () => {
 
   function errorCallback(error: any) {
     console.log('Error occurred. Error code: ' + error.code);
+  }
+
+  if (window && window.navigator && window.navigator.geolocation) {
+    window.navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+  } else {
+    console.log('Geolocation is not supported by this browser.');
   }
 };
