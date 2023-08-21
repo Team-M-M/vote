@@ -38,11 +38,12 @@ export function SignModal({ open, setOpen, userData }: SignModal) {
     return new File([imageBlob], encodeURI(name + '.png'), { type: 'image/png' });
   };
 
-  const save = async (name: string) => {
+  const save = async () => {
     const candidateObj = getValues();
 
-    if (!isSigned) return showToast({ type: 'error', message: '서명을 기입해주세요.', className: 'w-64' });
-    else {
+    if (!isSigned) {
+      return showToast({ type: 'error', message: '서명을 기입해주세요.', className: 'w-64' });
+    } else {
       const formData = new FormData();
       formData.append('file', convertDataUrlToFile(userData.dongho + '_' + userData.name + '_' + userData.id));
       formData.append('id', userData.userId.toString());

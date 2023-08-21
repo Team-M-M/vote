@@ -9,23 +9,22 @@ module.exports = {
 
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaFeatures: { jsx: true },
-    jsx: true,
-    useJSXTextNode: true,
+    project: './tsconfig.json',
+    tsconfigRootDir: __dirname,
+    sourceType: 'module',
   },
 
   extends: [
-    'eslint:recommended',
+    'prettier',
+    'next',
     'plugin:@typescript-eslint/recommended',
-    'eslint-config-prettier',
-    'plugin:react/recommended',
   ],
-  plugins: ['@typescript-eslint', 'import', 'prettier', 'react', 'react-hooks'],
+  // plugins: ['@typescript-eslint/eslint-plugin', 'import', 'react-hooks'],
   settings: { react: { version: 'detect' } },
 
   rules: {
     // 'prettier/prettier': 'error',
-    'no-implicit-coercion': 'error',
+    'no-implicit-coercion': 'warn',
 
     'no-undef': 'off',
 
@@ -70,7 +69,7 @@ module.exports = {
     '@typescript-eslint/naming-convention': [
       'error',
       {
-        format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+        format: ['camelCase', 'UPPER_CASE', 'PascalCase', 'snake_case'],
         selector: 'variable',
         leadingUnderscore: 'allow',
       },

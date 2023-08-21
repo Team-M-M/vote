@@ -1,6 +1,6 @@
 import { VoteListContainer } from '@components/Container/VoteListPage';
 import { API_URL } from '@constants/apiUrl';
-import { getDataV1, postDataV1 } from 'lib/fetchApi';
+import { postDataV1 } from 'lib/fetchApi';
 import { cookies } from 'next/headers';
 
 const Page = async () => {

@@ -1,10 +1,9 @@
 'use client';
-import { InputHTMLAttributes } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
-  error?: boolean;
-}
+// interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+//   error?: boolean;
+// }
 
 export const CheckBox = ({ type, name }: any) => {
   const { register } = useFormContext();

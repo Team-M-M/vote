@@ -15,8 +15,11 @@ export const BackHeader = () => {
               type="button"
               className="inline-flex items-center  text-sm text-black"
               onClick={() => {
-                if (window.location.pathname === '/vote') return router.push('my-page');
-                else return router.back();
+                if (window.location.pathname === '/vote') {
+                  return router.push('my-page');
+                } else {
+                  return router.back();
+                }
               }}
             >
               <svg

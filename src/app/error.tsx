@@ -1,6 +1,5 @@
 'use client';
 
-import { ErrorPage } from '@components/Common/Error/error';
 import { useEffect } from 'react';
 
 export default function Error({ error, reset }: { error: Error; reset: () => void }) {
@@ -11,6 +10,6 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 
   return (
     // <ErrorPage code={error} />
-    <></>
+    <button onClick={reset}>error</button>
   );
 }

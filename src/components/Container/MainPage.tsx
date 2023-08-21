@@ -3,14 +3,14 @@
 import { Spacing } from '@components/Common/Spacing';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const MainContainer = ({ user }: { user: boolean }) => {
   const router = useRouter();
 
   useEffect(() => {
     user ? router.prefetch('/my-page') : router.prefetch('/auth');
-  }, [user]);
+  }, [user, router]);
 
   return (
     <main className="bg-main h-full">
