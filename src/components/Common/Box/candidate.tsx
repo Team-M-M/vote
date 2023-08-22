@@ -30,7 +30,15 @@ export const AgreeCandidateBox = ({ data }: { data: any }) => {
   return (
     <div className="py-3 w-full flex items-center justify-between px-4 bg-white rounded-lg shadow-md">
       <figure className="ml-1 mr-5">
-        <Image src={'/images/logo.png'} alt="logo" width={30} height={30} />
+        <Image
+          src={'/images/logo.png'}
+          alt="logo"
+          width={30}
+          height={30}
+          loading="lazy"
+          placeholder="blur"
+          blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mM8uAkAAjoBdVljJRcAAAAASUVORK5CYII="
+        />
       </figure>
       <div className="flex-1">
         <p className="text-black font-semibold text-xl">
