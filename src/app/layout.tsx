@@ -43,7 +43,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ko" className="h-full">
       <head>
         <meta charSet="UTF-8" />
-        <link rel="stylesheet" href="https://webfontworld.github.io/pretendard/Pretendard.css" />
       </head>
       <body className="h-full" /* suppressHydrationWarning={true} */>
         <SnackbarProvider />
