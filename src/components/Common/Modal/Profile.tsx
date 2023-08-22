@@ -25,7 +25,15 @@ export const ProfileModal = ({ open, setOpen, data }: any) => {
         <div className="flex justify-start py-4 mx-5 px-5 border-b-gray-300 border-b-[1px] text-gray-500">
           {/* <div className="h-24 w-24 px-3 box-content"> */}
           <div className="aspect-auto h-40 w-28 relative rounded-xl border-[3px] border-gray-400 overflow-hidden box-border">
-            <Image fill src={data.profile} className="object-cover" alt="후보 이미지" /* unoptimized={true} */ />
+            <Image
+              fill
+              src={data.profile}
+              className="object-cover"
+              alt="후보 이미지"
+              loading="lazy"
+              placeholder="blur"
+              blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mM8uAkAAjoBdVljJRcAAAAASUVORK5CYII="
+            />
           </div>
           <div className="flex-1">
             <p className="pb-3 pl-3 pt-2">

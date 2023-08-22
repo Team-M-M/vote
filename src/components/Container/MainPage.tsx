@@ -28,7 +28,7 @@ const MainContainer = ({ user }: { user: boolean }) => {
             height={80}
             className="pr-1"
             loading="lazy"
-            placeholder="blur"
+            placeholder="empty"
             blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mM8uAkAAjoBdVljJRcAAAAASUVORK5CYII="
           />
           <span className="text-white font-bold text-8xl pr-1">T</span>

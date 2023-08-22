@@ -18,8 +18,9 @@ module.exports = {
     'prettier',
     'next',
     'plugin:@typescript-eslint/recommended',
+    'next/core-web-vitals',
   ],
-  // plugins: ['@typescript-eslint/eslint-plugin', 'import', 'react-hooks'],
+  // plugins: ['prettier', 'import'],
   settings: { react: { version: 'detect' } },
 
   rules: {
