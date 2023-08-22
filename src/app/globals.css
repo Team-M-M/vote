@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://webfontworld.github.io/pretendard/Pretendard.css");
 
 @media (prefers-color-scheme: white) {
   :root {
