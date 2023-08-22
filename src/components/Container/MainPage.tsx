@@ -17,10 +17,11 @@ const MainContainer = ({ user }: { user: boolean }) => {
       <section className="flex flex-col items-center justify-center py-24 px-3">
         <Spacing size={120} />
         <h1 className="text-xl text-yellow-300 font-bold">세상의 모든 투표를 모았다.</h1>
+        <h2 className="hidden">전자 투표 앱</h2>
         <Spacing size={10} />
         <div className="w-full flex justify-center items-center">
           <span className="text-white font-bold text-8xl pr-1">V</span>
-          <Image src={'/images/logo.png'} alt="logo" width={80} height={80} className="pr-1" />
+          <Image src={'/images/logo.png'} alt="logo" width={80} height={80} className="pr-1" loading="lazy" />
           <span className="text-white font-bold text-8xl pr-1">T</span>
           <span className="text-white font-bold text-8xl">E</span>
         </div>
