@@ -1,4 +1,3 @@
-import { ElementType } from 'react';
 import { FormProvider as Form, UseFormReturn, useForm } from 'react-hook-form';
 
 // ----------------------------------------------------------------------
