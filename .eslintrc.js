@@ -14,12 +14,7 @@ module.exports = {
     sourceType: 'module',
   },
 
-  extends: [
-    'prettier',
-    'next',
-    'plugin:@typescript-eslint/recommended',
-    'next/core-web-vitals',
-  ],
+  extends: ['prettier', 'next', 'plugin:@typescript-eslint/recommended', 'next/core-web-vitals'],
   // plugins: ['prettier', 'import'],
   settings: { react: { version: 'detect' } },
 
@@ -77,7 +72,7 @@ module.exports = {
       { format: ['camelCase', 'PascalCase'], selector: 'function' },
       { format: ['PascalCase'], selector: 'interface' },
       { format: ['PascalCase'], selector: 'typeAlias' },
-      { format: ["PascalCase"], selector: "typeLike", }
+      { format: ['PascalCase'], selector: 'typeLike' },
     ],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
@@ -116,7 +111,7 @@ module.exports = {
 
     'react/display-name': 'off',
     'react-hooks/rules-of-hooks': 'error',
-    // ! hook 의존성 체크 
+    // ! hook 의존성 체크
     // 'react-hooks/exhaustive-deps': 'error',
 
     'react/jsx-no-target-blank': 'error',

@@ -1,9 +1,5 @@
-'use client'
+'use client';
 
 const AuthInputComtainer = () => {
-
-  return (
-    <>
-    </>
-  )
-}
+  return <></>;
+};
