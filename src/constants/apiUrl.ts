@@ -15,3 +15,4 @@ export const API_URL = {
   VOTE_CUR_RATE: '/office/voteresult',
   VOTE_IMG: '/office/voteimagearray',
 };
+('');
