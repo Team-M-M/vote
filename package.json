@@ -83,7 +83,7 @@
     "typescript": "^5.1.6"
   },
   "husky": {
-    "pre-push": "./husky/pre-push"
+    "pre-push": "./.husky/pre-push $HUSKY_GIT_STDIN"
   },
   "lint-staged": {
     "*.{ts,tsx,js,cjs,mjs}": [
