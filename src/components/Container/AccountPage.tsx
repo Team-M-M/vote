@@ -6,7 +6,7 @@ import FormProvider from 'lib/Provider/form-provider';
 import { showToast } from 'lib/toast-message';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { useForm, } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 /**
  * ! 1) 간격 조절용 div -> 간격 props로 보기 쉽게
@@ -21,28 +21,34 @@ const AccountPage = () => {
   const [data, setData] = useState<any>();
   const router = useRouter();
 
-  const onSubmit = method.handleSubmit(async (formData) => {
-    // ! 추후 핸들링에 유용할 메소드
-    if (await method.trigger('accessKey')) {
-      const { data: { name, id, address, dongho } } = data
-      await fetch('/api/test', {
-        method: 'POST',
-        body: JSON.stringify({
-          name: name,
-          id: id,
-          address: address,
-          dongho: dongho,
-          phone: formData.phone,
-        }),
-      }).then(res => {
-        res.status === 200 && router.push('/my-page');
-      });
-    }
-  }, () => showToast({
-    type: 'error',
-    message: '인증번호를 확인해주세요',
-    className: 'w-58 font-semibold',
-  }))
+  const onSubmit = method.handleSubmit(
+    async formData => {
+      // ! 추후 핸들링에 유용할 메소드
+      if (await method.trigger('accessKey')) {
+        const {
+          data: { name, id, address, dongho },
+        } = data;
+        await fetch('/api/test', {
+          method: 'POST',
+          body: JSON.stringify({
+            name: name,
+            id: id,
+            address: address,
+            dongho: dongho,
+            phone: formData.phone,
+          }),
+        }).then(res => {
+          res.status === 200 && router.push('/my-page');
+        });
+      }
+    },
+    () =>
+      showToast({
+        type: 'error',
+        message: '인증번호를 확인해주세요',
+        className: 'w-58 font-semibold',
+      })
+  );
 
   return (
     <>
@@ -74,8 +80,10 @@ const AccountPage = () => {
             <button
               disabled={!(check && data?.code === 1000)}
               id={check ? 'main_btn' : 'btn'}
-              className={`${data?.code === 1000 && check ? 'bg-main' : 'bg-gray-400'} w-full rounded-lg text-white font-medium px-4 py-3`}
-              type='submit'
+              className={`${
+                data?.code === 1000 && check ? 'bg-main' : 'bg-gray-400'
+              } w-full rounded-lg text-white font-medium px-4 py-3`}
+              type="submit"
             >
               확인
             </button>

@@ -7,7 +7,6 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const Spacing = memo(({ size, direction = 'vertical', ...props }: Props) => {
-
   return (
     <div
       style={{
