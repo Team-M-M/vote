@@ -20,7 +20,8 @@
     "re-start": "rm -rf .next node_modules && yarn install && yarn start",
     "re-build": "rm -rf .next node_modules && yarn install && yarn build",
     "postbuild": "next-sitemap",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "pre-commit": "eslint --ext .ts,.tsx . && git add -A ."
   },
   "eslintConfig": {
     "extends": [
@@ -80,11 +81,6 @@
     "tailwind-scrollbar": "^3.0.4",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.1.6"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   },
   "lint-staged": {
     "*.{ts,tsx,js,cjs,mjs}": [
