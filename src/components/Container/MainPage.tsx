@@ -19,9 +19,6 @@ const MainContainer = ({ user }: { user: boolean }) => {
         <h1 className="text-xl text-yellow-300 font-bold">세상의 모든 투표를 모았다.</h1>
         <h2 className="hidden">전자 투표 앱</h2>
         <Spacing size={10} />
-        <p className="text-lg">
-          최프로님<sup className="text-2xl">2</sup>
-        </p>
         <div className="w-full flex justify-center items-center">
           <span className="text-white font-bold text-8xl pr-1">V</span>
           <Image
