@@ -4,8 +4,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata = {
   title: '투표24',
-  description: '전자투표를 활용한 투표 솔루션',
-  keywords: 'react,next,vote,투표,시스템,투표관리,자동화,솔루션',
+  description: '24시간 어디서든 항상 이용 가능한 온라인 무료 전자투표 플랫폼 투표24',
+  keywords: 'react next vote 투표24 시스템,투표관리,자동화,솔루션, 투표,전자투표, ',
+  author: 'woochang',
   themeColor: '#F3F4F6',
   // manifest: '/manifest.json',
   viewport: {
@@ -43,6 +44,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ko" className="h-full">
       <head>
         <meta charSet="UTF-8" />
+        <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'" />
+        <meta name="referrer" content="no-referrer-when-downgrade" />
       </head>
       <body className="h-full" /* suppressHydrationWarning={true} */>
         <SnackbarProvider />
