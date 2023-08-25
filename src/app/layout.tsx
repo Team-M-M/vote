@@ -44,7 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ko" className="h-full">
       <head>
         <meta charSet="UTF-8" />
-        <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'" />
+        {/* <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'" /> */}
         <meta name="referrer" content="no-referrer-when-downgrade" />
       </head>
       <body className="h-full" /* suppressHydrationWarning={true} */>
