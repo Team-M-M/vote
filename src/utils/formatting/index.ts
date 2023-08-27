@@ -54,3 +54,11 @@ export async function delay(ms: number) {
     setTimeout(resolve, ms);
   });
 }
+
+// 브라우저 환경인지 비교
+export const isClient = () => {
+  if (typeof window !== 'undefined') {
+    return true;
+  }
+  return false;
+};
