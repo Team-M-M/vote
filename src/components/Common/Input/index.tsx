@@ -107,6 +107,7 @@ const AccessFiled = ({ secret, ...props }: any) => {
   return (
     <input
       type="number"
+      inputMode="numeric"
       className="accessInput"
       {...register('accessKey', {
         required: '인증번호를 입력해주세요',
