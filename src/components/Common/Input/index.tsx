@@ -87,6 +87,7 @@ const PhoneField = ({
   return (
     <input
       className="accessInput"
+      inputMode="numeric"
       value={phoneValue}
       {...register('phone', {
         required: '휴대전화 번호를 입력해수에요.',
