@@ -28,9 +28,9 @@ const nextConfig = {
   //     devtool: prod ? 'hidden-source-map' : 'inline-source-map',
   //   }
   // },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  // eslint: {
+  //   ignoreDuringBuilds: true,
+  // },
   cleanDistDir: true,
   pageExtensions: ['jsx', 'tsx', 'mdx', 'js', 'ts'],
   productionBrowserSourceMaps: true,
