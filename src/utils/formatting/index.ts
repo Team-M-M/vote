@@ -1,3 +1,5 @@
+import { performance } from 'perf_hooks';
+
 // 천 단위 마다 끊어주는 함수, 10,000
 export const formattingNum = (price: number) => {
   return `${price?.toLocaleString('ko-KR')}`;
@@ -61,4 +63,13 @@ export const isClient = () => {
     return true;
   }
   return false;
+};
+
+// 성능 측정용
+export const measureTime = (action: () => void) => {
+  const startTime = performance.now();
+  action();
+
+  const endTime = performance.now();
+  return `${parseFloat(((endTime * 100 - startTime * 100) / 100).toFixed(3)) / 1000}s`;
 };
