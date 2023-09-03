@@ -239,6 +239,7 @@ body {
 
 .accessInput:focus {
   background-color: #e5e8eb;
+  transition: background-color 0.2s ease, color 0.1s ease, box-shadow 0.2s ease;
 }
 
 /* progressbar */

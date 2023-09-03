@@ -62,3 +62,12 @@ export const isClient = () => {
   }
   return false;
 };
+
+// 성능 측정용
+export const measureTime = (action: () => void) => {
+  const startTime = performance.now();
+  action();
+
+  const endTime = performance.now();
+  return `${parseFloat(((endTime * 100 - startTime * 100) / 100).toFixed(3)) / 1000}s`;
+};
