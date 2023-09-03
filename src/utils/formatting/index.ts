@@ -1,5 +1,3 @@
-import { performance } from 'perf_hooks';
-
 // 천 단위 마다 끊어주는 함수, 10,000
 export const formattingNum = (price: number) => {
   return `${price?.toLocaleString('ko-KR')}`;
