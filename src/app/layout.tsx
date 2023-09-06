@@ -1,3 +1,4 @@
+import ProgressBar from 'lib/Provider/progress-bar';
 import './globals.css';
 import SnackbarProvider from 'lib/Provider/snackbar-provider';
 import 'react-toastify/dist/ReactToastify.css';
@@ -49,6 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="h-full" /* suppressHydrationWarning={true} */>
         <SnackbarProvider />
+        <ProgressBar />
         {children}
       </body>
     </html>
