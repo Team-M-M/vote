@@ -1,12 +1,12 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect , useLayoutEffect } from 'react';
 import NProgress from 'nprogress';
 
 type PushStateInput = [data: any, unused: string, url?: string | URL | null | undefined];
 
 export default function ProgressBar() {
-  useEffect(() => {
+  useLayoutEffect(() => {
     NProgress.configure({ showSpinner: false });
 
     const handleAnchorClick = (event: MouseEvent) => {
