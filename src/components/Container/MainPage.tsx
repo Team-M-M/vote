@@ -38,6 +38,7 @@ const MainContainer = ({ user }: { user: boolean }) => {
         <Spacing size={190} />
         <Link
           href={user ? '/my-page' : '/auth'}
+          passHref
           className={`border-[2px] w-11/12 rounded-xl border-white text-white text-center hover:text-yellow-300 hover:border-yellow-300 hover:scale-90
           font-semibold text-2xl px-4 py-3 scale-100`}
           // onClick={() => (user ? router.push('/my-page') : router.push('/auth'))}
