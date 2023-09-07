@@ -1,17 +1,12 @@
-'use client';
-
 import { Spacing } from '@components/Common/Spacing';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import logoUrl from '../../../public/images/logo.png';
 
 const MainContainer = ({ user }: { user: boolean }) => {
-  const router = useRouter();
-
-  useEffect(() => {
-    user ? router.prefetch('/my-page') : router.prefetch('/auth');
-  }, [user, router]);
+  // useEffect(() => {
+  //   user ? router.prefetch('/my-page') : router.prefetch('/auth');
+  // }, [user, router]);
 
   return (
     <main className="bg-main h-full">
@@ -23,7 +18,7 @@ const MainContainer = ({ user }: { user: boolean }) => {
         <div className="w-full flex justify-center items-center">
           <span className="text-white font-bold text-8xl pr-1">V</span>
           <Image
-            src={'/images/logo.png'}
+            src={logoUrl}
             alt="logo"
             width={80}
             height={80}
@@ -41,6 +36,7 @@ const MainContainer = ({ user }: { user: boolean }) => {
           passHref
           className={`border-[2px] w-11/12 rounded-xl border-white text-white text-center hover:text-yellow-300 hover:border-yellow-300 hover:scale-90
           font-semibold text-2xl px-4 py-3 scale-100`}
+          prefetch
           // onClick={() => (user ? router.push('/my-page') : router.push('/auth'))}
         >
           이용하기

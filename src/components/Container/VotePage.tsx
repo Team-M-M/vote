@@ -6,7 +6,6 @@ import FormProvider from 'lib/Provider/form-provider';
 import { showToast } from 'lib/toast-message';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import _ from 'lodash';
 
 // ! form provider & post data
 
