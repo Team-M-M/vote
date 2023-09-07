@@ -15,7 +15,7 @@ import { useForm } from 'react-hook-form';
  * @returns
  */
 const AccountPage = () => {
-  const method = useForm({ mode: 'onChange' });
+  const method = useForm({ mode: 'onSubmit' });
 
   const [check, setCheck] = useState(false);
   const [data, setData] = useState<any>();
@@ -78,10 +78,10 @@ const AccountPage = () => {
             )}
             <Spacing size={24} />
             <button
-              disabled={!(check && data?.code === 1000)}
+              disabled={!(check && data?.code === 1000 && method.formState.isValid)}
               id={check ? 'main_btn' : 'btn'}
               className={`${
-                data?.code === 1000 && check ? 'bg-main' : 'bg-gray-400'
+                data?.code === 1000 && check && method.formState.isValid ? 'bg-main' : 'bg-gray-400'
               } w-full rounded-lg text-white font-medium px-4 py-3`}
               type="submit"
             >

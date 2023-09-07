@@ -10,7 +10,7 @@ import _ from 'lodash';
 
 // ! form provider & post data
 
-type VoteData = {
+export type VoteData = {
   kiho: string;
   name: string;
   age: number;
@@ -24,7 +24,7 @@ type VoteData = {
   history5: string;
 };
 
-type Description = {
+export type Description = {
   sequence: number;
   description: string;
 };
