@@ -112,7 +112,7 @@ module.exports = {
     'react/display-name': 'off',
     'react-hooks/rules-of-hooks': 'error',
     // ! hook 의존성 체크
-    // 'react-hooks/exhaustive-deps': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
 
     'react/jsx-no-target-blank': 'error',
 
