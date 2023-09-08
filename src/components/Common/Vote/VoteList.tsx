@@ -43,7 +43,7 @@ export const VoteList = ({ data }: { data: Vote }) => {
   );
 };
 
-const Style = {
+const Style = Object.freeze({
   visible: {
     class: 'block w-11/12 px-4 py-6 bg-white text-xl rounded-xl font-semibold text-gray-600 shadow-md',
     title: '투표에 참여해주세요.',
@@ -52,4 +52,4 @@ const Style = {
     class: 'block w-11/12 px-4 py-6 bg-zinc-300 text-xl rounded-xl font-semibold text-gray-600 shadow-md',
     title: '투표에 참여하셨습니다.',
   },
-};
+});
