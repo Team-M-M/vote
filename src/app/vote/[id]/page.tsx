@@ -26,8 +26,8 @@ const Page = async ({ params, searchParams }: PageProps) => {
   return (
     <main>
       <VotePage
-        data={data}
-        desc={desc}
+        data={...data}
+        desc={...desc}
         title={title}
         majority={majority}
         userData={{ name, userId, phone, id, dongho }}
