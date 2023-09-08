@@ -9,7 +9,7 @@ const Page = async () => {
 
   const data = await postDataV1(API_URL.VOTE_LIST, { phone });
 
-  return <VoteListContainer title={data.title} data={data.data} user={{ name, id, detail, phone }} />;
+  return <VoteListContainer title={data?.title} data={data?.data} user={{ name, id, detail, phone }} />;
 };
 
 export default Page;

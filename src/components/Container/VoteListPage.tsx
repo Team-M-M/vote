@@ -28,7 +28,7 @@ export const VoteListContainer = ({ title, data, user }: Props) => {
         <p>{user.name}님!</p>
         <p>{title}</p>
       </section>
-      {data.map(i => (
+      {data?.map(i => (
         <>
           <VoteList data={i} key={i.id} />
         </>
