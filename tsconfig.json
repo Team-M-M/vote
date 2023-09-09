@@ -3,16 +3,19 @@
     // "rootDir": "src",
     "outDir": ".next",
     "baseUrl": "src",
-    "target": "esnext",
+    "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
-    "allowJs": true,
-    "skipLibCheck": true,
     "strict": true,
     "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "alwaysStrict": true,
+    "allowJs": true,
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -23,6 +26,7 @@
     "jsx": "preserve",
     "incremental": true,
     "sourceMap": true,
+    "removeComments": true,
     "plugins": [
       {
         "name": "next"
