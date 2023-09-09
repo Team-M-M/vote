@@ -13,24 +13,15 @@ const nextConfig = {
   swcMinify: true,
   experimental: {
     appDir: true,
+    // modularizelmports: {
+    //   lodash: {
+    //       transform: 'lodash/{{member}}',
+    //     },
+    //   },
   },
-  // webpack(config) {
-  //   config.module.rules.push({
-  //     test: /\.svg$/,
-  //     use: ['@svgr/webpack'],
-  //   });
-  //   config.experiments = { ...config.experiments, topLevelAwait: true };
-  //   return config;
-  // },
-  // webpack: config => {
-  //   return {
-  //     ...config,
-  //     devtool: prod ? 'hidden-source-map' : 'inline-source-map',
-  //   }
-  // },
-  // eslint: {
-  //   ignoreDuringBuilds: true,
-  // },
+  compiler: {
+    removeConsole: true,
+  },
   cleanDistDir: true,
   pageExtensions: ['jsx', 'tsx', 'mdx', 'js', 'ts'],
   productionBrowserSourceMaps: true,

@@ -261,7 +261,7 @@ body {
 #nprogress .bar {
   top: 0;
   left: 0;
-  height: 4px;
+  height: 3px;
   z-index: 9999;
   width: 100%;
   position: fixed;
