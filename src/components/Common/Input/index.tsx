@@ -26,21 +26,8 @@ export function Input({ label, children, bottomText, ...props }: InputProps) {
         {label}
       </label>
       {cloneElement(child, { ...child.props })}
-
-      {/* {bottomText != null ? (
-        <p
-          style={{
-            color: isError ? colors.red600 : colors.grey600,
-            marginTop: '4px',
-            display: 'inline-block',
-            fontWeight: 400,
-            fontSize: '15px',
-          }}
-        >
-          {bottomText}
-        </p>
-      ) : null} */}
     </div>
+    // ! error 메세지가 있을시
   );
 }
 
@@ -56,8 +43,7 @@ const PhoneField = ({
   trigger: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
-  const { control, setValue, register, formState } = useFormContext();
-
+  const { control, setValue, register } = useFormContext();
   const phoneValue =
     useWatch({
       control,
@@ -65,7 +51,6 @@ const PhoneField = ({
     }) ?? '';
 
   useEffect(() => {
-    console.log(formState, 'error::');
     if (!regPhone.test(phoneValue)) {
       trigger(false);
 
