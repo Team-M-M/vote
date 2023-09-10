@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 
-// const prod = process.env.NODE_ENV === 'production'
 const nextConfig = {
   images: {
     // loader: 'akamai',
@@ -20,7 +19,7 @@ const nextConfig = {
     //   },
   },
   compiler: {
-    removeConsole: true,
+    removeConsole: process.env.NODE_ENV === 'production',
   },
   cleanDistDir: true,
   pageExtensions: ['jsx', 'tsx', 'mdx', 'js', 'ts'],
