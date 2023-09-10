@@ -25,9 +25,7 @@ const AccountPage = () => {
     async formData => {
       // ! 추후 핸들링에 유용할 메소드
       if (await method.trigger('accessKey')) {
-        const {
-          data: { name, id, address, dongho },
-        } = data;
+        const { name, id, address, dongho } = data.data;
         await fetch('/api/test', {
           method: 'POST',
           body: JSON.stringify({
@@ -54,7 +52,7 @@ const AccountPage = () => {
     <>
       <FormProvider methods={method}>
         <Spacing size={80} />
-        <section className="h-5/6 flex justify-center items-center flex-col  px-10">
+        <section className="h-5/6 flex justify-center items-center flex-col px-10">
           <p className="text-2xl font-bold py-4">
             {!(data?.code === 1000 && check) ? '휴대전화 번호를 입력해주세요.' : '인증번호를 입력해주세요.'}
           </p>

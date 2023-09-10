@@ -56,7 +56,7 @@ const PhoneField = ({
   trigger: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
-  const { control, setValue, register } = useFormContext();
+  const { control, setValue, register, formState } = useFormContext();
 
   const phoneValue =
     useWatch({
@@ -65,6 +65,7 @@ const PhoneField = ({
     }) ?? '';
 
   useEffect(() => {
+    console.log(formState, 'error::');
     if (!regPhone.test(phoneValue)) {
       trigger(false);
 
@@ -93,8 +94,8 @@ const PhoneField = ({
         required: '휴대전화 번호를 입력해수에요.',
         onChange: e => setValue('phone', changePhone(e.target.value)),
         pattern: {
-          value: /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/,
-          message: '',
+          value: regPhone,
+          message: '번호를 확인해주세요.',
         },
       })}
       {...props}
@@ -112,6 +113,10 @@ const AccessFiled = ({ secret, ...props }: any) => {
       className="accessInput"
       {...register('accessKey', {
         required: '인증번호를 입력해주세요',
+        minLength: {
+          value: 6,
+          message: '인증번호를 확인해주세요',
+        },
         validate: value => value === secret,
       })}
       {...props}
