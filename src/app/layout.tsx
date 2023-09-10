@@ -40,6 +40,7 @@ export const metadata = {
   ],
 };
 
+/* text-[10px] lg:text-[20px] -> 반응형 폰트  */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko" className="h-full">
@@ -48,7 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'" /> */}
         <meta name="referrer" content="no-referrer-when-downgrade" />
       </head>
-      <body className="h-full" /* suppressHydrationWarning={true} */>
+      <body className="h-full lg:text-[20px]" /* suppressHydrationWarning={true} */>
         <SnackbarProvider />
         <ProgressBar />
         {children}

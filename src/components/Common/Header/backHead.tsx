@@ -8,8 +8,8 @@ export const BackHeader = () => {
 
   return (
     <div>
-      <nav className="fixed h-16 w-full top-0 bg-white" style={{ zIndex: 500, boxSizing: 'border-box' }}>
-        <div className="flex justify-between items-center py-5 px-3 border-b-[1px] border-[#ECECEC] h-full">
+      <nav className="fixed h-16 w-full top-0 bg-white z-500 box-border">
+        <div className="flex justify-between items-center py-5 px-3 border-b-1 border-[#ECECEC] h-full">
           <div className="flex flex-auto items-center">
             <button
               type="button"
