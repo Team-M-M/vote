@@ -10,7 +10,7 @@ type PageProps = {
 
 type DataTypes = {
   data: VoteData[];
-  desc: Array<{ sequence: number; description: string }>;
+  desc: { sequence: number; description: string }[];
 };
 
 const Page = async ({ params, searchParams }: PageProps) => {
