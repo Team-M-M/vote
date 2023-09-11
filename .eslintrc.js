@@ -75,7 +75,7 @@ module.exports = {
       { format: ['PascalCase'], selector: 'typeLike' },
     ],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
+    '@typescript-eslint/array-type': ['error', { default: 'array' }],
     '@typescript-eslint/no-unused-vars': ['warn', { ignoreRestSiblings: true }],
     '@typescript-eslint/member-ordering': [
       'error',

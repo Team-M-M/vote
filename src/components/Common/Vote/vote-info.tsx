@@ -1,4 +1,4 @@
-export function VoteInfo({ title, desc }: { title: string; desc: Array<{ sequence: number; description: string }> }) {
+export function VoteInfo({ title, desc }: { title: string; desc: { sequence: number; description: string }[] }) {
   return (
     <div className="py-3 w-full px-4 text-white bg-main rounded-lg shadow-md">
       <p className="text-3xl font-bold py-4">{title} 투표</p>
