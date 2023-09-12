@@ -36,7 +36,7 @@ export const postDataV1 = async (url: string, body?: any, cacheOp?: any) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      cache: cacheOp ?? 'no-cache',
+      ...cacheOp,
     });
     const data = await res.json();
     if (data?.code !== 1000) {
