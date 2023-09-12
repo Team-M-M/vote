@@ -2,6 +2,7 @@ import ProgressBar from 'lib/Provider/progress-bar';
 import './globals.css';
 import SnackbarProvider from 'lib/Provider/snackbar-provider';
 import 'react-toastify/dist/ReactToastify.css';
+import Script from 'next/script';
 
 export const metadata = {
   title: '투표24',
@@ -46,6 +47,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ko" className="h-full">
       <head>
         <meta charSet="UTF-8" />
+        {/* Google tag (gtag.js) */}
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-JXSHQE9ZM3" strategy="lazyOnload" />
+        <Script id="google-analytics">
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', 'G-JXSHQE9ZM3', {
+            page_path: window.location.pathname,
+          });
+        `}
+        </Script>
         {/* <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'" /> */}
         <meta name="referrer" content="no-referrer-when-downgrade" />
       </head>
