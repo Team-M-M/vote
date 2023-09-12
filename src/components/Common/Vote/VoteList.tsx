@@ -5,13 +5,12 @@ import { Spacing } from '../Spacing';
 import { showToast } from 'lib/toast-message';
 import { Vote } from '@components/Container/VoteListPage';
 import { useRouter } from 'next/navigation';
-import { useInsertionEffect } from 'react';
+import { useInsertionEffect, useLayoutEffect } from 'react';
 
-//style = 1 단명 투표 / style = 2 여러명 투표
 export const VoteList = ({ data }: { data: Vote }) => {
   const router = useRouter();
 
-  useInsertionEffect(() => {
+  useLayoutEffect(() => {
     router.refresh();
   }, []);
 
