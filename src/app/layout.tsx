@@ -3,6 +3,7 @@ import './globals.css';
 import SnackbarProvider from 'lib/Provider/snackbar-provider';
 import 'react-toastify/dist/ReactToastify.css';
 import Script from 'next/script';
+import { NavigationEvents } from '@components/Common/navigation-events';
 
 export const metadata = {
   title: '투표24',
@@ -43,6 +44,9 @@ export const metadata = {
 
 /* text-[10px] lg:text-[20px] -> 반응형 폰트  */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  // const header = headers()
+  // console.log(header.get('referer'), 'header')
+
   return (
     <html lang="ko" className="h-full">
       <head>
@@ -67,6 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SnackbarProvider />
         <ProgressBar />
         {children}
+        <NavigationEvents />
       </body>
     </html>
   );

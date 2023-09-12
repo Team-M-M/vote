@@ -21,13 +21,13 @@ const Page = async ({ params, searchParams }: PageProps) => {
 
   const { name, id: userId, phone, dongho } = JSON.parse(cookies().get('user')?.value!);
 
-  const { data, desc }: DataTypes = await getDataV2(API_URL.CANDIDATE + '/' + id, { method: 'GET', cache: 'no-cache' });
+  const data: DataTypes = await getDataV2(API_URL.CANDIDATE + '/' + id, { method: 'GET', next: { revalidate: 60 } });
 
   return (
     <main>
       <VotePage
-        data={...data}
-        desc={...desc}
+        data={data?.data}
+        desc={data?.desc}
         title={title}
         majority={majority}
         userData={{ name, userId, phone, id, dongho }}
