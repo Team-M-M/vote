@@ -21,7 +21,10 @@ const Page = async ({ params, searchParams }: PageProps) => {
 
   const { name, id: userId, phone, dongho } = JSON.parse(cookies().get('user')?.value!);
 
-  const data: DataTypes = await getDataV2(API_URL.CANDIDATE + '/' + id, { method: 'GET', next: { revalidate: 60 } });
+  const data: DataTypes = await getDataV2(API_URL.CANDIDATE + '/' + id, {
+    method: 'GET',
+    next: { revalidate: 60 * 30 },
+  });
 
   return (
     <main>

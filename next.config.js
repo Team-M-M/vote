@@ -18,6 +18,12 @@ const nextConfig = {
     //     },
     //   },
   },
+  // modularizeImports: {
+  //   'react-hook-form': {
+  //     transform: 'react-hook-form/dist/{{member}}',
+  //     preventFullImport: true,
+  //   },
+  // },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
