@@ -12,6 +12,8 @@ export default function SnackbarProvider(/* { children }: SnackbarProvider */) {
       {/* {children} */}
       <ToastContainer
         position="top-center"
+        closeOnClick
+        pauseOnHover
         style={{
           display: 'flex',
           flexDirection: 'column',

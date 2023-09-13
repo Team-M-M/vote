@@ -22,7 +22,7 @@ interface SignModal {
 export function SignModal({ open, setOpen, userData }: SignModal) {
   const canvasRef = useRef<any>(null);
   const [isSigned, setIsSigned] = useState<boolean>(false);
-  const { getValues, reset, watch } = useFormContext();
+  const { getValues, reset } = useFormContext();
   const router = useRouter();
 
   const clear = () => {

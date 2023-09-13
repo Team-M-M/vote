@@ -1,5 +1,6 @@
 'use client';
 import { AgreeCandidateBox } from '@components/Common/Box/candidate';
+import { Button } from '@components/Common/Button';
 import { Spacing } from '@components/Common/Spacing';
 import { VoteInfo } from '@components/Common/Vote';
 import { SignModal } from '@components/Modal';
@@ -77,15 +78,13 @@ const VotePage = ({ data, desc, title, userData }: Props) => {
 
           <form onSubmit={onSubmit} className="w-full">
             {data.map(i => (
-              <section key={i.name}>
+              <section key={i.id}>
                 <AgreeCandidateBox data={i} />
                 <Spacing size={10} />
               </section>
             ))}
             <Spacing size={40} />
-            <button type="submit" className="bg-main mb-10 w-full rounded-lg text-white font-medium px-4 py-3">
-              투표하기
-            </button>
+            <Button {...{ type: 'submit' }}>투표하기</Button>
           </form>
         </div>
         <SignModal open={open} setOpen={setOpen} userData={userData} />
