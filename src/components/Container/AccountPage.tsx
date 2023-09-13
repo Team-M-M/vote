@@ -2,13 +2,9 @@
 
 import { InputWrapper } from '@app/auth/_components/account-molecule';
 import { Button } from '@components/Common/Button';
-import { Input } from '@components/Common/Input';
 import { Spacing } from '@components/Common/Spacing';
-import { API_URL } from '@constants/apiUrl';
-import { changePhone } from '@utils/formatting';
 import FormProvider from 'lib/Provider/form-provider';
-import { http } from 'lib/http';
-import { fetchToast, showToast } from 'lib/toast-message';
+import { showToast } from 'lib/toast-message';
 import { FormType } from 'lib/validation/account.type';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -63,7 +59,11 @@ const AccountPage = () => {
             <Spacing size={24} />
             <Button
               bgColor={method.formState.isValid ? 'bg-main' : 'bg-gray-400'}
-              {...{ type: 'submit', id: check ? 'main_btn' : 'btn', disabled: !(data?.code === 1000 && check) }}
+              {...{
+                type: 'submit',
+                id: method.formState.isValid ? 'main_btn' : '',
+                disabled: !(data?.code === 1000 && check),
+              }}
             >
               확인
             </Button>

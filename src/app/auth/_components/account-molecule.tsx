@@ -4,7 +4,7 @@ import { API_URL } from '@constants/apiUrl';
 import { changePhone } from '@utils/formatting';
 import { http } from 'lib/http';
 import { fetchToast } from 'lib/toast-message';
-import { ChangeEvent, ComponentProps } from 'react';
+import { ChangeEvent } from 'react';
 import { useFormContext } from 'react-hook-form';
 
 interface InputWrapperProps {
@@ -16,21 +16,24 @@ interface InputWrapperProps {
 
 // TODO : api url 과 로직 분리시 너무 많은 import 가 필요함
 export const InputWrapper = ({ setCheck, setData, data, validation }: InputWrapperProps) => {
-  const { register, setValue, trigger } = useFormContext();
+  const { register, setValue } = useFormContext();
   const regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
 
-  const onChange = async (e: ChangeEvent<HTMLInputElement>) => {
-    if (await trigger('phone')) {
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const phone = e.target.value;
+    const phoneCheck = regPhone.test(phone);
+
+    if (phoneCheck) {
       setCheck(true);
-      return fetchToast(() => http.post(API_URL.USER_VOTE, { phone: e.target.value }), '인증번호가 전송되었어요').then(
-        (res: any) => {
-          setData(res);
-        }
-      );
+      return fetchToast(() => http.post(API_URL.USER_VOTE, { phone }), '인증번호가 전송되었어요').then((res: any) => {
+        setData(res);
+      });
     }
-    setCheck(false);
+    setCheck(pre => {
+      return pre === true ? false : pre;
+    });
     setData(null);
-    return setValue('phone', changePhone(e.target.value));
+    return setValue('phone', changePhone(phone));
   };
 
   return (
@@ -48,8 +51,9 @@ export const InputWrapper = ({ setCheck, setData, data, validation }: InputWrapp
             })
           }
           {...{
-            placeholder: '010-1234-5678',
+            placeholder: '010-0000-0000',
             maxLength: 13,
+            inputMode: 'tel',
           }}
         />
       </Input>

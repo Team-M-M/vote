@@ -9,7 +9,7 @@ export function AdressPage({ data }: any) {
 
   useEffect(() => {
     router.prefetch(`/vote`);
-    router.prefetch(`/vote/situation`);
+    // router.prefetch(`/vote/situation`);
   }, [router]);
 
   return (
