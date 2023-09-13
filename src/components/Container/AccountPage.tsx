@@ -1,5 +1,6 @@
 'use client';
 
+import { InputWrapper } from '@app/auth/_components/account-molecule';
 import { Button } from '@components/Common/Button';
 import { Input } from '@components/Common/Input';
 import { Spacing } from '@components/Common/Spacing';
@@ -58,52 +59,7 @@ const AccountPage = () => {
           </p>
           <Spacing size={20} />
           <form onSubmit={onSubmit}>
-            <Input label="휴대전화 전화 입력">
-              <Input.TextFiled
-                register={() =>
-                  method.register('phone', {
-                    required: '휴대전화 번호를 입력해수에요.',
-                    onChange: async e => {
-                      e.target.value.length === 13 &&
-                        fetchToast(
-                          () => http.post(API_URL.USER_VOTE, { phone: e.target.value }),
-                          '인증번호가 전송되었어요'
-                        ).then((res: any) => {
-                          setData(res);
-                        });
-                      (await method.trigger('phone')) ? setCheck(true) : setCheck(false);
-                      return method.setValue('phone', changePhone(e.target.value));
-                    },
-                    pattern: {
-                      value: /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/,
-                      message: '번호를 확인해주세요.',
-                    },
-                  })
-                }
-                {...{
-                  placeholder: '010-1234-5678',
-                  maxLength: 13,
-                }}
-              />
-            </Input>
-            <Spacing size={10} />
-            {data?.code === 1000 && check && (
-              <Input label="인증번호 입력">
-                <Input.TextFiled
-                  register={() =>
-                    method.register('accessKey', {
-                      required: '인증번호를 입력해주세요',
-                      minLength: {
-                        value: 6,
-                        message: '인증번호를 확인해주세요',
-                      },
-                      validate: value => value === data?.data?.secret,
-                    })
-                  }
-                  {...{ placeholder: '000000', maxLength: 6, type: 'number', inputMode: 'numeric' }}
-                />
-              </Input>
-            )}
+            <InputWrapper {...{ setCheck, setData, data, validation: data?.code === 1000 && check }} />
             <Spacing size={24} />
             <Button
               bgColor={method.formState.isValid ? 'bg-main' : 'bg-gray-400'}

@@ -24,7 +24,6 @@ export function showToast({ type, message, className }: ToastProps) {
 
   switch (type) {
     case 'success':
-      // enum으로 타입 지정했을 때 가독성 상승 -> case ToastType.success:
       toast.success(message || '성공적으로 완료되었습니다', {
         ...toastOptions,
         style: { marginBottom: '10px', borderRadius: '10px', backgroundColor: '#3182f6', color: '#fff' },
@@ -76,7 +75,9 @@ export function showToast({ type, message, className }: ToastProps) {
 }
 
 export async function fetchToast(fetch: any, successMessage?: string, errorMessage?: string) {
-  const id = toast.loading('잠시만 기다려주세요!');
+  const id = toast.loading('잠시만 기다려주세요!', {
+    ...toastOptions,
+  });
 
   return await fetch()
     .then((res: any) => {
