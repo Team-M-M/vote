@@ -42,13 +42,9 @@ export const metadata = {
   ],
 };
 
-/* text-[10px] lg:text-[20px] -> 반응형 폰트  */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  // const header = headers()
-  // console.log(header.get('referer'), 'header')
-
   return (
-    <html lang="ko" className="h-full">
+    <html lang="ko" className="h-full ">
       <head>
         <meta charSet="UTF-8" />
         {/* Google tag (gtag.js) */}

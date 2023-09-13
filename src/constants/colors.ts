@@ -124,6 +124,6 @@ const colors = {
   darkLayeredBackground: inverseGrey50,
   floatBackground: white,
   darkFloatBackground: inverseGrey100,
-};
+} as const;
 
 export default colors;
