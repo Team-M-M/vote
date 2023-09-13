@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
+import styledConsole from '@utils/console/styledConsole';
 
 export function NavigationEvents() {
   const pathname = usePathname();
@@ -10,7 +11,7 @@ export function NavigationEvents() {
   useEffect(() => {
     const wd = window as any;
     const url = `${pathname}?${searchParams}`;
-    console.log(url, 'change url :::');
+    styledConsole({ data: url, topic: 'url', title: 'change url :::', topicColor: 'tomato' });
     wd.gtag('config', 'G-JXSHQE9ZM3', {
       page_path: wd.location.pathname,
     });

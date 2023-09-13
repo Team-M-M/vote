@@ -4,8 +4,9 @@ import { API_URL } from '@constants/apiUrl';
 import { changePhone } from '@utils/formatting';
 import { http } from 'lib/http';
 import { fetchToast, showToast } from 'lib/toast-message';
-import { Children, HTMLAttributes, ReactElement, cloneElement, useEffect } from 'react';
+import { Children, HTMLAttributes, ReactElement, cloneElement, forwardRef, useEffect, useId } from 'react';
 import { useFormContext, useWatch } from 'react-hook-form';
+import { TextField } from './text-field';
 
 interface InputProps extends HTMLAttributes<HTMLDivElement> {
   label?: string;
@@ -15,25 +16,21 @@ interface InputProps extends HTMLAttributes<HTMLDivElement> {
 
 export function Input({ label, children, bottomText, ...props }: InputProps) {
   const child = Children.only(children);
+  const generatedId = useId();
+  const id = child.props.id ?? generatedId;
   // const isError: boolean = child.props.error ?? false;
 
   return (
     <div style={{ width: '100%' }} {...props}>
-      <label
-        // htmlFor={id}
-        className="inline-block py-[5px] text-base font-medium text-gray-600"
-      >
+      <label htmlFor={id} className="inline-block py-[5px] text-base font-medium text-gray-600">
         {label}
       </label>
-      {cloneElement(child, { ...child.props })}
+      {cloneElement(child, { id, ...child.props })}
     </div>
     // ! error 메세지가 있을시
   );
 }
 
-// interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
-//   error?: boolean;
-// }
 const PhoneField = ({
   setdata,
   trigger,
@@ -88,26 +85,5 @@ const PhoneField = ({
   );
 };
 
-const AccessFiled = ({ secret, ...props }: any) => {
-  const { register } = useFormContext();
-
-  return (
-    <input
-      type="number"
-      inputMode="numeric"
-      className="accessInput"
-      {...register('accessKey', {
-        required: '인증번호를 입력해주세요',
-        minLength: {
-          value: 6,
-          message: '인증번호를 확인해주세요',
-        },
-        validate: value => value === secret,
-      })}
-      {...props}
-    />
-  );
-};
-
+Input.TextFiled = forwardRef(TextField);
 Input.PhoneField = PhoneField;
-Input.AccessFiled = AccessFiled;
