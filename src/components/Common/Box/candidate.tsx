@@ -2,7 +2,6 @@
 import { CheckBox, CheckBoxType } from './checkBox';
 import { useState } from 'react';
 import { ProfileModal } from '../Modal/Profile';
-import { AgreeBox } from './agreeBox';
 import Image from 'next/image';
 
 export const CandidateBox = ({ data, type }: { data: any; type: CheckBoxType }) => {

@@ -1,13 +1,9 @@
 'use client';
-import { useId } from 'react';
+import { InputHTMLAttributes, useId } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-// interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
-//   error?: boolean;
-// }
-
 export type CheckBoxType = 'checkbox' | 'radio';
-interface CheckBoxProps {
+interface CheckBoxProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   type?: CheckBoxType;
   name: string;
   value?: string;
