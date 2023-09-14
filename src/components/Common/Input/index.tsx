@@ -1,6 +1,6 @@
 'use client';
 
-import { Children, HTMLAttributes, ReactElement, cloneElement, forwardRef, useEffect, useId } from 'react';
+import { Children, HTMLAttributes, ReactElement, cloneElement, forwardRef, useId } from 'react';
 import { TextField } from './text-field';
 
 interface InputProps extends HTMLAttributes<HTMLDivElement> {
