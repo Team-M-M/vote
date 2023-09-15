@@ -4,10 +4,6 @@ import Link from 'next/link';
 import logoUrl from '../../../public/images/logo.png';
 
 const MainContainer = ({ user }: { user: boolean }) => {
-  // useEffect(() => {
-  //   user ? router.prefetch('/my-page') : router.prefetch('/auth');
-  // }, [user, router]);
-
   return (
     <main className="bg-main h-full">
       <section className="flex flex-col items-center justify-center py-24 px-3" translate="no">
@@ -37,7 +33,7 @@ const MainContainer = ({ user }: { user: boolean }) => {
           className={`border-[2px] w-11/12 rounded-xl border-white text-white text-center hover:text-yellow-300 hover:border-yellow-300 hover:scale-90
           font-semibold text-2xl px-4 py-3 scale-100`}
           prefetch
-          // onClick={() => (user ? router.push('/my-page') : router.push('/auth'))}
+          aria-label="투표하기"
         >
           이용하기
         </Link>
