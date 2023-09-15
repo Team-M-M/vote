@@ -23,13 +23,12 @@ export function NavigationEvents() {
 //! 페이지 접속 조회  https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 
 //! 페이지 이벤트 조회  https://developers.google.com/analytics/devguides/collection/gtagjs/events
-// export const event = (
-//   action: Gtag.EventNames,
-//   { event_category, event_label, value }: Gtag.EventParams,
-// ) => {
-//   window.gtag('event', action, {
-//     event_category,
-//     event_label,
-//     value,
-//   });
-// };
+
+export const event = ({ action, category, label, value }: any) => {
+  const wd = window as any;
+  return wd.gtag('event', action, {
+    event_category: category,
+    event_label: label,
+    value: value,
+  });
+};

@@ -46,8 +46,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko" className="h-full ">
       <head>
-        <meta charSet="UTF-8" />
+        {/* <link rel="stylesheet" href="https://webfontworld.github.io/pretendard/Pretendard.css" /> */}
         {/* Google tag (gtag.js) */}
+        <link
+          rel="stylesheet"
+          as="style"
+          crossOrigin="anonymous"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css"
+        />
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-JXSHQE9ZM3" strategy="lazyOnload" />
         <Script id="google-analytics">
           {`
@@ -60,8 +66,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           });
         `}
         </Script>
-        {/* <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'" /> */}
-        <meta name="referrer" content="no-referrer-when-downgrade" />
       </head>
       <body className="h-full lg:text-[20px]" /* suppressHydrationWarning={true} */>
         <SnackbarProvider />
