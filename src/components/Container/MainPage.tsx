@@ -2,7 +2,7 @@ import { Spacing } from '@components/Common/Spacing';
 import Image from 'next/image';
 import Link from 'next/link';
 import logoUrl from '../../../public/images/logo.png';
-import { event } from '@components/Common/navigation-events';
+// import { event } from '@components/Common/navigation-events';
 
 const MainContainer = ({ user }: { user: boolean }) => {
   return (
