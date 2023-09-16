@@ -2,6 +2,7 @@ import { Spacing } from '@components/Common/Spacing';
 import Image from 'next/image';
 import Link from 'next/link';
 import logoUrl from '../../../public/images/logo.png';
+import { event } from '@components/Common/navigation-events';
 
 const MainContainer = ({ user }: { user: boolean }) => {
   return (
@@ -34,6 +35,11 @@ const MainContainer = ({ user }: { user: boolean }) => {
           font-semibold text-2xl px-4 py-3 scale-100`}
           prefetch
           aria-label="투표하기"
+          // onClick={() => event({
+          //   action: 'submit_form',
+          //   category: 'Contact',
+          //   label: this.state.message,
+          // })}
         >
           이용하기
         </Link>
