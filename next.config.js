@@ -21,11 +21,11 @@ const nextConfig = {
   experimental: {
     esmExternals: true,
     appDir: true,
-    modularizelmports: {
-      'react-hook-form': { transform: 'react-hook-form/dist/{{member}}' },
-      'react-toastify': { transform: 'react-toastify/dist/{{member}}' },
-      'react-lottie-player': { transform: 'react-lottie-player/dist/{{member}}' },
-    },
+    // modularizelmports: {
+    //   'react-hook-form': { transform: 'react-hook-form/dist/{{member}}' },
+    //   'react-toastify': { transform: 'react-toastify/dist/{{member}}' },
+    //   'react-lottie-player': { transform: 'react-lottie-player/dist/{{member}}' },
+    // },
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
