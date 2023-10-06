@@ -7,6 +7,9 @@
     "email": "water9707@gmail.com",
     "url": "https://vote-ten.vercel.app/"
   },
+  "sideEffects": [
+    "*.css"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",

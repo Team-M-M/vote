@@ -20,16 +20,11 @@ const nextConfig = {
   swcMinify: true,
   experimental: {
     esmExternals: true,
-    // modularizelmports: {
-    //   'react-hook-form': { transform: 'react-hook-form/dist/{{member}}' },
-    //   'react-toastify': { transform: 'react-toastify/dist/{{member}}' },
-    //   'react-lottie-player': { transform: 'react-lottie-player/dist/{{member}}' },
-    // },
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-  pageExtensions: ['jsx', 'tsx', 'mdx', 'js', 'ts'],
+  pageExtensions: ['tsx', 'ts'],
 };
 
 module.exports = nextConfig;
