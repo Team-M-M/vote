@@ -19,6 +19,7 @@ export async function POST(req: Request) {
       httpOnly: true,
       expires: new Date().setDate(new Date().getDate() + 1),
       secure: true,
+      sameSite: 'none',
     });
     return response;
   }
