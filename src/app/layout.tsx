@@ -7,7 +7,7 @@ import { NavigationEvents } from '@components/Common/navigation-events';
 
 export const metadata = {
   title: '투표24',
-  description: '24시간 어디서든 항상 이용 가능한 온라인 무료 전자투표 플랫폼 투표24',
+  description: '24시간 어디서든 항상 이용 가능한 온라인 전자투표 플랫폼 투표24',
   keywords: 'react next vote 투표24 시스템,투표관리,자동화,솔루션, 투표,전자투표, ',
   author: 'woochang',
   themeColor: '#F3F4F6',
