@@ -4,7 +4,7 @@
 const nextConfig = {
   images: {
     // loader: 'akamai',
-    domains: ['bible25-data.s3.ap-northeast-2.amazonaws.com', '*'],
+    domains: ['studiobaka-bucket.s3.ap-northeast-1.amazonaws.com', '*'],
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 86400,
   },

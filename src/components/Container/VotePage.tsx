@@ -1,5 +1,5 @@
 'use client';
-import { AgreeCandidateBox, CandidateBox } from '@components/Common/Box/candidate';
+import { AgreeCandidateBox } from '@components/Common/Box/candidate';
 import { Spacing } from '@components/Common/Spacing';
 import { SignModal } from '@components/Modal';
 import FormProvider from 'lib/Provider/form-provider';
@@ -53,7 +53,7 @@ const VotePage = ({ data, desc, title, userData }: Props) => {
       try {
         if (arrayData.length === 1) {
           setOpen(pre => !pre);
-        } else if (arrayData.some(i => i === 'true') && arrayData.filter(i => i === 'true').length < 6) {
+        } else if (arrayData.some(i => i === 'true') && arrayData.filter(i => i === 'true').length < 5) {
           setOpen(pre => !pre);
         } else {
           throw 'no data';
