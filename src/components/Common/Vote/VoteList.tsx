@@ -5,9 +5,8 @@ import { Spacing } from '../Spacing';
 import { showToast } from 'lib/toast-message';
 import { Vote } from '@components/Container/VoteListPage';
 import { useRouter } from 'next/navigation';
-import { useLayoutEffect } from 'react';
+import { useInsertionEffect, useLayoutEffect } from 'react';
 
-//style = 1 단명 투표 / style = 2 여러명 투표
 export const VoteList = ({ data }: { data: Vote }) => {
   const router = useRouter();
 
@@ -43,7 +42,7 @@ export const VoteList = ({ data }: { data: Vote }) => {
   );
 };
 
-const Style = {
+const Style = Object.freeze({
   visible: {
     class: 'block w-11/12 px-4 py-6 bg-white text-xl rounded-xl font-semibold text-gray-600 shadow-md',
     title: '투표에 참여해주세요.',
@@ -52,4 +51,4 @@ const Style = {
     class: 'block w-11/12 px-4 py-6 bg-zinc-300 text-xl rounded-xl font-semibold text-gray-600 shadow-md',
     title: '투표에 참여하셨습니다.',
   },
-};
+});

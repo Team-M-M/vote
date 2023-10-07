@@ -22,7 +22,7 @@ interface SignModal {
 export function SignModal({ open, setOpen, userData }: SignModal) {
   const canvasRef = useRef<any>(null);
   const [isSigned, setIsSigned] = useState<boolean>(false);
-  const { getValues, reset, watch } = useFormContext();
+  const { getValues, reset } = useFormContext();
   const router = useRouter();
 
   const clear = () => {
@@ -59,8 +59,8 @@ export function SignModal({ open, setOpen, userData }: SignModal) {
           'Access-Control-Allow-Origin': '*',
         })
       );
-      reset();
       clear();
+      reset();
       setTimeout(() => {
         router.push('/vote');
       }, 1000);

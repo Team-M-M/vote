@@ -75,7 +75,7 @@ module.exports = {
       { format: ['PascalCase'], selector: 'typeLike' },
     ],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
+    '@typescript-eslint/array-type': ['error', { default: 'array' }],
     '@typescript-eslint/no-unused-vars': ['warn', { ignoreRestSiblings: true }],
     '@typescript-eslint/member-ordering': [
       'error',
@@ -112,7 +112,7 @@ module.exports = {
     'react/display-name': 'off',
     'react-hooks/rules-of-hooks': 'error',
     // ! hook 의존성 체크
-    // 'react-hooks/exhaustive-deps': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
 
     'react/jsx-no-target-blank': 'error',
 

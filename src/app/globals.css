@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://webfontworld.github.io/pretendard/Pretendard.css");
 
 @media (prefers-color-scheme: white) {
   :root {
@@ -17,14 +16,6 @@
     @apply h-10 px-6 font-semibold rounded-md bg-black text-white;
   }
 }
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 227, 227, 227;
-    --background-start-rgb: 41, 40, 40;
-    --background-end-rgb: 41, 40, 40;
-  }
-} */
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-out-spin-button {
@@ -46,9 +37,10 @@ appearance:none;
 
 } */
 
-body {
+html {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  font-display: swap;
 }
 
 /* profile modal */
@@ -261,7 +253,7 @@ body {
 #nprogress .bar {
   top: 0;
   left: 0;
-  height: 4px;
+  height: 3px;
   z-index: 9999;
   width: 100%;
   position: fixed;

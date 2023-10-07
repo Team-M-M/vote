@@ -16,7 +16,7 @@ export const formatDate = () => {
   return `${month}월 ${day}일`;
 };
 
-// 검색 결과 하이라이트용
+// 하이라이트 텍스트용
 export const highlightedText = (text: string, query: string) => {
   if (query !== '' && text.includes(query)) {
     const parts = text.split(new RegExp(`(${query})`, 'gi'));
@@ -67,7 +67,6 @@ export const isClient = () => {
 export const measureTime = (action: () => void) => {
   const startTime = performance.now();
   action();
-
   const endTime = performance.now();
   return `${parseFloat(((endTime * 100 - startTime * 100) / 100).toFixed(3)) / 1000}s`;
 };

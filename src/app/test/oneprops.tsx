@@ -1,7 +1,7 @@
 'use client';
 import { ReactElement, Suspense } from 'react';
 
-export const OneProps = ({ elementProps }: { elementProps: any }) => {
+export const OneProps = ({ elementProps }: { elementProps: ReactElement }) => {
   console.log('클라이언트');
 
   return (

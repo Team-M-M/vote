@@ -1,16 +1,15 @@
 'use client';
-import { CheckBox } from './checkBox';
+import { CheckBox, CheckBoxType } from './checkBox';
 import { useState } from 'react';
 import { ProfileModal } from '../Modal/Profile';
-import { AgreeBox } from './agreeBox';
 import Image from 'next/image';
 
-export const CandidateBox = ({ data, type }: { data: any; type: string }) => {
+export const CandidateBox = ({ data, type }: { data: any; type: CheckBoxType }) => {
   const [open, setOpen] = useState(false);
 
   return (
     <div className="py-3 flex items-center justify-between w-full px-4">
-      <CheckBox type={type} name={data.name} />
+      <CheckBox type={type} name={data.name} value={data.name} />
       <div>
         <p className="text-black font-semibold text-2xl">
           {data.kiho} {data.name}
@@ -48,8 +47,8 @@ export const AgreeCandidateBox = ({ data }: { data: any }) => {
           프로필 보기
         </p>
       </div>
-      <AgreeBox value={'true'} name={data.name} />
-      <AgreeBox value={'false'} name={data.name} />
+      <CheckBox value={'true'} name={data.name} />
+      <CheckBox value={'false'} name={data.name} />
       <ProfileModal open={open} setOpen={setOpen} data={data} />
     </div>
   );

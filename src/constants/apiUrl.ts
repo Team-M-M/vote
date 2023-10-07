@@ -14,4 +14,4 @@ export const API_URL = {
   //! 현재 선거별로 투표율 표기
   VOTE_CUR_RATE: '/office/voteresult',
   VOTE_IMG: '/office/voteimagearray',
-};
+} as const;

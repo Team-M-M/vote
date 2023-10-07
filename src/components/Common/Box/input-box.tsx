@@ -1,7 +1,7 @@
 'use client';
 
 import { Children, HTMLAttributes, ReactElement, cloneElement, forwardRef, useId } from 'react';
-import { TextField } from './text-field';
+import { TextField } from '../Input/text-field';
 
 interface InputProps extends HTMLAttributes<HTMLDivElement> {
   label?: string;
@@ -26,4 +26,4 @@ export function Input({ label, children, bottomText, ...props }: InputProps) {
   );
 }
 
-Input.TextFiled = forwardRef(TextField);
+Input.TextField = forwardRef(TextField);
