@@ -16,11 +16,7 @@ const px0_200 = { ...Array.from(Array(201)).map((_, i) => `${i}px`) };
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
-  content: [
-    '**/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    '**/components/**/*.{js,ts,jsx,tsx,mdx}',
-    '**/app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ['./src/**/*.{ts,tsx}'],
   theme: {
     // fontSize: {
     //   xs: ['1.2rem', { lineHeight: '1.6rem' }],
