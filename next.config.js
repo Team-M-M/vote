@@ -12,7 +12,7 @@ const nextConfig = {
   webpack: config => {
     return {
       ...config,
-      devtool: process.env.NODE_ENV === 'production' ? 'hidden-source-map' : 'inline-source-map',
+      devtool: process.env.NODE_ENV === 'development' ? 'eval-source-map' : false,
     };
   },
   productionBrowserSourceMaps: false,
