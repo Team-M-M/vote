@@ -16,10 +16,10 @@ export async function POST(req: Request) {
     response.cookies.set({
       name: 'user',
       value: JSON.stringify({ name, id, address, dongho, phone }),
-      httpOnly: true,
+      // httpOnly: true,
       expires: new Date().setDate(new Date().getDate() + 1),
-      secure: true,
-      sameSite: 'none',
+      // secure: true,
+      // sameSite: 'none',
     });
     return response;
   }
