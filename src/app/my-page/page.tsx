@@ -6,7 +6,7 @@ const Page = () => {
   const { name, id, address } = JSON.parse(cookie.get('user')?.value!);
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-full">
       <AdressPage data={{ name, id, address }} />
     </main>
   );

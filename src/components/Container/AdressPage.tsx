@@ -45,6 +45,7 @@ export function AdressPage({ data }: any) {
           투표안내 보기
         </button>
       </div>
+      <Spacing size={40} />
     </div>
   );
 }

@@ -6,7 +6,7 @@ import logoUrl from '../../../public/images/logo.png';
 
 const MainContainer = ({ user }: { user: boolean }) => {
   return (
-    <main className="bg-main min-h-screen">
+    <main className="bg-main min-h-full">
       <section className="flex flex-col items-center justify-center py-24 px-3" translate="no">
         <Spacing size={120} />
         <h1 className="text-xl text-yellow-300 font-bold">세상의 모든 투표를 모았다.</h1>
