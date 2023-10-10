@@ -50,9 +50,8 @@ const VotePage = ({ data, desc, title, userData }: Props) => {
         if (arrayData.length === 1) {
           // ! 리스트가 1개일 때
           setOpen(pre => !pre);
-
-        } else if (arrayData.some(i => i === 'true') && arrayData.filter(i => i === 'true').length < 5) {
-
+        } else if (arrayData.some(i => i === 'true')) {
+          // } else if (arrayData.some(i => i === 'true') && arrayData.filter(i => i === 'true').length < 5) {
           setOpen(pre => !pre);
         } else {
           throw new Error('no data');
