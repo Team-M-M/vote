@@ -7,7 +7,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   cookie.get('user') ?? redirect('/auth');
 
   return (
-    <main className="h-full bg-gray-100">
+    <main className="min-h-full bg-gray-100">
       <BackHeader />
       {children}
     </main>

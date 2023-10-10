@@ -33,6 +33,7 @@ export const VoteListContainer = ({ title, data, user }: Props) => {
           <VoteList data={i} key={i.id} />
         </>
       ))}
+      <Spacing size={30} />
     </main>
   );
 };
