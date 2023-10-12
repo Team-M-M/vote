@@ -31,9 +31,13 @@ export const VoteList = ({ data }: { data: Vote }) => {
           <p>{data.active ? Style.visible.title : Style.invisible.title}</p>
           <Spacing size={10} />
           <div className="text-base font-medium text-gray-500">
-            <p>
-              투표기간 : {data.start_at} ~ {data.end_at}
-            </p>
+            <div className="flex">
+              <p className="">투표기간 :&nbsp;</p>
+              <div className="flex-col">
+                <p>{data.start_at} ~</p>
+                <p>{data.end_at}</p>
+              </div>
+            </div>
             <p>투표방법 : {data.content}</p>
           </div>
         </section>
