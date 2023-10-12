@@ -3,15 +3,15 @@ import AccountPage from '@components/Container/AccountPage';
 import { cookies } from 'next/headers';
 
 const Page = () => {
-  const cookie = cookies();
-  const { name, id, detail, phone } = JSON.parse(cookie.get('user')?.value!);
+  console.log(cookies().get('user')?.value!, 'cookie :::');
+  const user = cookies().get('user')?.value! ? JSON.parse(cookies().get('user')?.value!) : { phone: '', name: '' };
 
   return (
     <main>
       <BackHeader />
       <AccountPage />
-      <p>{phone}</p>
-      <p>{name}</p>
+      <p>{user?.phone}</p>
+      <p>{user?.name}</p>
       {/* <KeyPad /> */}
     </main>
   );
