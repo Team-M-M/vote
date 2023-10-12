@@ -17,8 +17,6 @@ const Page = async ({ params, searchParams }: PageProps) => {
   const { id } = params;
   const { title, majority } = searchParams;
 
-  console.log(cookies().get('user')?.value);
-
   const { name, id: userId, phone, dongho } = JSON.parse(cookies().get('user')?.value!);
 
   const data: DataTypes = await getDataV2(API_URL.CANDIDATE + '/' + id, {
