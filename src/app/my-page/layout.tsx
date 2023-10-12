@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const cookie = cookies();
-  cookie.get('user') ?? redirect('/auth');
+  cookie.get('user')?.value ?? redirect('/auth');
 
   return (
     <main>
